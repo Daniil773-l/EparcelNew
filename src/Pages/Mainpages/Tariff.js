@@ -21,18 +21,19 @@ export default () => {
     const Heading = tw.h2`w-full text-2xl sm:text-3xl font-black tracking-wide text-center`;
 
     const HeaderContainer = tw.div`w-full flex flex-col items-center mt-12 mb-12`;
-
     const BlockContainer = styled.div`
-        ${tw`w-full flex justify-center`}
+        ${tw`w-full flex flex-wrap justify-center`}
         max-width: 1280px;
         margin: 20px auto;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Автоматическая адаптация колонок */
+        gap: 20px; /* Расстояние между элементами */
     `;
 
     const Block = styled.div`
-        ${tw`w-full sm:w-1/4 p-2`}
+        ${tw`w-full p-4`}
+        max-width:380px;
+        margin-bottom: 30px;
         background: url(${Bacround_tarif}) center no-repeat;
         background-size: cover;
         border-radius: 15px;
@@ -42,24 +43,33 @@ export default () => {
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 20px;
-        margin-bottom: 20px;
     `;
 
+
+    const BlockWrapper = styled.div`
+        ${tw`w-full flex flex-col items-center`}
+
+        @media (max-width: 768px) {
+        ${tw`flex flex-col`} /* Столбцы превращаются в строки */
+    }
+    `;
     const Block2 = styled.div`
-        ${tw`w-full sm:w-1/4 p-2`}
+        ${tw`w-full p-4`}
+        max-width:380px;
+        margin-bottom: 30px;
         background: url(${Bacround_tarif2}) center no-repeat;
-        background-size: cover;
-        border-radius: 15px;
-        height: 280px;
-        display: flex;
+        border-radius: 15px; /* Скруглённые углы */
+      
+        display: flex; /* Используем flex для центрирования */
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 10px; /* Отступ снизу */
+        overflow: hidden; /* Обрезаем содержимое, выходящее за границы */
+        padding: 20px; /* Отступы внутри */
     `;
+
 
     const BlockTitle = styled.h3`
         ${tw`text-3xl font-bold mb-4`}
@@ -123,19 +133,95 @@ export default () => {
                 {/*</div>*/}
             </HeaderContainer>
             <BlockContainer>
-                <Block>
-                    <BlockTitle>
-                        <BlockTitleText>Тарифная</BlockTitleText> <ZoneNumber>Зона 1</ZoneNumber>
-                    </BlockTitle>
-                    <BlockDescription>Алматы, Абай, Бесагаш, Боралдай, Каскелен, Отеген-Батыр, Талгар, Туздыбастау, Есик, Конаев, Кордай, Талдыкорган
-                    </BlockDescription>
-                </Block>
+                <BlockWrapper>
+                    <Block>
+                        <BlockTitle>
+                            <BlockTitleText>Тарифная</BlockTitleText> <ZoneNumber>Зона 1</ZoneNumber>
+                        </BlockTitle>
+                        <BlockDescription>
+                            Алматы, Абай, Бесагаш, Боралдай, Каскелен, Отеген-Батыр, Талгар, Туздыбастау, Есик, Конаев, Кордай, Талдыкорган
+                        </BlockDescription>
+                    </Block>
+
+                    <Block2>
+                        <PriceTable>
+                            <tbody>
+                            <PriceRow>
+                                <PriceCell>Вес посылки</PriceCell>
+                                <PriceCell>Стоимость доставки</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>1 кг</PriceCell>
+                                <PriceCell>16 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>2 кг</PriceCell>
+                                <PriceCell>32 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>3 кг</PriceCell>
+                                <PriceCell>48 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>4 кг</PriceCell>
+                                <PriceCell>64 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>5 кг</PriceCell>
+                                <PriceCell>80 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>(+ 1кг)</PriceCell>
+                                <PriceCell>14 $</PriceCell>
+                            </PriceRow>
+                            </tbody>
+                        </PriceTable>
+                    </Block2>
+
+                </BlockWrapper>
+                <BlockWrapper>
                 <Block>
                     <BlockTitle>
                         <BlockTitleText>Тарифная</BlockTitleText> <ZoneNumber>Зона 2</ZoneNumber>
                     </BlockTitle>
                     <BlockDescription>Астана, Балкаш, Караганда, Косшы, Ленгер, Приозёрск, Сарань, Сарыагаш, Тараз, Темиртау, Туркестан, Шахтинск, Шымкент, Атбасар, Жезказган, Житикара, Кокшетау, Костанай, Лисаковск, Новоишимское, Петропавловск, Рудный, Сатпаев, Степногорск, Тайынша, Тобыл, Щучинск</BlockDescription>
                 </Block>
+                    <Block2>
+                        <PriceTable>
+                            <tbody>
+                            <PriceRow>
+                                <PriceCell>Вес посылки</PriceCell>
+                                <PriceCell>Стоимость доставки</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>1 кг</PriceCell>
+                                <PriceCell>17 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>2 кг</PriceCell>
+                                <PriceCell>33 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>3 кг</PriceCell>
+                                <PriceCell>50 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>4 кг</PriceCell>
+                                <PriceCell>66 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>5 кг</PriceCell>
+                                <PriceCell>83 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>(+ 1кг)</PriceCell>
+                                <PriceCell>15 $</PriceCell>
+                            </PriceRow>
+                            </tbody>
+                        </PriceTable>
+                    </Block2>
+                </BlockWrapper>
+                <BlockWrapper>
                 <Block>
                     <BlockTitle>
                         <BlockTitleText>Тарифная</BlockTitleText> <ZoneNumber>Зона 3</ZoneNumber>
@@ -143,108 +229,43 @@ export default () => {
                     <BlockDescription>
                         Алтай, Кызылорда, Павлодар, Риддер, Семей, Усть-Каменогорск, Шемонаиха, Экибастуз, Аксай, Актау, Актобе, Атырау, Жанаозен, Уральск</BlockDescription>
                 </Block>
-                <Block2>
-                    <PriceTable>
-                        <tbody>
-                        <PriceRow>
-                            <PriceCell>Вес посылки</PriceCell>
-                            <PriceCell>Стоимость доставки</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>1 кг</PriceCell>
-                            <PriceCell>16 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>2 кг</PriceCell>
-                            <PriceCell>32 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>3 кг</PriceCell>
-                            <PriceCell>48 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>4 кг</PriceCell>
-                            <PriceCell>64 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>5 кг</PriceCell>
-                            <PriceCell>80 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>(+ 1кг)</PriceCell>
-                            <PriceCell>14 $</PriceCell>
-                        </PriceRow>
-                        </tbody>
-                    </PriceTable>
-                </Block2>
-                <Block2>
-                    <PriceTable>
-                        <tbody>
-                        <PriceRow>
-                            <PriceCell>Вес посылки</PriceCell>
-                            <PriceCell>Стоимость доставки</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>1 кг</PriceCell>
-                            <PriceCell>17 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>2 кг</PriceCell>
-                            <PriceCell>33 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>3 кг</PriceCell>
-                            <PriceCell>50 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>4 кг</PriceCell>
-                            <PriceCell>66 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>5 кг</PriceCell>
-                            <PriceCell>83 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>(+ 1кг)</PriceCell>
-                            <PriceCell>15 $</PriceCell>
-                        </PriceRow>
-                        </tbody>
-                    </PriceTable>
-                </Block2>
-                <Block2>
-                    <PriceTable>
-                        <tbody>
-                        <PriceRow>
-                            <PriceCell>Вес посылки</PriceCell>
-                            <PriceCell>Стоимость доставки</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>1 кг</PriceCell>
-                            <PriceCell>18 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>2 кг</PriceCell>
-                            <PriceCell>34 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>3 кг</PriceCell>
-                            <PriceCell>52 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>4 кг</PriceCell>
-                            <PriceCell>68 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>5 кг</PriceCell>
-                            <PriceCell>85 $</PriceCell>
-                        </PriceRow>
-                        <PriceRow>
-                            <PriceCell>(+ 1кг)</PriceCell>
-                            <PriceCell>16 $</PriceCell>
-                        </PriceRow>
-                        </tbody>
-                    </PriceTable>
-                </Block2>
+                    <Block2>
+                        <PriceTable>
+                            <tbody>
+                            <PriceRow>
+                                <PriceCell>Вес посылки</PriceCell>
+                                <PriceCell>Стоимость доставки</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>1 кг</PriceCell>
+                                <PriceCell>18 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>2 кг</PriceCell>
+                                <PriceCell>34 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>3 кг</PriceCell>
+                                <PriceCell>52 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>4 кг</PriceCell>
+                                <PriceCell>68 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>5 кг</PriceCell>
+                                <PriceCell>85 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>(+ 1кг)</PriceCell>
+                                <PriceCell>16 $</PriceCell>
+                            </PriceRow>
+                            </tbody>
+                        </PriceTable>
+                    </Block2>
+                </BlockWrapper>
+
+
             </BlockContainer>
             <MainFeature1
                 subheading={<Prim></Prim>}

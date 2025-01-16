@@ -1,0 +1,50 @@
+/* IncludedServicesSection.css */
+.included-services-section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.included-services-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.included-services-section h2 {
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.included-services-section h3 {
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Gilroy Semibold';
+    color: #2D2D2D;
+}
+
+.services-list {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.service-item img {
+    margin-bottom: 1rem;
+}
+
+
+.included-services-section p {
+    font-size: 21px;
+    font-weight: 600;
+
+    color: #2D2D2D;
+}
+

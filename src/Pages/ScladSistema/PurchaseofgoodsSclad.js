@@ -3,7 +3,7 @@ import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../../FireBaseConfig';
 import HeaderContainer from './ScaldComponets/WarehouseAccountingHeader';
 import Sidebar from './ScaldComponets/Sidebar';
-import Newrequst from "./purchaseofgoods/ Newrequst"
+import Newrequst from "./purchaseofgoods/Newrequst"
 import InWork from "./purchaseofgoods/InWork";
 import AccepetGoods from "./purchaseofgoods/AccepetGoods";
 import Redeemed from "./purchaseofgoods/Redeemed";

@@ -180,6 +180,8 @@ const InfoMessageBox = styled.div`
 
 const StyledNavLink = styled.a`
     text-decoration: none;
+    font-size: 0.875rem;
+    
 `;
 
 const InfoMessageHeading = styled.h2`
@@ -1270,7 +1272,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
 
                     <TwoColumn>
                         <LeftColumn>
-                            <Heading>Входящие посылки</Heading>
+                            <Heading>Выкуп товаров</Heading>
 
 
                             <InfoContainer>

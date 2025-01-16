@@ -9,6 +9,7 @@ import plusIcon from "../../images/icon/plus.png";
 import { getFirestore, collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { auth } from "../../FireBaseConfig";
 import { MdDelete } from "react-icons/md";
+import { ClipLoader } from "react-spinners";
 import TopUpCard from "../MainCabinet/CabinetComponets/TopUpCard";
 import SingleProfileCard from "./RecipientForm/SingleProfileCard";
 
@@ -257,7 +258,9 @@ const PersonalCabinet = ({ roundedHeaderButton }) => {
                                 </CustomLink>
                             </Heading>
                             {loading ? (
-                                <Description>Загрузка...</Description>
+                                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100px" }}>
+                                    <ClipLoader color="#0ABD19" size={50} />
+                                </div>
                             ) : recipients.length === 0 ? (
                                 <Description>
                                     У Вас не добавлено ни одного получателя посылок.<br />

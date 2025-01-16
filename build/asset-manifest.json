@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b1ce4248.css",
-    "main.js": "/static/js/main.1970e766.js",
+    "main.js": "/static/js/main.49c2a57b.js",
     "static/media/Bacround-cardtarif.svg": "/static/media/Bacround-cardtarif.f2dd72fff7948d691e30384dbd1f54b7.svg",
     "static/media/Slide1.svg": "/static/media/Slide1.a688677c2f2086dd0c1aaa51ea669c62.svg",
     "static/media/Dilvin.svg": "/static/media/Dilvin.364f61b74022432faf297ebdf7b36307.svg",
@@ -417,10 +417,10 @@
     "static/media/minus.svg": "/static/media/minus.595a628f1d89b51f5ee67012ae076ac8.svg",
     "static/media/GreenSmallArrow.svg": "/static/media/GreenSmallArrow.14e8bcb6c625ac359577596bb047106e.svg",
     "main.b1ce4248.css.map": "/static/css/main.b1ce4248.css.map",
-    "main.1970e766.js.map": "/static/js/main.1970e766.js.map"
+    "main.49c2a57b.js.map": "/static/js/main.49c2a57b.js.map"
   },
   "entrypoints": [
     "static/css/main.b1ce4248.css",
-    "static/js/main.1970e766.js"
+    "static/js/main.49c2a57b.js"
   ]
 }

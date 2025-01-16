@@ -325,7 +325,7 @@ const ProductForm = ({index, handleChange, handleDelete}) => {
                     </Tippy>
                 </FormGroup>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productPrice-${index}`}>Стоимость товара (за шт)</Label>
+                    <Label htmlFor={`productPrice-${index}`}>Стоимость товара (за шт) $</Label>
                     <Input id={`productPrice-${index}`} type="number" placeholder="Введите стоимость"
                            onChange={(e) => handleChange(e, index)}/>
                     <Tippy content="Пример: 14$" placement="top">

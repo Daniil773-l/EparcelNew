@@ -197,7 +197,7 @@ const Step2 = ({ onDataPass, city }) => {
                             </Column>
 
                             <Column>
-                                <ColumnLeft>Входящий трэк №:</ColumnLeft>
+                                <ColumnLeft>Входящий трек №:</ColumnLeft>
                                 <ColumnRight>{parcelData.trackingNumber}</ColumnRight>
                             </Column>
                             <Column>

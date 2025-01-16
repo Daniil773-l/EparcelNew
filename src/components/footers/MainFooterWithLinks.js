@@ -9,6 +9,8 @@ import ClassmatesIcon from "../../images/icon/classmates.svg";
 import VkIcon from "../../images/icon/vk.svg";
 import PhoneIcon from "../../images/icon/phone-call.png"; // Импорт иконки телефона
 import EmailIcon from "../../images/icon/email.png";
+import { FiClock } from 'react-icons/fi';
+import { FiPhone, FiMail } from 'react-icons/fi';
 const Container = styled.div`
     ${tw`relative text-gray-100 -mx-8 -mb-8 px-8 p-10`}
     background-color: #e2ffe2 !important; // Ensure it takes precedence
@@ -22,6 +24,7 @@ const Column = tw.div`w-1/2 md:w-1/5 mb-8 md:mb-0 text-sm sm:text-base text-cent
 const CompanyColumn = tw.div`text-center md:text-left mb-16 lg:mb-0 w-full lg:w-1/5`;
 
 const CompanyAddress = tw.p`mt-4 max-w-xs font-medium text-lg mx-auto lg:mx-0 lg:mr-4 leading-loose text-center lg:text-left`;
+
 
 const ColumnHeading = tw.h5`ml-10 font-bold uppercase`;
 
@@ -106,11 +109,18 @@ export default () => {
                             </SocialLink>
                         </SocialLinksContainer>
                         <CompanyAddress>
-                            <img src={PhoneIcon} alt="Phone Icon" style={{ marginRight: '8px' ,width:'18px' , }} />
-                            8 (---)  --- - --- - --
-                            <br />
-                            <img src={EmailIcon} alt="Email Icon" style={{ marginRight: '8px' ,width:'18px' }} />
-                            poshta@mail.ru
+                            <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
+                                <FiPhone style={{ color: "#0ABD19", marginRight: "8px", width: "25px", height: "25px" }} />
+                                <span>8 (---) --- - --- - --</span>
+                            </div>
+                            <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
+                                <FiMail style={{ color: "#0ABD19", marginRight: "8px", width: "25px", height: "25px" }} />
+                                <span>poshta@mail.ru</span>
+                            </div>
+                            <div style={{ display: "flex", alignItems: "center" }}>
+                                <FiClock style={{ color: "#0ABD19", marginRight: "8px", width: "25px", height: "25px" }} />
+                                <span>Пн. - Пт.: 9:00 - 17:00</span>
+                            </div>
                         </CompanyAddress>
                     </CompanyColumn>
                     <Column>

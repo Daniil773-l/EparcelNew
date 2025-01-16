@@ -11,13 +11,118 @@ import { db, auth } from "../../../FireBaseConfig";
 import { collection, doc,addDoc, updateDoc } from "firebase/firestore";
 import 'react-phone-input-2/lib/style.css';
 import PhoneInput from 'react-phone-input-2';
+import Select from "react-select";
 const GlobalStyles = createGlobalStyle`
   input:focus {
     outline: none; /* Убираем стандартный фокус */
     box-shadow: none; /* Убираем тень */
   }
 `;
+const cities = [
+    { value: "Almaty", label: "Алматы" },
+    { value: "Astana", label: "Астана" },
+    { value: "Shymkent", label: "Шымкент" },
+    { value: "Karaganda", label: "Караганда" },
+    { value: "Aktobe", label: "Актобе" },
+    { value: "Pavlodar", label: "Павлодар" },
+    { value: "Semey", label: "Семей" },
+    { value: "Atyrau", label: "Атырау" },
+    { value: "Kostanay", label: "Костанай" },
+    { value: "Taraz", label: "Тараз" },
+    { value: "Oral", label: "Уральск" },
+    { value: "Kyzylorda", label: "Кызылорда" },
+    { value: "Aktau", label: "Актау" },
+    { value: "Taldykorgan", label: "Талдыкорган" },
+    { value: "Zhezkazgan", label: "Жезказган" },
+    { value: "Petropavlovsk", label: "Петропавловск" },
+    { value: "Turkestan", label: "Туркестан" },
+    { value: "Ekibastuz", label: "Экибастуз" },
+    { value: "Rudny", label: "Рудный" },
+    { value: "Temirtau", label: "Темиртау" },
+    { value: "Kokshetau", label: "Кокшетау" },
+    { value: "Stepnogorsk", label: "Степногорск" },
+    { value: "Baykonur", label: "Байконур" },
+    { value: "Saryagash", label: "Сарыагаш" },
+    { value: "Zharkent", label: "Жаркент" },
+    { value: "Ayagoz", label: "Аягоз" },
+    { value: "Balkhash", label: "Балхаш" },
+    { value: "Zhanaozen", label: "Жанаозен" },
+    { value: "Kapchagay", label: "Капшагай" },
+    { value: "Satpayev", label: "Сатпаев" },
+    { value: "Shakhtinsk", label: "Шахтинск" },
+    { value: "Abay", label: "Абай" },
+    { value: "Kentau", label: "Кентау" },
+    { value: "Ridder", label: "Риддер" },
+    { value: "Zyryanovsk", label: "Зыряновск" },
+    { value: "Lisakovsk", label: "Лисаковск" },
+    { value: "Esik", label: "Есик" },
+    { value: "Shu", label: "Шу" },
+    { value: "Talgar", label: "Талгар" },
+    { value: "Tekeli", label: "Текели" },
+    { value: "Zharkent", label: "Жаркент" },
+    { value: "Aksay", label: "Аксай" },
+    { value: "Kurchatov", label: "Курчатов" },
+    { value: "Shardara", label: "Шардара" },
+    { value: "Zhetysay", label: "Жетысай" },
+    { value: "Sarkand", label: "Сарканд" },
+    { value: "Lenger", label: "Ленгер" },
+    { value: "Usharal", label: "Ушарал" },
+    { value: "Zaysan", label: "Зайсан" },
+    { value: "Fort-Shevchenko", label: "Форт-Шевченко" },
+    { value: "Aralsk", label: "Аральск" },
+    { value: "Zhanatas", label: "Жанатас" },
+    { value: "Karazhal", label: "Каражал" },
+    { value: "Priozersk", label: "Приозёрск" },
+    { value: "Kandyagash", label: "Кандыагаш" },
+    { value: "Atbasar", label: "Атбасар" },
+    { value: "Bulaevo", label: "Булаево" },
+    { value: "Stepnyak", label: "Степняк" },
+    { value: "Zhualy", label: "Жуалы" },
+    { value: "Derzhavinsk", label: "Державинск" }
 
+];
+const customStyles = {
+
+    control: (base, state) => ({
+        ...base,
+        borderColor: state.isFocused ? "#0ABD19" : "#D1D5DB", // Граница зелёного цвета при фокусе
+        boxShadow: state.isFocused ? "0 0 0 2px #A7F3D0" : "none", // Тень зелёного цвета при фокусе
+        "&:hover": {
+            borderColor: "#0ABD19",
+        },
+    }),
+    option: (base, state) => ({
+        ...base,
+        backgroundColor: state.isSelected ? "#A7F3D0" : state.isFocused ? "#D1FAE5" : "white", // Фон зелёный при выборе и наведении
+        color: state.isSelected ? "#065F46" : "#111827", // Тёмно-зелёный текст для выбранного пункта
+        "&:hover": {
+            backgroundColor: "#D1FAE5", // Светло-зелёный при наведении
+            color: "#065F46",
+        },
+    }),
+    dropdownIndicator: (base) => ({
+        ...base,
+        color: "#0ABD19", // Индикатор зелёного цвета
+        "&:hover": {
+            color: "#065F46",
+        },
+    }),
+    clearIndicator: (base) => ({
+        ...base,
+        color: "#0ABD19", // Крестик очистки
+        "&:hover": {
+            color: "#065F46",
+        },
+    }),
+    singleValue: (base) => ({
+        ...base,
+        color: "#065F46", // Тёмно-зелёный текст выбранного элемента
+    }),
+    placeholder: (base) => ({
+        ...base,
+        color: "#6B7280", // Серый цвет для placeholder
+    }),
+};
 const PageContainer = styled.div`
     ${tw`min-h-screen flex flex-col`}
 `;
@@ -220,6 +325,13 @@ const RecipientForm = () => {
     const [issuedBy, setIssuedBy] = useState("");
     const [issueDate, setIssueDate] = useState("");
     const [address, setAddress] = useState("");
+    const handleSelectChange = (selectedOption) => {
+        setCity(selectedOption ? selectedOption.value : ""); // Обновление состояния на основе Select
+    };
+
+    const handleInputChange = (e) => {
+        setCity(e.target.value); // Обновление состояния на основе Input
+    };
 
     useEffect(() => {
         if (location.state && location.state.recipient) {
@@ -387,20 +499,24 @@ const RecipientForm = () => {
                                 </FormGroup>
                                 <FormGroup>
                                     <Label htmlFor="city">Город *</Label>
-                                    <Input
-                                        id="city"
-                                        type="text"
-                                        placeholder="Город"
-                                        value={city}
-                                        onChange={(e) => setCity(e.target.value)}
-                                    />
+                                    <div style={{marginTop: "20px"}}>
+                                        <Select
+                                            options={cities}
+                                            value={city}
+                                            onChange={(selectedOption) => setCity(selectedOption)}
+                                            placeholder="Выберите город"
+                                            isClearable
+                                            noOptionsMessage={() => "Город не найден"}
+                                            styles={customStyles}
+                                        />
+                                    </div>
                                 </FormGroup>
                             </Form>
                         </Container>
                     </div>
                 </FormContainer>
                 <FormContainer>
-                    <div style={{ width: '100%', maxWidth: '1280px' }}>
+                    <div style={{width: '100%', maxWidth: '1280px'}}>
                         <StepTitle active={true}><HighlightedText>Шаг 2. </HighlightedText>Укажите паспортные данные получателя</StepTitle>
                         <Container>
                             <TextGreen>

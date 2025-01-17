@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.5.0",
     "@tippyjs/react": "^4.2.6",
     "antd": "^5.23.1",
     "axios": "^1.7.9",
@@ -17,6 +19,7 @@
     "firebase": "^11.2.0",
     "framer-motion": "^11.18.0",
     "jsbarcode": "^3.11.6",
+    "postcss": "^8.4.31",
     "react": "^18.3.1",
     "react-credit-cards-2": "^1.0.3",
     "react-dom": "^18.3.1",
@@ -31,7 +34,7 @@
     "react-spinners": "^0.15.0",
     "react-tooltip": "^5.28.0",
     "styled-components": "^6.1.14",
-    "sweetalert2": "^11.15.10",
+    "sweetalert2": "^11.6.13",
     "tippy.js": "^6.3.7",
     "twin.macro": "^3.4.1",
     "xlsx": "^0.18.5"

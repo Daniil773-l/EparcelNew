@@ -138,6 +138,7 @@ const Wrapper = styled.div`
     padding: 25px;
     background-color: #ffffff;
     border-radius: 16px;
+    border: 2px solid #0ABD19;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
     position: relative;
@@ -166,13 +167,13 @@ const CountryButton = styled.button`
     font-weight: bold;
     border: none;
     border-radius: 8px;
-    background-color: ${(props) => (props.active ? "#34c759" : "#ffffff")};
+    background-color: ${(props) => (props.active ? "#0ABD19" : "#ffffff")};
     color: ${(props) => (props.active ? "#ffffff" : "#0ABD19")};
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
 
     &:hover {
-        background-color: ${(props) => (props.active ? "#2a9d4d" : "#d1fae5")};
+        background-color: ${(props) => (props.active ? "#36cf62" : "#d1fae5")};
         color: #065f46;
     }
 

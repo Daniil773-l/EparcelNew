@@ -107,7 +107,8 @@ const Step4and5Step  = ({ onInsuranceUpdate }) => {
                         );
 
                         const totalKZT = totalUSD * usdToKztRate;
-                        const insurance = totalKZT * 0.01;
+                        const insurance = totalKZT * 0.02;
+
 
 
                         setTotalCostUSD(totalUSD);
@@ -257,7 +258,7 @@ const Step4and5Step  = ({ onInsuranceUpdate }) => {
                         <BoldGreenText>Сумма страхования - {Math.round(insuranceAmount)} ₸</BoldGreenText>
 
                         <StepText>
-                            В стоимость доставки включена обязательная страховка — 1% от объявленной стоимости товаров.
+                            В стоимость доставки включена обязательная страховка — 2% от объявленной стоимости товаров.
                         </StepText>
                     </StepContainer>
 

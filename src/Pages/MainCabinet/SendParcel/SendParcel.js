@@ -19,7 +19,9 @@ const ExpectedLink = () => {
         totalCostKZT: 0,
         insuranceAmount: 0,
         customDutyKZT: 0,
-        deliveryCost: 0,     step3DeliveryCost: 0, // Добавляем deliveryCost
+        deliveryCost: 0,     step3DeliveryCost: 0,
+        // Добавляем deliveryCost
+
     });
     const [insuranceIncluded, setInsuranceIncluded] = useState(false);
 
@@ -70,11 +72,14 @@ const ExpectedLink = () => {
     };
 
     const handleStep3DeliveryCostUpdate = (step3DeliveryCost) => {
+        console.log("Обновление стоимости доставки в ExpectedLink:", step3DeliveryCost);
         setPaymentData((prevState) => ({
             ...prevState,
-            step3DeliveryCost,
+            step3DeliveryCost, // Сохраняем стоимость доставки
         }));
     };
+
+
 
     return (
         <AnimationRevealPage>
@@ -94,6 +99,7 @@ const ExpectedLink = () => {
                 />
                 <Step3Backend onDeliveryCostUpdate={handleStep3DeliveryCostUpdate} />
 
+
                 <Step4and5Step
                     onInsuranceUpdate={handleInsuranceUpdate}
                     setInsuranceIncluded={setInsuranceIncluded}
@@ -108,6 +114,7 @@ const ExpectedLink = () => {
                     deliveryCost={paymentData.deliveryCost}
                     parcelId={parcelId}
                     servicesIds={servicesIds}
+                    deliveryCosts={paymentData.step3DeliveryCost}
                 />
 
 

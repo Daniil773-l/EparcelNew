@@ -25,7 +25,7 @@ const HighlightedText = styled.span`
 `;
 const StepTitle = tw(ExpecteLink)`w-full mt-2 mb-4`;
 
-const Step3Backend = () => {
+const Step3Backend = ({ onDeliveryCostUpdate }) => {
     const widgetInitialized = useRef(false);
     const [parcelData, setParcelData] = useState(null); // Данные посылки
     const [loading, setLoading] = useState(true); // Загрузка
@@ -72,7 +72,6 @@ const Step3Backend = () => {
 
         const { actualWeight, width, height, length } = parcelData;
 
-        // Проверяем наличие всех данных
         if (!actualWeight || !width || !height || !length) {
             console.error("Не все данные для расчета присутствуют:", {
                 actualWeight,
@@ -83,7 +82,6 @@ const Step3Backend = () => {
             return;
         }
 
-        // Преобразование данных
         const weightInGrams = Math.round(parseFloat(actualWeight) * 0.453592); // Фунты в граммы
         const widthInCm = Math.round(parseFloat(width) * 2.54); // Дюймы в сантиметры
         const heightInCm = Math.round(parseFloat(height) * 2.54); // Дюймы в сантиметры
@@ -96,14 +94,13 @@ const Step3Backend = () => {
             lengthInCm,
         });
 
-        // Инициализируем виджет только один раз
         if (!widgetInitialized.current) {
             try {
                 new window.CDEKWidget({
                     from: {
                         country_code: 'KZ',
                         city: 'Алматы',
-                        postal_code: '050039', // Сделать значение строкой
+                        postal_code: '050039',
                         address: 'ул. Беимбета Майлина 2, Алматы',
                     },
                     root: 'cdek-map',
@@ -133,18 +130,27 @@ const Step3Backend = () => {
                     lang: 'rus',
                     currency: 'KZT',
                     tariffs: {
-                        office: [136,138,481,483],
-                        door: [ 137,139,482,480],
+                        office: [136, 138, 481, 483],
+                        door: [137, 139, 482, 480],
                     },
                     onReady() {
-
+                        console.log("Виджет CDEK готов.");
                     },
-                    onCalculate() {
-
+                    onCalculate(result) {
+                        console.log("Расчеты доставки:", result);
                     },
-                    onChoose() {
+                    onChoose(mode, tariff) {
+                        console.log("Режим доставки:", mode); // door или office
+                        console.log("Выбранный тариф:", tariff); // Данные тарифа
 
+                        if (tariff && tariff.delivery_sum) {
+                            console.log("Стоимость доставки передана:", tariff.delivery_sum);
+                            onDeliveryCostUpdate(tariff.delivery_sum); // Передача стоимости в родительский компонент
+                        } else {
+                            console.error("Стоимость доставки не найдена.");
+                        }
                     },
+
                 });
 
                 widgetInitialized.current = true;
@@ -153,6 +159,7 @@ const Step3Backend = () => {
             }
         }
     }, [parcelData]);
+
 
     return (
         <FormContainer>

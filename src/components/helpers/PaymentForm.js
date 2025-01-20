@@ -25,40 +25,76 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: white;
-    font-family: "Space Mono", monospace;
+    background: #f4f4f9;
+    font-family: "Roboto", sans-serif;
 `;
 
 const FormContainer = styled.div`
-    background: #0abd19;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px);
+    background: linear-gradient(to bottom right, #1abc9c, #16a085);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     max-width: 400px;
+    text-align: center;
+    color: white;
 `;
 
 const Title = styled.h1`
     color: #fff;
-    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
     margin-bottom: 20px;
 `;
 
 const Button = styled.button`
-    background-color: #000000;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
+    padding: 15px 25px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    font-weight: bold;
     font-size: 16px;
-    margin-top: 10px;
+    font-weight: 600;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+    transition: all 0.3s ease;
 
     &:hover {
-        background-color: #1e8449;
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        box-shadow: 0 10px 20px rgba(39, 174, 96, 0.5);
     }
+
+    &:disabled {
+        background: #95a5a6;
+        cursor: not-allowed;
+    }
+`;
+
+const Input = styled.input`
+    margin-top: 15px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    width: 100%;
+    border: 2px solid #ecf0f1;
+    background-color: #ecf0f1;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+        outline: none;
+        border-color: #1abc9c;
+        box-shadow: 0 0 5px rgba(26, 188, 156, 0.5);
+    }
+`;
+
+const CardInputWrapper = styled.div`
+    background: #ecf0f1;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const StripeForm = ({ parcelId, servicesIds, user, balance, setBalance }) => {
@@ -75,17 +111,12 @@ const StripeForm = ({ parcelId, servicesIds, user, balance, setBalance }) => {
             const response = await fetch("http://195.49.212.230:3001/create-payment-intent", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ amount: parseInt(amount, 10) * 100 }), // Преобразуем сумму в центы
+                body: JSON.stringify({ amount: parseInt(amount, 10) * 100 }),
             });
 
-
             if (!response.ok) {
-                // Если сервер вернул ошибку
                 console.error("Ошибка при создании платежа:", response.statusText);
-            } else {
-                const { clientSecret } = await response.json();
-                console.log("PaymentIntent создан, clientSecret:", clientSecret);
-                // Здесь можно продолжить работу с полученным clientSecret для подтверждения платежа
+                return;
             }
 
             const { clientSecret } = await response.json();
@@ -143,34 +174,28 @@ const StripeForm = ({ parcelId, servicesIds, user, balance, setBalance }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: "16px",
-                            color: "#fff",
-                            "::placeholder": { color: "#ccc" },
+            <CardInputWrapper>
+                <CardElement
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: "16px",
+                                color: "#333",
+                                "::placeholder": { color: "#7f8c8d" },
+                            },
+                            invalid: { color: "#e74c3c" },
                         },
-                        invalid: { color: "#f44336" },
-                    },
-                }}
-            />
-            <input
+                    }}
+                />
+            </CardInputWrapper>
+            <Input
                 type="number"
-                placeholder="Amount"
+                placeholder="Введите сумму"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                style={{
-                    marginTop: "10px",
-                    padding: "10px",
-                    fontSize: "16px",
-                    borderRadius: "5px",
-                    width: "100%",
-                    border: "1px solid #ccc",
-                }}
             />
-            <Button type="submit" disabled={!stripe}>
-                Оплатить
+            <Button type="submit" disabled={!stripe || !amount}>
+                🛒 Оплатить
             </Button>
         </form>
     );

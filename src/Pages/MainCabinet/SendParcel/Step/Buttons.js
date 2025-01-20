@@ -100,12 +100,21 @@ const Buttons = ({
                      parcelId, // ID посылки
                      servicesIds, // Массив ID услуг
                      deliveryCost, // Приходит в долларах// Приходит доставка в USD
+                     deliveryCosts,
                  }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [insufficientFunds, setInsufficientFunds] = useState(false);
     const [missingAmount, setMissingAmount] = useState(0);
     const navigate = useNavigate();
     const [exchangeRate, setExchangeRate] = useState(450); // Курс доллара к тенге (по умолчанию)
+    console.log("Данные, переданные в Buttons:", {
+        totalCostUSD,
+        totalCostKZT,
+        insuranceAmount,
+        customDutyKZT,
+        deliveryCost,
+        deliveryCosts,
+    });
 
     // Получение курса валют из API
     useEffect(() => {
@@ -126,11 +135,16 @@ const Buttons = ({
         fetchExchangeRate();
     }, []);
 
-    // Конвертируем deliveryCost в тенге
-    const deliveryCostKZT = Math.round(deliveryCost * exchangeRate);
+    const deliveryCostKZT = Math.round(Number(deliveryCost) * exchangeRate);
 
-    // Общая сумма в тенге
-    const totalKZT = customDutyKZT + Math.round(insuranceAmount) + deliveryCostKZT;
+    const totalKZT =
+        (Number(customDutyKZT) || 0) +
+        Math.round(Number(insuranceAmount) || 0) +
+        (deliveryCostKZT || 0) +
+        (Number(deliveryCosts) || 0);
+
+    console.log("Общая сумма totalKZT:", totalKZT);
+
 
 
 
@@ -299,7 +313,7 @@ const Buttons = ({
                 closeIcon={<CloseOutlined style={{ fontSize: "20px", color: "#888" }} />}
             >
                 <Text strong style={{ fontSize: "18px" }}>
-                    Итоговая сумма: <span style={{ fontWeight: "bold" }}>{Math.round(totalCostKZT)} ₸</span>
+                    Итоговая сумма: <span style={{ fontWeight: "bold" }}>{Math.round( totalKZT)} ₸</span>
                 </Text>
                 <ButtonContainerModal>
                     <DangerButton onClick={handleCancel}>Отмена</DangerButton>

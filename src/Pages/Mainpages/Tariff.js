@@ -116,7 +116,6 @@ export default () => {
             border-right: none;
         }
     `;
-
     return (
         <AnimationRevealPage>
             <Header

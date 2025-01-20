@@ -6,7 +6,7 @@ import Footer from "../../components/footers/MainFooterWithLinks";
 import DressRoom from "../../images/img/Zameru.svg";
 import UsaMap from "../../images/icon/usa.svg";
 import TurkeyMap from "../../images/icon/TurkeyMap.svg";
-import "../Mainpages/componets/calculator.css";
+
 import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
 
 const Container = tw.div`relative`;

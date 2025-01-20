@@ -72,11 +72,21 @@ const StripeForm = ({ parcelId, servicesIds, user, balance, setBalance }) => {
         if (!stripe || !elements) return;
 
         try {
-            const response = await fetch("/create-payment-intent", {
+            const response = await fetch("http://195.49.212.230:3001/create-payment-intent", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ amount: parseInt(amount, 10) * 100 }),
+                body: JSON.stringify({ amount: parseInt(amount, 10) * 100 }), // Преобразуем сумму в центы
             });
+
+
+            if (!response.ok) {
+                // Если сервер вернул ошибку
+                console.error("Ошибка при создании платежа:", response.statusText);
+            } else {
+                const { clientSecret } = await response.json();
+                console.log("PaymentIntent создан, clientSecret:", clientSecret);
+                // Здесь можно продолжить работу с полученным clientSecret для подтверждения платежа
+            }
 
             const { clientSecret } = await response.json();
 

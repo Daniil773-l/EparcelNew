@@ -142,7 +142,7 @@ const MobileHeader = () => {
     const handleLogout = () => {
         const auth = getAuth();
         signOut(auth).then(() => {
-            navigate("/App");
+            navigate("/");
         }).catch((error) => {
             console.error("Logout error:", error);
         });

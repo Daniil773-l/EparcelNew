@@ -12,13 +12,19 @@ import Calculator from "../../Pages/Mainpages/componets/calculator";
 
 
 const Container = tw.div`relative`;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto  items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
-const TextColumn = styled(Column)(props => [
+const TextColumn = styled(Column)(({ textOnLeft }) => [
     tw`md:w-6/12 mt-16 md:mt-0`,
-    props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
+    textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`,
+    `
+    @media (max-width: 768px) {
+      margin-top: 8px; /* Уменьшаем отступ сверху на мобильных устройствах */
+    }
+  `,
 ]);
+
 
 const Image = styled.img(props => [
     props.imageRounded && tw`rounded`,

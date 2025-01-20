@@ -41,10 +41,26 @@ const Link = styled.a`
     }
 `;
 
-const LogoContainer = tw.div`flex items-center justify-center lg:justify-start`;
 const LogoImg = styled.img`
-    ${tw`w-32 h-24`}; // Increased logo size
+  ${tw`w-32 h-24`}; // Базовый размер для логотипа
+  width: 100%; // Полная ширина
+  height: auto; // Сохраняем пропорции изображения
+
+  @media (max-width: 768px) {
+    width: 80%; // Уменьшаем размер логотипа на мобильных устройствах
+    margin: 0 auto; // Центрируем логотип
+  }
+
+  @media (max-width: 480px) {
+    width: 60%; // Ещё больше уменьшаем на маленьких устройствах
+  }
 `;
+
+const LogoContainer = tw.div`
+  flex items-center justify-center lg:justify-start
+  p-4 // Добавляем отступы вокруг логотипа
+`;
+
 
 const SocialLinksContainer = tw.div`mt-4 flex justify-center lg:justify-start space-x-2`;
 const SocialLink = styled.a`

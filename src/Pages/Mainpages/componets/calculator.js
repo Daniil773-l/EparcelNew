@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import './calculator.css'; // Assuming you save the CSS in a file named Header.css
+
 import styled, { css, keyframes } from "styled-components";
 const cities = [
     { value: "Almaty", label: "Алматы" },
@@ -331,7 +331,7 @@ function Calculator() {
 
 
     return  (
-        <AnimatedWrapper animate visible={isVisible}>
+
         <Wrapper>
             <Title>Калькулятор доставки</Title>
             <CountrySwitcher>
@@ -419,7 +419,7 @@ function Calculator() {
                 Стоимость доставки: <strong>{deliveryCost.toFixed(2)} {currency}</strong>
             </Result>
         </Wrapper>
-        </AnimatedWrapper>
+
     );
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 
 
-import "../Mainpages/componets/calculator.css";
+
 import Header from '../../components/headers/light';
 import Footer from "../../components/footers/MainFooterWithLinks";
 import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";

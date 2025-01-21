@@ -46,10 +46,16 @@ const ExpectedLink = () => {
     const handleDataPass = (data) => {
         console.log("Полученные данные из Step2:", data);
 
-        setPaymentData((prevState) => ({
-            ...prevState,
-            ...data,
-        }));
+        if (!data || typeof data !== "object") {
+            console.error("Неверные данные, переданные из Step2:", data);
+            return;
+        }
+
+        setPaymentData((prevState) => {
+            const updatedData = { ...prevState, ...data };
+            console.log("Обновленное состояние paymentData:", updatedData);
+            return updatedData;
+        });
     };
 
 

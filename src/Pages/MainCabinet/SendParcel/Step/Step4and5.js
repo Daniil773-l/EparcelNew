@@ -76,18 +76,25 @@ const Step4and5Step  = ({ onInsuranceUpdate }) => {
     const [usdToEurRate, setUsdToEurRate] = useState(0); // Курс доллара к евро
     const [customDuty, setCustomDuty] = useState(0); // Сумма таможенной пошлины
     const [insuranceIncluded, setInsuranceIncluded] = useState(false);
+    const [customDutyUSD] = useState(3);
     useEffect(() => {
         // Получаем курс доллара к тенге
         const fetchExchangeRate = async () => {
             try {
-                const response = await fetch(`https://openexchangerates.org/api/latest.json?app_id=dcdd8eb0771e4dffa7bdf44d9637fc6f`);
+                const response = await fetch(
+                    `https://openexchangerates.org/api/latest.json?app_id=dcdd8eb0771e4dffa7bdf44d9637fc6f`
+                );
                 const data = await response.json();
                 const rate = data.rates.KZT; // Курс доллара к тенге
                 setUsdToKztRate(rate);
 
+                // Рассчитываем фиксированную пошлину в тенге
+                setCustomDutyKZT(customDutyUSD * rate);
             } catch (error) {
+                console.error("Ошибка при получении курса валют:", error);
             }
         };
+
 
         // Функция для получения данных о посылке
         const fetchParcelData = async (parcelId) => {
@@ -220,11 +227,6 @@ const Step4and5Step  = ({ onInsuranceUpdate }) => {
                         const totalEUR = totalUSD * usdToEurRate;
 
                         // Рассчитываем таможенную пошлину
-                        let dutyEUR = 0;
-                        if (totalEUR > 200) {
-                            dutyEUR = (totalEUR - 200) * 0.15; // 15% от превышения
-                        }
-                        const dutyKZT = dutyEUR * usdToKztRate; // Конвертируем пошлину в тенге
 
                         // Устанавливаем состояния
                         setTotalCostUSD(totalUSD);
@@ -271,7 +273,7 @@ const Step4and5Step  = ({ onInsuranceUpdate }) => {
                     </StepTitle>
                     <StepContainer5>
                         <BoldGreenText>
-                            Таможенная пошлина - {customDutyKZT.toFixed(2)} ₸
+                            Таможенная пошлина - {customDutyUSD} $ / {customDutyKZT.toFixed(2)} ₸
                         </BoldGreenText>
                         <StepText>Стоимость товаров в посылке: {totalCostKZT.toFixed(2)} ₸</StepText>
                         <StepText>Беспошлинный лимит РК на одну посылку 200 €. </StepText>

@@ -42,35 +42,67 @@ const ColumnRight = styled.div`
 
 const StepTitle = tw(ExpecteLink)`w-full mt-2 mb-4`;
 const Step2 = ({ onDataPass, city }) => {
+    const { id } = useParams();
     const [parcelData, setParcelData] = useState(null);
-    const { id } = useParams(); // Получаем id из URL
     const [loading, setLoading] = useState(true);
     const [services, setServices] = useState([]);
-    const [exchangeRate, setExchangeRate] = useState(0);
+    const [exchangeRate, setExchangeRate] = useState(450); // Default rate
     const [deliveryCost, setDeliveryCost] = useState(0);
-    const fetchExchangeRate = async () => {
-        try {
-            const response = await fetch(`https://open.er-api.com/v6/latest/USD`);
-            const data = await response.json();
-            if (data && data.rates && data.rates.KZT) {
-                setExchangeRate(data.rates.KZT);
-            } else {
 
-                setExchangeRate(450); // Фиксированный курс в случае ошибки
+    // Fetch exchange rate
+    useEffect(() => {
+        const fetchExchangeRate = async () => {
+            try {
+                const response = await fetch(`https://open.er-api.com/v6/latest/USD`);
+                const data = await response.json();
+                if (data?.rates?.KZT) {
+                    setExchangeRate(data.rates.KZT);
+                }
+            } catch {
+                setExchangeRate(450); // Fallback rate
+            }
+        };
+        fetchExchangeRate();
+    }, []);
+
+    // Fetch parcel data
+    const fetchParcelData = async (parcelId) => {
+        try {
+            const q = query(collection(db, "parcels"), where("id", "==", parcelId.trim()));
+            const querySnapshot = await getDocs(q);
+            if (!querySnapshot.empty) {
+                setParcelData(querySnapshot.docs[0].data());
             }
         } catch (error) {
-
-
-            setExchangeRate(450); // Фиксированный курс
+            console.error("Error fetching parcel data:", error);
+        } finally {
+            setLoading(false);
         }
     };
+
+    // Fetch services data
+    const fetchServices = async (parcelId) => {
+        try {
+            const q = query(collection(db, "applications"), where("packageId", "==", parcelId));
+            const querySnapshot = await getDocs(q);
+            if (!querySnapshot.empty) {
+                const fetchedServices = querySnapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
+                setServices(fetchedServices);
+            }
+        } catch (error) {
+            console.error("Error fetching services:", error);
+        }
+    };
+
+    // Calculate delivery cost
     const calculateDeliveryCost = (city, weightKg) => {
-        let cost = 0;
+        if (!weightKg || weightKg <= 0) return 0;
 
-        // Округляем вес до целого числа вверх
         const roundedWeightKg = Math.ceil(weightKg);
-
-        if (!roundedWeightKg || roundedWeightKg <= 0) return cost;
+        let cost = 0;
 
         if (
             ["Алматы", "Абай", "Бесагаш", "Боралдай", "Каскелен", "Отеген-Батыр", "Талгар", "Туздыбастау", "Есик", "Конаев", "Кордай", "Талдыкорган"].includes(city)
@@ -84,59 +116,15 @@ const Step2 = ({ onDataPass, city }) => {
             ["Алтай", "Кызылорда", "Павлодар", "Риддер", "Семей", "Усть-Каменогорск", "Шемонаиха", "Экибастуз", "Аксай", "Актау", "Актобе", "Атырау", "Жанаозен", "Уральск"].includes(city)
         ) {
             cost = roundedWeightKg <= 5 ? roundedWeightKg * 18 : 85 + (roundedWeightKg - 5) * 16;
-        } else {
-
         }
 
         return cost;
     };
 
-    async function fetchParcelData(parcelId) {
-        const cleanId = parcelId.trim();
-
-
-        try {
-            const q = query(collection(db, 'parcels'), where('id', '==', cleanId));
-            const querySnapshot = await getDocs(q);
-
-            if (!querySnapshot.empty) {
-                querySnapshot.forEach((doc) => {
-
-
-                    setParcelData(doc.data());
-                });
-            } else {
-
-            }
-        } catch (error) {
-
-        } finally {
-            setLoading(false); // Убираем состояние загрузки
-        }
-    }
-    async function fetchServices(parcelId) {
-        try {
-            const q = query(collection(db, "applications"), where("packageId", "==", parcelId));
-            const querySnapshot = await getDocs(q);
-            if (!querySnapshot.empty) {
-                const fetchedServices = querySnapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                }));
-                setServices(fetchedServices);
-            } else {
-
-            }
-        } catch (error) {
-
-        }
-    }
-
+    // Update on changes
     useEffect(() => {
-        // Получение данных при изменении id
         if (id) {
-            setLoading(true); // Активируем состояние загрузки
-            fetchExchangeRate(); // Загружаем курс валют
+            setLoading(true);
             fetchParcelData(id);
             fetchServices(id);
         }
@@ -144,41 +132,30 @@ const Step2 = ({ onDataPass, city }) => {
 
     useEffect(() => {
         if (parcelData && exchangeRate) {
-            const additionalServicesCostUSD = services.reduce((sum, service) => sum + service.cost, 0);
-            const totalCostUSD = parcelData.totalCost + additionalServicesCostUSD;
-            const additionalServicesCostKZT = Math.round(additionalServicesCostUSD * exchangeRate);
+            const servicesCostUSD = services.reduce((sum, service) => sum + service.cost, 0);
+            const totalCostUSD = parcelData.totalCost + servicesCostUSD;
             const totalCostKZT = Math.round(totalCostUSD * exchangeRate);
-
-
+            const servicesCostKZT = Math.round(servicesCostUSD * exchangeRate);
 
             onDataPass({
                 totalCostUSD,
                 totalCostKZT,
-                additionalServicesCostUSD,
-                additionalServicesCostKZT,
+                servicesCostUSD,
+                servicesCostKZT,
+                parcelId: id,
+                servicesIds: services.map((service) => service.id),
+                parcelData,
+                deliveryCost,
             });
         }
-    }, [parcelData, services, exchangeRate]);
-
-    useEffect(() => {
-        if (parcelData) {
-            const servicesIds = services.map((service) => service.id);
-
-
-            onDataPass({ parcelId: id, servicesIds, parcelData });
-        }
-    }, [parcelData, services, id]);
-
+    }, [parcelData, services, exchangeRate, deliveryCost]);
 
     useEffect(() => {
         if (parcelData && city) {
-            const calculatedCost = calculateDeliveryCost(city, parcelData.width * 0.453592); // Преобразуем фунты в кг
-            console.log("Рассчитанная стоимость доставки:", calculatedCost);
-            setDeliveryCost(calculatedCost);
+            const weightKg = parcelData.width * 0.453592; // Convert pounds to kg
+            setDeliveryCost(calculateDeliveryCost(city, weightKg));
         }
     }, [parcelData, city]);
-
-
 
     return (
         <FormContainer>
@@ -229,9 +206,12 @@ const Step2 = ({ onDataPass, city }) => {
                                 <ColumnRight>{parcelData.totalQuantity}</ColumnRight>
                             </Column>
                             <Column>
-                                <ColumnLeft style={{color:"#0ABD19"}}>Доставка до Казахстана:</ColumnLeft>
-                                <ColumnRight style={{color:"#0ABD19"}}>{deliveryCost}$</ColumnRight>
+                                <ColumnLeft style={{ color: "#0ABD19" }}>Доставка до Казахстана:</ColumnLeft>
+                                <ColumnRight style={{ color: "#0ABD19" }}>
+                                    {deliveryCost}$ / {Math.round(deliveryCost * exchangeRate)}₸
+                                </ColumnRight>
                             </Column>
+
                             <Column>
                                 <ColumnLeft>Вес посылки:</ColumnLeft>
                                 <ColumnRight>

@@ -100,12 +100,12 @@ const CurrencyCard = () => {
     const handleLogout = () => {
         const auth = getAuth();
         signOut(auth).then(() => {
-            console.log("User signed out");
+
             localStorage.removeItem('userData');
             setUser(null);
             navigate("/");
         }).catch((error) => {
-            console.error("Error signing out:", error);
+
         });
     };
 
@@ -120,7 +120,7 @@ const CurrencyCard = () => {
                     EUR: 1 / rates.EUR,
                 });
             } catch (error) {
-                console.error('Error fetching currency rates:', error);
+
             }
         };
 

@@ -34,23 +34,19 @@ const Step3Backend = ({ onDeliveryCostUpdate }) => {
     // Функция получения данных посылки из Firebase
     async function fetchParcelData(parcelId) {
         const cleanId = parcelId.trim();
-        console.log(`Fetching parcel with ID: ${cleanId}`);
+
         try {
             const q = query(collection(db, "parcels"), where("id", "==", cleanId));
             const querySnapshot = await getDocs(q);
 
             if (!querySnapshot.empty) {
                 querySnapshot.forEach((doc) => {
-                    console.log(doc.id, " => ", doc.data());
                     setParcelData(doc.data());
                 });
-            } else {
-                console.error(`No parcel found with this ID: ${cleanId}`);
             }
         } catch (error) {
-            console.error("Error fetching parcel:", error);
-        } finally {
-            setLoading(false);
+
+
         }
     }
 
@@ -64,35 +60,19 @@ const Step3Backend = ({ onDeliveryCostUpdate }) => {
     // Инициализация виджета
     useEffect(() => {
         if (!parcelData) {
-            console.warn("Данные посылки отсутствуют. Ждём загрузки...");
             return;
         }
 
-        console.log("Данные посылки после загрузки:", parcelData);
 
         const { actualWeight, width, height, length } = parcelData;
 
-        if (!actualWeight || !width || !height || !length) {
-            console.error("Не все данные для расчета присутствуют:", {
-                actualWeight,
-                width,
-                height,
-                length,
-            });
-            return;
-        }
 
         const weightInGrams = Math.round(parseFloat(actualWeight) * 0.453592); // Фунты в граммы
         const widthInCm = Math.round(parseFloat(width) * 2.54); // Дюймы в сантиметры
         const heightInCm = Math.round(parseFloat(height) * 2.54); // Дюймы в сантиметры
         const lengthInCm = Math.round(parseFloat(length) * 2.54); // Дюймы в сантиметры
 
-        console.log("Преобразованные данные для виджета:", {
-            weightInGrams,
-            widthInCm,
-            heightInCm,
-            lengthInCm,
-        });
+
 
         if (!widgetInitialized.current) {
             try {
@@ -134,20 +114,19 @@ const Step3Backend = ({ onDeliveryCostUpdate }) => {
                         door: [137, 139, 482, 480],
                     },
                     onReady() {
-                        console.log("Виджет CDEK готов.");
+
                     },
                     onCalculate(result) {
-                        console.log("Расчеты доставки:", result);
+
                     },
                     onChoose(mode, tariff) {
-                        console.log("Режим доставки:", mode); // door или office
-                        console.log("Выбранный тариф:", tariff); // Данные тарифа
+
 
                         if (tariff && tariff.delivery_sum) {
-                            console.log("Стоимость доставки передана:", tariff.delivery_sum);
+
                             onDeliveryCostUpdate(tariff.delivery_sum); // Передача стоимости в родительский компонент
                         } else {
-                            console.error("Стоимость доставки не найдена.");
+
                         }
                     },
 
@@ -155,7 +134,7 @@ const Step3Backend = ({ onDeliveryCostUpdate }) => {
 
                 widgetInitialized.current = true;
             } catch (error) {
-                console.error("Ошибка инициализации виджета CDEK:", error);
+
             }
         }
     }, [parcelData]);

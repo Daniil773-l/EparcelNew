@@ -238,7 +238,7 @@ const PersonalCabinet = ({ roundedHeaderButton }) => {
             await deleteDoc(doc(db, "recipients", recipientId));
             setRecipients(recipients.filter(recipient => recipient.id !== recipientId));
         } catch (error) {
-            console.error("Error deleting recipient: ", error);
+
         }
     };
 

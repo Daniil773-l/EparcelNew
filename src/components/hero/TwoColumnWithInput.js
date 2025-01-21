@@ -35,13 +35,13 @@ const RightColumn = styled.div`
 `;
 
 const Heading = styled.h1`
-    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900 leading-tight`}
+    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-black  leading-tight`}
     margin-bottom: 20px; // Уменьшили отступ между заголовком и параграфом
     animation: ${({ animate }) => (animate ? fadeIn : fadeOut)} 1s ease-in-out;
 `;
 
 const Paragraph = styled.p`
-    ${tw`my-2 lg:my-4 text-base xl:text-lg`}
+    ${tw`my-2 lg:my-4 text-base  xl:text-xl`}
     animation: ${({ animate }) => (animate ? fadeIn : fadeOut)} 1s ease-in-out;
 `;
 

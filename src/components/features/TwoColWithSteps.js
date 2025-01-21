@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import {SectionHeading } from "../misc/Headings";
+import {SectionHeading, SectionSteps} from "../misc/Headings";
 
 
 
@@ -21,8 +21,8 @@ const TextContent = tw.div`lg:py-8 text-center`;
 
 
 const Heading = tw(
-    SectionHeading
-)`mt-4 font-black text-3xl sm:text-4xl lg:text-5xl text-center leading-tight`;
+    SectionSteps
+)`mt-4 font-extrabold text-3xl sm:text-4xl lg:text-5xl text-center leading-tight`;
 
 const StepsContainer = styled.div`
     ${tw`mt-1 flex flex-col justify-center items-center`}
@@ -80,7 +80,7 @@ const StepText = styled.div`
 `;
 
 const StepHeading = styled.h6`
-    ${tw`text-xl font-semibold leading-none`}
+    ${tw`text-xl font-bold leading-none`}
     margin: 0 0 12px 0;
     width: 100%;
     text-align: center;
@@ -110,20 +110,20 @@ export default ({
 
     const defaultSteps = [
         {
-            heading: "Регистрация",
+            heading: "РЕГИСТРАЦИЯ",
             description: "Зарегистрируйтесь на нашем сайте и получите адрес для доставки ваших покупок за рубежом"
         },
         {
-            heading: "Покупка",
+            heading: "ПОКУПКА",
             description: "Заказывайте товары в зарубежных интернет-магазинах и отправляйте их к нам на склад"
         },
         {
-            heading: "Оформление",
+            heading: "ОФОРМЛЕНИЕ",
             description: "Оформляйте доставку в Казахстан. Отправляйте товары из-за границы друзьям, клиентам или себе"
         },
         {
-            heading: "Получение",
-            description: "Получайте посылки прямо до двери"
+            heading: "ПОЛУЧЕНИЕ",
+            description: "Получайте посылки в ПВЗ, постаматах или курьер доставит прямо домой"
         }
     ];
 

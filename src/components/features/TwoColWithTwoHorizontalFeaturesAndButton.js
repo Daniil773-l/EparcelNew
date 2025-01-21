@@ -11,25 +11,35 @@ const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-8 md:py-10 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = styled(Column)`
-    ${tw`md:w-6/12 flex-shrink-0 relative mt-8 order-2`} /* По умолчанию идет второй */ @media (
-    max-width: 768px) {
-    order: 2; /* На мобильных устройствах остается второй */
-}
+    ${tw`md:w-6/12 flex-shrink-0 relative mt-8`}
+
+    order: 1; /* На всех устройствах по умолчанию первый */
 
     @media (min-width: 768px) {
-        order: 1; /* На десктопах идет первым */
+        order: 1; /* На десктопах также первый */
     }
 `;
 
 
-const TextColumn = styled(Column)(props => [
-    tw`md:w-6/12 mb-10 md:mb-0`, // Убираем лишние отрицательные отступы
+
+const TextColumn = styled(Column)((props) => [
+    tw`md:w-6/12 mb-10 md:mb-0`, // Основные отступы и ширина
+
     props.textOnLeft
-        ? tw`md:mr-8 lg:mr-10 md:order-first order-2` // На десктопе остается слева
-        : tw`md:ml-8 lg:ml-10 md:order-last order-2`, // На десктопе справа
+        ? tw`md:mr-8 lg:mr-10 md:order-first order-2` // Если текст слева
+        : tw`md:ml-8 lg:ml-10 md:order-last order-2`, // Если текст справа
     css`
+
         @media (max-width: 768px) {
             order: 1; /* На мобильных устройствах идет первым */
+        }
+
+        @media (min-width: 768px) {
+            margin-top: 20px; /* На десктопах слегка опускаем */
+        }
+
+        @media (min-width: 1024px) {
+            margin-top: 50px; /* На больших экранах еще больше отступ */
         }
     `
 ]);
@@ -41,36 +51,35 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left `;
 
 const Heading = tw(
     SectionHeading
-)`mt-6 font-black text-3xl  text-black sm:text-4xl lg:text-5xl text-center md:text-left leading-tight md:leading-normal`;
+)`mt-6 font-black  text-3xl  sm:text-4xl lg:text-5xl text-center md:text-left leading-tight md:leading-normal`;
 
 const Description = tw.p`text-center md:text-left text-sm md:text-base lg:text-xl font-medium leading-relaxed text-secondary-100`;
 
-const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-col max-w-xs lg:max-w-none w-full`;
-
-const Feature = tw.div`mt-6 lg:mt-4 flex items-center md:items-start flex-col md:mr-8 last:mr-0`;
-
 const FeatureHeadingContainer = tw.div`
-    flex items-center mt-2 mb-2
+  flex items-center mt-2 mb-2
 `;
+
 const FeatureIconContainer = styled.div`
     ${tw`flex items-center justify-center w-12 h-12 text-white text-2xl   font-semibold rounded-full`}
     margin-right: 1rem; /* Уменьшаем отступ справа от иконки */
 `;
 
-const FeatureHeading = tw.div`ml-3 font-bold text-3xl`;
 
-const FeatureDescription = styled.div`
-    ${tw`mt-1 text-center md:text-left text-gray-600 leading-relaxed text-xl`}
-    margin-left: 4rem; /* Сдвигаем описание ближе к тексту */
-    max-width: 600px; /* Ограничиваем ширину */
-`;
+const Features = tw.div`flex flex-col gap-8 mt-12`;
 
+const Feature = tw.div`flex flex-row items-start gap-6`;
 
 const StepNumber = styled.div`
-    ${tw`font-semibold text-5xl leading-none text-[#0ABD19]`}
-    min-width: 90px;
-margin-top: 30px;'
+    ${tw`font-bold text-4xl text-[#0ABD19]`}
+    min-width: 50px; /* Фиксированная ширина для выравнивания */
 `;
+
+const FeatureContent = tw.div`flex flex-col`;
+
+const FeatureHeading = tw.div`font-extrabold text-2xl  mb-2`;
+
+const FeatureDescription = tw.div`text-base font-medium leading-relaxed`;
+
 
 
 const defaultFeatures = [
@@ -108,16 +117,19 @@ export default ({
                     <Features>
                         {features.map((feature, index) => (
                             <Feature key={index}>
-                                <FeatureHeadingContainer>
-                                    <FeatureIconContainer>
-                                        <StepNumber>{(index + 1).toString().padStart(2, '0')}</StepNumber>
-                                    </FeatureIconContainer>
+                                <StepNumber>{(index + 1).toString().padStart(2, '0')}</StepNumber>
+                                <FeatureContent>
                                     <FeatureHeading>{feature.title}</FeatureHeading>
-                                </FeatureHeadingContainer>
-                                <FeatureDescription>{feature.description}</FeatureDescription>
+                                    <FeatureDescription>{feature.description}</FeatureDescription>
+                                </FeatureContent>
                             </Feature>
                         ))}
                     </Features>
+
+
+
+
+
                 </ImageColumn>
                 <TextColumn textOnLeft={textOnLeft}>
                     <TextContent>

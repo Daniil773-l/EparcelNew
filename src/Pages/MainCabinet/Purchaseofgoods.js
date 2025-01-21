@@ -863,7 +863,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                     setParcels(fetchedParcels);
                     localStorage.setItem("cachedParcels", JSON.stringify(fetchedParcels));
                 }, (error) => {
-                    console.error("Ошибка при подписке на изменения:", error);
+
                 });
                 if (!unsubscribe) {
                     return () => {};
@@ -939,7 +939,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                     unsubscribe();
                 }
             }).catch((error) => {
-                console.error("Ошибка при отписке от слушателя:", error);
+
             });
         };
     }, []);
@@ -985,11 +985,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                     setUserId(userData.userId);
                     setPhone(userData.phone || '');
                     setEmail(userData.email || '');
-                } else {
-                    console.error('User not found in Firestore!');
                 }
-            } else {
-                console.error('User not logged in');
             }
         };
 
@@ -1102,7 +1098,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                 Swal.fire('Удалено!', 'Заявка успешно удалена.', 'success');
                 await fetchParcels(); // Обновление списка заявок после удаления
             } catch (error) {
-                console.error('Ошибка при удалении заявки:', error);
+
                 Swal.fire('Ошибка!', 'Не удалось удалить заявку.', 'error');
             }
         }
@@ -1136,10 +1132,10 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                 status: "Подтверждено",
                 currentStatus: "Подтверждено"
             });
-            console.log(`Заявка с ID: ${id} успешно подтверждена.`);
+
             alert("Заявка подтверждена!");
         } catch (error) {
-            console.error("Ошибка при подтверждении заявки:", error);
+
             alert("Ошибка при подтверждении заявки. Пожалуйста, попробуйте снова.");
         }
     };
@@ -1195,7 +1191,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                 const userDocSnap = await getDoc(userDocRef);
                 return userDocSnap.exists() ? userDocSnap.data().userId : null;
             } catch (error) {
-                console.error("Ошибка при загрузке данных пользователя:", error);
+
                 return null;
             }
         };
@@ -1207,7 +1203,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                 const querySnapshot = await getDocs(query(collectionRef, where("userId", "==", userId)));
                 return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             } catch (error) {
-                console.error(`Ошибка при загрузке данных из коллекции ${collectionName}:`, error);
+
                 return [];
             }
         };
@@ -1233,7 +1229,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                 const userId = await fetchUserData(auth, db);
 
                 if (!userId) {
-                    console.error("Пользователь не найден");
+
                     return;
                 }
 
@@ -1250,7 +1246,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                 // Опционально: сохраняем данные в localStorage
                 localStorage.setItem('mergedParcels', JSON.stringify(mergedParcels));
             } catch (error) {
-                console.error("Ошибка при загрузке данных:", error);
+
             } finally {
                 setLoading(false);
             }

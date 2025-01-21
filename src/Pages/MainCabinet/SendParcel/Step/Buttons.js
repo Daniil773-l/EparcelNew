@@ -107,14 +107,7 @@ const Buttons = ({
     const [missingAmount, setMissingAmount] = useState(0);
     const navigate = useNavigate();
     const [exchangeRate, setExchangeRate] = useState(450); // Курс доллара к тенге (по умолчанию)
-    console.log("Данные, переданные в Buttons:", {
-        totalCostUSD,
-        totalCostKZT,
-        insuranceAmount,
-        customDutyKZT,
-        deliveryCost,
-        deliveryCosts,
-    });
+
 
     // Получение курса валют из API
     useEffect(() => {
@@ -143,7 +136,6 @@ const Buttons = ({
         (deliveryCostKZT || 0) +
         (Number(deliveryCosts) || 0);
 
-    console.log("Общая сумма totalKZT:", totalKZT);
 
 
 

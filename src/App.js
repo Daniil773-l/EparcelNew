@@ -37,7 +37,7 @@ const ImageColumn = styled.div`
 `;
 
 const Heading = styled.h2`
-    ${tw`mt-4 font-black text-left text-black    text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight `}
+    ${tw`mt-4 font-black text-left font-black   text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight `}
 `;
 
 const DeliveryHeading = styled.h2`
@@ -46,8 +46,8 @@ const DeliveryHeading = styled.h2`
 
 
 const Paragraph = styled.p`
-    ${tw`mt-4 text-base lg:text-lg text-gray-700 text-center lg:text-left`}
-    margin-bottom: 20px; /* Added margin bottom */
+    ${tw`mt-4 lg:text-lg font-medium text-center lg:text-left`}
+    margin-bottom: 10px; /* Added margin bottom */
     line-height: 1.8; /* Adjusted line height for more space between lines */
 `;
 
@@ -89,7 +89,7 @@ const CardHeading = styled.h4`
 `;
 
 const CardParagraph = styled.p`
-    ${tw`mt-2 text-lg text-gray-700 text-center`}
+    ${tw`mt-2 text-lg font-medium  text-center`}
 `;
 
 const EmailSectionContainer = styled.div`
@@ -180,7 +180,7 @@ export default () => {
                         <CardImage src={Dev2} alt="Доставка до постамата" />
                         <CardHeading>Доставка до постамата</CardHeading>
                         <CardParagraph>
-                            Выбирайте постамат удобный для Вас постамат и мы доставим Ваши покупки именно туда
+                            Выбирайте постамат удобный для Вас и мы доставим Ваши покупки именно туда
                         </CardParagraph>
                     </Card>
                     <Card>

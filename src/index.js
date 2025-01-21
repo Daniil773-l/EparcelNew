@@ -68,12 +68,12 @@ const ProtectedRoute = ({children, role}) => {
     const {user} = useAuth();
 
     if (!user) {
-        console.log('No user found, redirecting to login');
+
         return <Navigate to="/login" replace/>;
     }
 
     if (role === "admin" && user.email !== "admin@gmail.com") {
-        console.log('Not authorized as admin, redirecting to login');
+
         return <Navigate to="/login" replace/>;
     }
 

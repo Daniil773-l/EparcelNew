@@ -26,14 +26,14 @@ const CompanyColumn = tw.div`text-center md:text-left mb-16 lg:mb-0 w-full lg:w-
 const CompanyAddress = tw.p`mt-4 max-w-xs font-medium text-lg mx-auto lg:mx-0 lg:mr-4 leading-loose text-center lg:text-left`;
 
 
-const ColumnHeading = tw.h5`ml-10 font-bold uppercase`;
+const ColumnHeading = tw.h5`ml-10 font-bold text-lg uppercase`;
 
 const LinkList = styled.ul`
     ${tw`mt-4 text-base font-medium list-none`}; // Removes bullets
 `;
 const LinkListItem = tw.li`mt-3`;
 const Link = styled.a`
-    ${tw`hover:text-green-500 cursor-pointer`};
+    ${tw`hover:text-green-500  text-lg text-base cursor-pointer`};
     text-decoration: none; // Ensures no underline at all
     color: #2D2D2D;
     &:hover {
@@ -111,9 +111,7 @@ export default () => {
                             <SocialLink href="https://web.telegram.org/a/">
                                 <img src={TelegramIcon} />
                             </SocialLink>
-                            <SocialLink href="https://www.viber.com/ru/">
-                                <img src={ViberIcon} />
-                            </SocialLink>
+
                             <SocialLink href="https://web.whatsapp.com">
                                 <img src={WhatsappIcon} />
                             </SocialLink>
@@ -131,7 +129,7 @@ export default () => {
                             </div>
                             <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
                                 <FiMail style={{ color: "#0ABD19", marginRight: "8px", width: "25px", height: "25px" }} />
-                                <span>poshta@mail.ru</span>
+                                <span>mailto:info@eparcel.kz</span>
                             </div>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <FiClock style={{ color: "#0ABD19", marginRight: "8px", width: "25px", height: "25px" }} />

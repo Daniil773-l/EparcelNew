@@ -74,7 +74,7 @@ const Step2 = ({ onDataPass, city }) => {
                 setParcelData(querySnapshot.docs[0].data());
             }
         } catch (error) {
-            console.error("Error fetching parcel data:", error);
+
         } finally {
             setLoading(false);
         }
@@ -93,7 +93,7 @@ const Step2 = ({ onDataPass, city }) => {
                 setServices(fetchedServices);
             }
         } catch (error) {
-            console.error("Error fetching services:", error);
+
         }
     };
 

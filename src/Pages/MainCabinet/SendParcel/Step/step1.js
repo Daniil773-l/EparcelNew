@@ -219,13 +219,7 @@ const Step1 = ({ onDataPass , parcelData, services }) => {
 
                 // Передача данных через onDataPass
                 if (onDataPass) {
-                    console.log("Передача данных из Step1:", {
-                        parcelId: id,
-                        servicesIds: services ? services.map((service) => service.id) : [],
-                        parcelData: parcelData || null,
-                        city: selectedRecipient.city,
-                        recipient: selectedRecipient,
-                    });
+
 
                     onDataPass({
                         parcelId: id,
@@ -237,7 +231,7 @@ const Step1 = ({ onDataPass , parcelData, services }) => {
                 }
             }
         } catch (error) {
-            console.error("Ошибка при обработке изменения получателя:", error);
+
         }
     };
 

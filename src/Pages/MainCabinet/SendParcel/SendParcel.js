@@ -30,7 +30,7 @@ const ExpectedLink = () => {
     const [parcelId, setParcelId] = useState(null);
 
     const handleDataPassFromStep1 = ({ parcelId, servicesIds, parcelData, city, recipient }) => {
-        console.log("Полученные данные из Step1:", { parcelId, servicesIds, parcelData, city, recipient });
+
 
         setParcelId(parcelId);
         setServicesIds(servicesIds);
@@ -44,16 +44,16 @@ const ExpectedLink = () => {
 
 
     const handleDataPass = (data) => {
-        console.log("Полученные данные из Step2:", data);
+
 
         if (!data || typeof data !== "object") {
-            console.error("Неверные данные, переданные из Step2:", data);
+
             return;
         }
 
         setPaymentData((prevState) => {
             const updatedData = { ...prevState, ...data };
-            console.log("Обновленное состояние paymentData:", updatedData);
+
             return updatedData;
         });
     };
@@ -61,7 +61,7 @@ const ExpectedLink = () => {
 
     const handleInsuranceUpdate = (data) => {
         if (!data || typeof data !== "object") {
-            console.error("Получены неверные данные:", data);
+
             return;
         }
 
@@ -78,7 +78,7 @@ const ExpectedLink = () => {
     };
 
     const handleStep3DeliveryCostUpdate = (step3DeliveryCost) => {
-        console.log("Обновление стоимости доставки в ExpectedLink:", step3DeliveryCost);
+
         setPaymentData((prevState) => ({
             ...prevState,
             step3DeliveryCost, // Сохраняем стоимость доставки

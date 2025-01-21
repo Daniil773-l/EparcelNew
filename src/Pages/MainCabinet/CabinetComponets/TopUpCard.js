@@ -117,7 +117,7 @@ const BalanceCard = () => {
                 if (balanceDoc.exists()) {
                     setBalance(balanceDoc.data().balance);
                 } else {
-                    console.log('Balance document does not exist for user');
+
                     setBalance(0.00);
                 }
             }

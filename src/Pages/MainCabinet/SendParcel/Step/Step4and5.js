@@ -91,7 +91,7 @@ const Step4and5Step  = ({ onInsuranceUpdate }) => {
                 // Рассчитываем фиксированную пошлину в тенге
                 setCustomDutyKZT(customDutyUSD * rate);
             } catch (error) {
-                console.error("Ошибка при получении курса валют:", error);
+
             }
         };
 

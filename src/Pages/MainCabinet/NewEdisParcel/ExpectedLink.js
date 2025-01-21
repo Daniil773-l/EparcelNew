@@ -401,17 +401,16 @@ const ExpectedLink = () => {
         const loadParcelData = async () => {
             if (id) {
                 const db = getFirestore();
-                console.log("Firestore instance:", db);
-                console.log("Document ID:", id);
+
                 const docRef = doc(db, 'parcels', id);
-                console.log("Path to document:", `parcels/${id}`);
+
 
                 try {
                     const docSnap = await getDoc(docRef);
 
                     if (docSnap.exists()) {
                         const parcelData = docSnap.data();
-                        console.log('Loaded parcel data:', parcelData); // Проверяем загруженные данные
+
                         setFormValues({
                             parcelName: parcelData.parcelName || '',
                             warehouse: parcelData.warehouse || '',
@@ -421,11 +420,9 @@ const ExpectedLink = () => {
                         });
                         setSelectedOption(parcelData.warehouse || 'Склад не выбран');
                         setProducts(parcelData.products || []);
-                    } else {
-                        console.error("No such document!");
                     }
                 } catch (error) {
-                    console.error("Error fetching document:", error);
+
                 }
             }
         };

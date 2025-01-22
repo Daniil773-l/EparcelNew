@@ -255,27 +255,37 @@ import TireRack from "../componets/BrandsIcon/tire-ruck.png"
 
 const Container = tw.div`relative`;
 const ThreeColumnContainer = styled.div`
-    ${tw`flex flex-row flex-wrap justify-center max-w-screen-xl mx-auto`}
-    margin-top: 10px; // Reduced top margin
+    ${tw`grid gap-6 justify-center max-w-screen-xl mx-auto`}
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* Ровно 4 карточки в ряд */
+    margin-top: 10px;
     width: 100%;
-    padding: 0 10px; // Add padding to ensure content does not touch the edges
+    padding: 0 10px; /* Отступы по бокам */
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 карточки в ряд на средних экранах */
+    }
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 карточки в ряд на маленьких экранах */
+    }
+    @media (max-width: 480px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr)); /* 1 карточка в ряд на очень маленьких экранах */
+    }
 `;
+
 const Column = styled.div`
-    ${tw`flex justify-center p-4`}
-    width: calc(25% - 20px);
-    min-width: 250px;
-    margin: 5px;
+    ${tw`flex justify-center`}
+    width: 100%;
 `;
 const Card = styled.a`
-    ${tw`flex flex-col items-center px-6 py-6 w-full no-underline`}
+    ${tw`flex flex-col items-center px-3 py-3 w-full no-underline`}
     border: 2px dashed #0ABD19;
     ${tw`rounded-lg`}
     .imageContainer {
         ${tw`flex justify-center items-center w-full`}
-        height: 180px;
+        height: 160px;
         img {
-            max-width: 180px;
-            max-height: 180px;
+            max-width: 160px;
+            max-height: 160px;
         }
     }
     .textContainer {
@@ -289,6 +299,7 @@ const Card = styled.a`
         text-decoration: none;
     }
 `;
+
 
 
 const transitionStyles = css`

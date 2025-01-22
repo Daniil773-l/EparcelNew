@@ -30,9 +30,9 @@ const LeftColumn = styled.div`
 
 const Banner = styled.div`
     ${tw`w-full text-xl font-medium py-8 mb-16 text-center`}
-    background: #FEFBE1;
+    background: #0ABD19;
 
-    color: #333;
+    color: #000000;
     @media (max-width: 768px) {
         font-size: 1rem;
         padding: 4px;
@@ -40,7 +40,7 @@ const Banner = styled.div`
 `;
 
 const BannerLink = styled.a`
-    ${tw`text-green-1002`}
+    ${tw`text-white`}
     text-decoration: none;
     cursor: pointer;
 `;

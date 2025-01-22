@@ -81,7 +81,7 @@ const DropdownItem = styled.a`
 
 const ProfileButton = styled.button`
     ${tw`flex items-center text-sm font-medium text-white rounded-full focus:outline-none ml-4`}
-    ${tw`w-[100px] lg:w-[150px] bg-green-500 py-1 flex items-center justify-center leading-none transition duration-300`}
+    ${tw`w-[150px] lg:w-[180px] bg-green-500 py-1 flex items-center justify-center leading-none transition duration-300`}
     background-color: #0ABD19;
     border: none;
     &:hover, &:focus {
@@ -240,7 +240,7 @@ const HeaderContainer = () => {
                                     <InitialsCircle>
                                         {getInitials()}
                                     </InitialsCircle>
-                                    Профиль
+                                    Личный кабинет
                                 </ProfileButton>
                                 {isDropdownOpen && (
                                     <DropdownMenu

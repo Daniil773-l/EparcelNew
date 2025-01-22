@@ -5,6 +5,7 @@ import Header from '../../components/headers/MainHeader';
 import Footer from "../../components/footers/MainFooterWithLinks";
 import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
 import Photo from "../../images/img/Правовая информация. КЗ.png";
+import SliderCard from "../../components/cards/ThreeColSlider";
 
 const Container = tw.div`relative `;
 const Content = tw.div`max-w-screen-xl mx-auto py-12 lg:py-16`; // Уменьшенные отступы
@@ -49,7 +50,7 @@ export default () => {
             <AnimationRevealPage>
                 <Header
                     heading="Правовая информация"
-                    paragraph={false}
+                    paragraph="Раздел с полными юридическими данными компании Eparcel.kz. Здесь Вы можете ознакомиться с условиями предоставления услуг, а также с Вашими правами и обязанностями при использовании нашего сервиса."
                     imageSrc=   {Photo}
                     roundedHeaderButton={false}
                 />
@@ -64,33 +65,28 @@ export default () => {
                                 </GreenLink>
                                 <Break />
                                 <Number>2.</Number>{" "}
-                                <GreenLink href="https://rulaws.ru/acts/Prikaz-FTS-Rossii-ot-05.07.2018-N-1060/">
-                                    Приказ ФТС России от 05.07.2018 N 1060 "О Порядке использования в качестве пассажирской таможенной декларации реестра экспресс-грузов товаров для личного пользования, доставляемых перевозчиком (транспортной экспедиторской компанией или службой курьерской доставки) в адрес физических лиц, содержащего сведения, необходимые для выпуска товаров для личного пользования, с применением Единой автоматизированной информационной системы таможенных органов"
-                                </GreenLink>
-                                <Break />
-                                <Number>3.</Number>{" "}
                                 <GreenLink href="https://www.customs.gov.kg/wMBGZGPW-Оботдельныхвопросах,связанныхстоварамидляличногопользования.pdf">
                                     Решение Совета Евразийской экономической комиссии от 20 декабря 2017 г. N 107 "Об отдельных вопросах, связанных с товарами для личного пользования"
                                 </GreenLink>
                                 <Break />
-                                <Number>4.</Number>{" "}
+                                <Number>3.</Number>{" "}
                                 <GreenLink href="/TermsOfService">
-                                    Политика экспортного и санкционного контроля (далее – ПОЛИТИКА)
+                                    Договор оферты
                                 </GreenLink>
                                 <Break />
-                                <Number>5.</Number>{" "}
+                                <Number>4.</Number>{" "}
                                 <GreenLink href="/PublicOffer">
                                     Соглашение о возмездном оказании услуг на условиях публичной оферты
                                 </GreenLink>
                                 <Break />
-                                <Number>6.</Number>{" "}
+                                <Number>5.</Number>{" "}
                                 <GreenLink href="/PrivacyPolicy">
-                                    Политика в отношении сбора, обработки и защиты персональных данных субъектов персональных данных
-                                </GreenLink>
+                                    Пользовательское соглашение                                </GreenLink>
                             </HeadingDescription>
                         </HeadingColumn>
                     </Content>
                 </Container>
+                <SliderCard/>
                 <Footer/>
             </AnimationRevealPage>
         </>

@@ -6,7 +6,7 @@ import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
 import Header from "../../components/headers/MainHeader";
 import Footer from "../../components/footers/MainFooterWithLinks";
 import {PrimaryButton as PrimaryButtonBase} from "./../../components/misc/Buttons";
-import Photo from "../../images/img/News-bro.svg"
+import Photo from "../../images/img/Новости и спецпредложения.png"
 
 const ButtonContainer = styled.div`
     ${tw`flex flex-wrap items-center justify-center gap-4`}

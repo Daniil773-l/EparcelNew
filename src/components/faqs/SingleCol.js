@@ -33,9 +33,8 @@ const Description = styled.p`
 `;
 
 export default ({
-                    subheading = "FAQs",
+
                     heading = "У Вас остались вопросы? ",
-                    description = "Эта страница поможет разобраться с каждым этапом доставки из-за рубежа в Казахстан",
                     faqs = [
                         {
                             question: "Is lunch provided free of cost?",
@@ -70,9 +69,7 @@ export default ({
         <Container>
             <ContentWithPaddingXl>
                 <Column>
-                    <Subheading>{subheading}</Subheading>
                     <Heading>{heading}</Heading>
-                    <Description>{description}</Description>
                     <FAQSContainer>
                         {faqs.map((faq, index) => (
                             <FAQ

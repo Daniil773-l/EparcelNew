@@ -8,7 +8,7 @@ import Choose from "../../images/icon/GoodChoose.svg";
 import Purchase from "../../images/icon/PurchaseGood.svg";
 import Delivery from "../../images/icon/DeliveryIcon.svg";
 import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
-import DesignIllustration from "../../images/img/Ecommerce web page-rafiki.svg";
+import DesignIllustration from "../../images/img/Как покупать товары из-за границы.png";
 import {SectionHeading} from "../../components/misc/Headings";
 
 const Container = tw.div`relative`;
@@ -55,7 +55,7 @@ export default () => {
             <AnimationRevealPage>
                 <Header
                     heading="Как покупать товары из-за границы"
-                    paragraph="Покупка товаров из зарубежных интернет-магазинов стала очень популярной среди покупателей в Казахстане."
+                    paragraph="Покупка товаров из зарубежных интернет-магазинов стала очень популярной среди покупателей в Казахстане. Это позволяет покупать оригинальные товары и заказывать их по более выгодным ценам."
                     imageSrc={DesignIllustration}
                     roundedHeaderButton={false}
                 />

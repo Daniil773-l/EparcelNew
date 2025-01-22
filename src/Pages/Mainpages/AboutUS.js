@@ -13,6 +13,7 @@ import prototypeIllustrationImageSrc from "../../images/img/EparcelBallon.svg";
 import styled from "styled-components";
 import tw from "twin.macro";
 import Alemtat from "../../images/logo/AlemTat.svg";
+import Cdek from "../../images/logo/cdek.png" ;
 import DHL from "../../images/logo/DHL.svg";
 import FedEX from "../../images/logo/FedExLogo.svg";
 import Ups from "../../images/logo/UPS.svg";
@@ -157,16 +158,21 @@ export default () => {
             </CenteredContainer>
             <MarqueeContainer>
                 <MarqueeInner>
-                    <AlemLogo src={Alemtat} alt="Alemtat" />
-                    <PartnerLogo src={DHL} alt="DHL" />
-                    <PartnerLogo src={FedEX} alt="FedEx" />
-                    <PartnerLogo src={Ups} alt="UPS" />
-                    <USPSLogo src={USPS} alt="USPS" />
-                    <AlemLogo src={Alemtat} alt="Alemtat" /> {/* Duplicated logos */}
-                    <PartnerLogo src={DHL} alt="DHL" />
-                    <PartnerLogo src={FedEX} alt="FedEx" />
-                    <PartnerLogo src={Ups} alt="UPS" />
-                    <USPSLogo src={USPS} alt="USPS" />
+                    <AlemLogo src={Alemtat} alt="Alemtat"/>
+                    <PartnerLogo src={DHL} alt="DHL"/>
+                    <PartnerLogo src={FedEX} alt="FedEx"/>
+                    <PartnerLogo src={Ups} alt="UPS"/>
+                    <USPSLogo src={USPS} alt="USPS"/>
+                    <img
+                        src={Cdek}
+                        style={{marginLeft: '3rem', marginRight: '3rem', width: '200px', height: 'auto'}}
+                    />
+
+                    <AlemLogo src={Alemtat} alt="Alemtat"/> {/* Duplicated logos */}
+                    <PartnerLogo src={DHL} alt="DHL"/>
+                    <PartnerLogo src={FedEX} alt="FedEx"/>
+                    <PartnerLogo src={Ups} alt="UPS"/>
+                    <USPSLogo src={USPS} alt="USPS"/>
                 </MarqueeInner>
             </MarqueeContainer>
             <Offerings

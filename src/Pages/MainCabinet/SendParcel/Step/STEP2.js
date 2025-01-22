@@ -103,19 +103,39 @@ const Step2 = ({ onDataPass, city }) => {
 
         const roundedWeightKg = Math.ceil(weightKg);
         let cost = 0;
-
         if (
             ["Алматы", "Абай", "Бесагаш", "Боралдай", "Каскелен", "Отеген-Батыр", "Талгар", "Туздыбастау", "Есик", "Конаев", "Кордай", "Талдыкорган"].includes(city)
         ) {
-            cost = roundedWeightKg <= 5 ? roundedWeightKg * 16 : 80 + (roundedWeightKg - 5) * 14;
+            cost = roundedWeightKg <= 3
+                ? roundedWeightKg === 0.5 ? 10 :
+                    roundedWeightKg === 1 ? 14 :
+                        roundedWeightKg === 1.5 ? 21 :
+                            roundedWeightKg === 2 ? 28 :
+                                roundedWeightKg === 2.5 ? 35 :
+                                    roundedWeightKg === 3 ? 42 : 0
+                : 42 + (roundedWeightKg - 3) * 14;
         } else if (
             ["Астана", "Балкаш", "Караганда", "Косшы", "Ленгер", "Приозёрск", "Сарань", "Сарыагаш", "Тараз", "Темиртау", "Туркестан", "Шахтинск", "Шымкент", "Атбасар", "Жезказган", "Житикара", "Кокшетау", "Костанай", "Лисаковск", "Новоишимское", "Петропавловск", "Рудный", "Сатпаев", "Степногорск", "Тайынша", "Тобыл", "Щучинск"].includes(city)
         ) {
-            cost = roundedWeightKg <= 5 ? roundedWeightKg * 17 : 83 + (roundedWeightKg - 5) * 15;
+            cost = roundedWeightKg <= 3
+                ? roundedWeightKg === 0.5 ? 11 :
+                    roundedWeightKg === 1 ? 15 :
+                        roundedWeightKg === 1.5 ? 22 :
+                            roundedWeightKg === 2 ? 29 :
+                                roundedWeightKg === 2.5 ? 36 :
+                                    roundedWeightKg === 3 ? 43 : 0
+                : 43 + (roundedWeightKg - 3) * 15;
         } else if (
             ["Алтай", "Кызылорда", "Павлодар", "Риддер", "Семей", "Усть-Каменогорск", "Шемонаиха", "Экибастуз", "Аксай", "Актау", "Актобе", "Атырау", "Жанаозен", "Уральск"].includes(city)
         ) {
-            cost = roundedWeightKg <= 5 ? roundedWeightKg * 18 : 85 + (roundedWeightKg - 5) * 16;
+            cost = roundedWeightKg <= 3
+                ? roundedWeightKg === 0.5 ? 12 :
+                    roundedWeightKg === 1 ? 16 :
+                        roundedWeightKg === 1.5 ? 23 :
+                            roundedWeightKg === 2 ? 30 :
+                                roundedWeightKg === 2.5 ? 37 :
+                                    roundedWeightKg === 3 ? 44 : 0
+                : 44 + (roundedWeightKg - 3) * 16;
         }
 
         return cost;

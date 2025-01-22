@@ -14,13 +14,14 @@ const TextColumn = styled(Column)(({ textOnLeft }) => [
     tw`md:w-6/12`,
     textOnLeft ? tw`md:mr-8 lg:mr-10 md:order-first` : tw`md:ml-8 lg:ml-10 md:order-last`,
     `
-    margin-top:auto;
+    margin-top: -20px; /* Поднимаем текст вверх */
 
     @media (max-width: 768px) {
-      margin-top: 0; /* Убираем отрицательный отступ на экранах шириной до 768px */
+      margin-top: 0; /* Убираем отрицательный отступ на мобильных устройствах */
     }
   `,
 ]);
+
 
 
 const Heading = tw(
@@ -29,10 +30,11 @@ const Heading = tw(
 
 const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-2xl font-medium leading-relaxed text-secondary-100`; // Сократили отступ сверху для описания
 
+const CalculatorColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative mt-8`;
 
-const CalculatorColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative  -mt-20 `;
 
-const TextContent = tw.div`lg:py-4 text-center md:text-left`; // Уменьшен padding сверху
+const TextContent = tw.div`lg:pt-2 lg:pb-4 text-center md:text-left`;
+
 
 
 const Subheading = styled(SubheadingBase)`
@@ -193,10 +195,7 @@ const CustomsDutyCalculator = ({
                         <Subheading>{subheading}</Subheading>
                         <Heading>{heading}</Heading>
                         <Description>
-                            <span style={{color: "#0ABD19"}}>Если стоимость товаров</span> более 200 евро -
-                            оплачивается таможенная пошлина 15% на
-                            то, что свыше 200 евро. Лимит
-                            31 кг., объёмный вес (габариты).
+                            <span style={{color: "#0ABD19"}}>Если стоимость товаров</span>более €200, оплачивается таможенная пошлина в размере 15% на то, что свыше 200. Лимит 31 кг. на одного клиента, включая объемный вес (габариты). Превышение – начисляется €2 за каждый дополнительный кг.
                         </Description>
                     </TextContent>
                 </TextColumn>

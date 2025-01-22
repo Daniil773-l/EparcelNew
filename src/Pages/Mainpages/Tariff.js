@@ -150,28 +150,32 @@ export default () => {
                                 <PriceCell>Стоимость доставки</PriceCell>
                             </PriceRow>
                             <PriceRow>
+                                <PriceCell>0.5 кг</PriceCell>
+                                <PriceCell>10 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
                                 <PriceCell>1 кг</PriceCell>
-                                <PriceCell>16 $</PriceCell>
+                                <PriceCell>14 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>1.5 кг</PriceCell>
+                                <PriceCell>21 $</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>2 кг</PriceCell>
-                                <PriceCell>32 $</PriceCell>
+                                <PriceCell>28 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>2.5 кг</PriceCell>
+                                <PriceCell>35 $</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>3 кг</PriceCell>
-                                <PriceCell>48 $</PriceCell>
-                            </PriceRow>
-                            <PriceRow>
-                                <PriceCell>4 кг</PriceCell>
-                                <PriceCell>64 $</PriceCell>
-                            </PriceRow>
-                            <PriceRow>
-                                <PriceCell>5 кг</PriceCell>
-                                <PriceCell>80 $</PriceCell>
+                                <PriceCell>42 $</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>(+ 1кг)</PriceCell>
-                                <PriceCell>14 $</PriceCell>
+                                <PriceCell>+ 14 $</PriceCell>
                             </PriceRow>
                             </tbody>
                         </PriceTable>
@@ -193,28 +197,32 @@ export default () => {
                                 <PriceCell>Стоимость доставки</PriceCell>
                             </PriceRow>
                             <PriceRow>
+                                <PriceCell>0.5 кг</PriceCell>
+                                <PriceCell>11 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
                                 <PriceCell>1 кг</PriceCell>
-                                <PriceCell>17 $</PriceCell>
+                                <PriceCell>15 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>1.5 кг</PriceCell>
+                                <PriceCell>22 $</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>2 кг</PriceCell>
-                                <PriceCell>33 $</PriceCell>
+                                <PriceCell>29 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>2.5 кг</PriceCell>
+                                <PriceCell>36 $</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>3 кг</PriceCell>
-                                <PriceCell>50 $</PriceCell>
-                            </PriceRow>
-                            <PriceRow>
-                                <PriceCell>4 кг</PriceCell>
-                                <PriceCell>66 $</PriceCell>
-                            </PriceRow>
-                            <PriceRow>
-                                <PriceCell>5 кг</PriceCell>
-                                <PriceCell>83 $</PriceCell>
+                                <PriceCell>43 $</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>(+ 1кг)</PriceCell>
-                                <PriceCell>15 $</PriceCell>
+                                <PriceCell>+ 15 $</PriceCell>
                             </PriceRow>
                             </tbody>
                         </PriceTable>
@@ -236,28 +244,32 @@ export default () => {
                                 <PriceCell>Стоимость доставки</PriceCell>
                             </PriceRow>
                             <PriceRow>
+                                <PriceCell>0.5 кг</PriceCell>
+                                <PriceCell>12 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
                                 <PriceCell>1 кг</PriceCell>
-                                <PriceCell>18 $</PriceCell>
+                                <PriceCell>16 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>1.5 кг</PriceCell>
+                                <PriceCell>23 $</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>2 кг</PriceCell>
-                                <PriceCell>34 $</PriceCell>
+                                <PriceCell>30 $</PriceCell>
+                            </PriceRow>
+                            <PriceRow>
+                                <PriceCell>2.5 кг</PriceCell>
+                                <PriceCell>37 $</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>3 кг</PriceCell>
-                                <PriceCell>52 $</PriceCell>
-                            </PriceRow>
-                            <PriceRow>
-                                <PriceCell>4 кг</PriceCell>
-                                <PriceCell>68 $</PriceCell>
-                            </PriceRow>
-                            <PriceRow>
-                                <PriceCell>5 кг</PriceCell>
-                                <PriceCell>85 $</PriceCell>
+                                <PriceCell>44 $</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>(+ 1кг)</PriceCell>
-                                <PriceCell>16 $</PriceCell>
+                                <PriceCell>+ 16 $</PriceCell>
                             </PriceRow>
                             </tbody>
                         </PriceTable>

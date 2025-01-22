@@ -14,7 +14,8 @@ import Calculator from "../../Pages/Mainpages/componets/calculator";
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto  items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
+const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative z-10 mt-[-50px]`;
+
 const TextColumn = styled(Column)(({ textOnLeft }) => [
     tw`md:w-6/12 mt-16 md:mt-0`,
     textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`,
@@ -124,10 +125,11 @@ export default ({
                         <Subheading>{subheading}</Subheading>
                         <Heading>{heading}</Heading>
                         <Description>
-                            <span style={{ color: "#0ABD19" }}>Заказывайте</span> товары на наш склад, при необходимости мы переупаковываем посылки для снижения веса и отправляем Вам надежно упакованными.
+                            <span style={{ color: "#0ABD19" }}>Заказывайте</span>товары на наш склад, при необходимости мы переупакуем  посылки для снижения объемного веса и отправим Вам надежно упакованными.
                         </Description>
                         <Description>
-                            <span style={{ color: "#0ABD19" }}>Онлайн калькулятор</span> стоимости доставки товара поможет рассчитать приблизительную стоимость доставки.
+                            <span style={{ color: "#0ABD19" }}>Калькулятор</span>
+                   стоимости доставки товара поможет рассчитать стоимость доставки до Вашего города.
                         </Description>
                         <Description>
                             <span style={{ color: "#0ABD19" }}>Задайте</span> необходимые параметры посылки и кликните на кнопку “Рассчитать”.

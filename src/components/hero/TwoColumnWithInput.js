@@ -20,30 +20,7 @@ const fadeOut = keyframes`
     100% { opacity: 0; }
   `;
 
-const Container = styled.div`
-    ${tw`relative pt-16 pb-16`} // Добавьте одинаковое расстояние сверху и снизу
-    background-color: #e2ffe2; // Set background color
-  `;
 
-const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto`;
-
-const LeftColumn = tw.div`relative lg:w-5/12 text-center max-w-lg mx-auto lg:max-w-none lg:text-left`;
-const RightColumn = styled.div`
-    ${tw`relative mt-12 lg:mt-0 flex-1 flex flex-col justify-center lg:self-end`}
-    max-height: 600px; /* Ограничиваем максимальную высоту */
-    overflow: hidden; /* Убираем любые переполнения */
-`;
-
-const Heading = styled.h1`
-    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-black  leading-tight`}
-    margin-bottom: 20px; // Уменьшили отступ между заголовком и параграфом
-    animation: ${({ animate }) => (animate ? fadeIn : fadeOut)} 1s ease-in-out;
-`;
-
-const Paragraph = styled.p`
-    ${tw`my-2 lg:my-4 text-base  xl:text-xl`}
-    animation: ${({ animate }) => (animate ? fadeIn : fadeOut)} 1s ease-in-out;
-`;
 
 const Actions = styled.div`
     ${tw`relative max-w-md text-center mx-auto lg:mx-0 flex items-center`}
@@ -69,18 +46,6 @@ const Actions = styled.div`
 `;
 
 
-const IllustrationContainer = styled.div`
-    ${tw`flex justify-center items-center`} // Центрирование элементов
-    margin-left: 0%; // Убираем отступ
-    max-width: 100%; /* Контейнер не выходит за пределы ширины */
-    overflow: hidden; /* Обрезаем, если содержимое выходит за пределы */
-    img {
-        max-width: 100%; /* Ограничиваем ширину */
-        height: auto; /* Сохраняем пропорции */
-        object-fit: contain; /* Сохраняем изображение без обрезки */
-        max-height: 600px; /* Ограничиваем максимальную высоту */
-    }
-`;
 
 
 
@@ -91,7 +56,66 @@ const HighlightedText = styled.span`
     ${tw`font-bold`}
     color: #0ABD19;
   `;
+const Container = styled.div`
+    ${tw`relative`}
+    background-color: #e2ffe2;!important;  /* Set background color */
+`;
+const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto `;
 
+
+const LeftColumn = tw.div`relative lg:w-6/12 text-center max-w-lg mx-auto lg:max-w-none lg:text-left`;
+
+const RightColumn = tw.div`relative mt-12 lg:mt-0 flex-1 flex flex-col justify-center lg:self-end`;
+
+const Heading = styled.h1`
+    ${tw`font-bold text-3xl md:text-4xl lg:text-5xl  leading-tight`}
+    /* Центрируем текст на маленьких экранах */
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        ${tw`text-2xl`} /* Уменьшаем размер текста для планшетов */
+    }
+
+    @media (max-width: 480px) {
+        ${tw`text-xl`} /* Ещё меньше для мобильных устройств */
+    }
+`;
+
+const Paragraph = styled.p`
+    ${tw`text-base xl:text-lg my-2 lg:my-4 text-gray-700`}
+   
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+        ${tw`text-sm`} /* Уменьшаем текст на планшетах */
+    }
+
+    @media (max-width: 480px) {
+        ${tw`text-xs`} /* Минимальный размер текста на мобильных устройствах */
+    }
+`;
+
+
+
+
+const IllustrationContainer = styled.div`
+    ${tw`flex justify-center lg:justify-end items-center`}
+
+
+    img {
+      // Ограничиваем высоту
+
+        object-fit: contain;
+        @media (max-width: 768px) {
+            max-width: 100%; /* Растягиваем на всю ширину экрана на планшетах */
+        }
+
+        @media (max-width: 480px) {
+            max-width: 90%; /* Немного уменьшаем ширину на мобильных устройствах */
+        }
+    }
+   
+  `;
 export default ({ roundedHeaderButton }) => {
     const [email, setEmail] = useState('');
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -174,7 +198,7 @@ export default ({ roundedHeaderButton }) => {
                     <RightColumn>
                         <IllustrationContainer>
                             {images.map((image, index) => (
-                                <img key={index} style={{ opacity: currentSlide === index ? 1 : 0, display: currentSlide === index ? 'block' : 'none' }} src={image} alt={`Design Illustration ${index + 1}`} />
+                                <img tw="min-w-0 w-11/12 max-w-lg xl:max-w-3xl"  key={index} style={{ opacity: currentSlide === index ? 1 : 0, display: currentSlide === index ? 'block' : 'none' }} src={image} alt={`Design Illustration ${index + 1}`} />
                             ))}
                         </IllustrationContainer>
                     </RightColumn>

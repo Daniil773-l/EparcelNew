@@ -21,7 +21,7 @@ const LeftColumn = tw.div`relative lg:w-6/12 text-center max-w-lg mx-auto lg:max
 const RightColumn = tw.div`relative mt-12 lg:mt-0 flex-1 flex flex-col justify-center lg:self-end`;
 
 const Heading = styled.h1`
-    ${tw`font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 leading-tight`}
+    ${tw`font-bold text-3xl md:text-4xl lg:text-5xl  leading-tight`}
     /* Центрируем текст на маленьких экранах */
     margin-bottom: 20px;
 
@@ -57,8 +57,7 @@ const IllustrationContainer = styled.div`
 
     img {
       // Ограничиваем высоту
-      width: auto;
-      height: auto;
+
         object-fit: contain;
         @media (max-width: 768px) {
             max-width: 100%; /* Растягиваем на всю ширину экрана на планшетах */

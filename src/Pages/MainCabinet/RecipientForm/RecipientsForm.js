@@ -374,7 +374,6 @@ const RecipientForm = () => {
                 iin,
                 issuedBy,
                 issueDate,
-                address,
                 userId: user.uid,
             };
 
@@ -393,6 +392,7 @@ const RecipientForm = () => {
             } catch (error) {
                 toast.error("Ошибка при сохранении данных: " + error.message);
             }
+
         } else {
             toast.error("Пользователь не авторизован.");
         }
@@ -409,7 +409,7 @@ const RecipientForm = () => {
         setIin("");
         setIssuedBy("");
         setIssueDate("");
-        setAddress("");
+
     };
 
     return (

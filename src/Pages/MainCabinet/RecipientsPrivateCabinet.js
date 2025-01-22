@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
+
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import Header from "../../components/headers/MainCabinetHeader";
 import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
 import Footer from "../../components/footers/MainFooterWithLinks";
 import plusIcon from "../../images/icon/plus.png";
-import { getFirestore, collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore";
+import {onSnapshot, getFirestore, collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { auth } from "../../FireBaseConfig";
 import { MdDelete } from "react-icons/md";
 import { ClipLoader } from "react-spinners";
@@ -206,17 +207,37 @@ const PersonalCabinet = ({ roundedHeaderButton }) => {
         const fetchRecipients = async () => {
             const db = getFirestore();
             const user = auth.currentUser;
-            if (user) {
+
+            if (!user) {
+                console.error("Пользователь не авторизован.");
+                setLoading(false);
+                return;
+            }
+
+            try {
                 const q = query(collection(db, "recipients"), where("userId", "==", user.uid));
                 const querySnapshot = await getDocs(q);
-                const fetchedRecipients = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+                // Исправление: вызов .data() для каждого документа
+                const fetchedRecipients = querySnapshot.docs.map((doc) => ({
+                    id: doc.id, // Получение ID документа
+                    ...doc.data() // Получение данных документа
+                }));
+
+                console.log("Загруженные получатели:", fetchedRecipients); // Для отладки
                 setRecipients(fetchedRecipients);
+            } catch (error) {
+                console.error("Ошибка при загрузке данных из Firestore:", error);
+            } finally {
+                setLoading(false);
             }
-            setLoading(false);
         };
 
         fetchRecipients();
     }, []);
+
+
+
 
     const [showFirstImage, setShowFirstImage] = useState(true);
 
@@ -268,26 +289,21 @@ const PersonalCabinet = ({ roundedHeaderButton }) => {
                                 </Description>
                             ) : (
                                 <CardContainer>
-                                    <Card>
-                                        <CardTitle>Даниил Шеховцов</CardTitle>
-                                        <CardText>77761517243</CardText>
-                                        <CardActions>
-                                            <EditLink>Редактировать данные</EditLink>
-                                            <DeleteButton title="Удалить получателя">🗑</DeleteButton>
-                                        </CardActions>
-                                    </Card>
-                                    <Card>
-                                        <CardTitle>Кто-то Кто-то</CardTitle>
-                                        <CardText>77761517243</CardText>
-                                        <CardActions>
-                                            <EditLink>Редактировать данные</EditLink>
-                                            <DeleteButton title="Удалить получателя">🗑</DeleteButton>
-                                        </CardActions>
-                                    </Card>
-                                    {/* Добавьте больше карточек по необходимости */}
+                                    {recipients.map((recipient) => (
+                                        <Card key={recipient.id}>
+                                            <CardTitle>{recipient.name} {recipient.surname}</CardTitle>
+                                            <CardText>{recipient.phone}</CardText>
+                                            <CardActions>
+                                                <EditLink onClick={() => handleEdit(recipient)}>Редактировать данные</EditLink>
+                                                <DeleteButton onClick={() => handleDelete(recipient.id)} title="Удалить получателя">🗑</DeleteButton>
+                                            </CardActions>
+                                        </Card>
+                                    ))}
                                 </CardContainer>
-
                             )}
+
+
+
                             <NavLink href="/RecipientsForm">
                                 <BottomButtonsContainer>
                                     <BottomButton>

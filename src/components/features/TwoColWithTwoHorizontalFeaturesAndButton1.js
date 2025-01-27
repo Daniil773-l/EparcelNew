@@ -131,9 +131,7 @@ export default ({
                             <span style={{ color: "#0ABD19" }}>Калькулятор</span>
                    стоимости доставки товара поможет рассчитать стоимость доставки до Вашего города.
                         </Description>
-                        <Description>
-                            <span style={{ color: "#0ABD19" }}>Задайте</span> необходимые параметры посылки и кликните на кнопку “Рассчитать”.
-                        </Description>
+                        
 
 
                     </TextContent>

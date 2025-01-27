@@ -21,7 +21,7 @@ const LeftColumn = tw.div`relative lg:w-6/12 text-center max-w-lg mx-auto lg:max
 const RightColumn = tw.div`relative mt-12 lg:mt-0 flex-1 flex flex-col justify-center lg:self-end`;
 
 const Heading = styled.h1`
-    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900 leading-tight`}
+    ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl  leading-tight`}
     margin-bottom: 20px; // Уменьшили отступ между заголовком и параграфом
 `;
 

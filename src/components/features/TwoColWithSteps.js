@@ -137,7 +137,7 @@ export default ({
                         <Heading>{heading}</Heading>
                         <StepsContainer>
                             {steps.map((step, index) => (
-                                <Step key={index}>
+                                <Step key={index} style={{ borderRight: index === 3 ? '10px solid #0ABD19' : undefined }}>
                                     <StepNumber>{(index + 1).toString().padStart(2, '0')}</StepNumber>
                                     <StepText>
                                         <StepHeading>{step.heading}</StepHeading>

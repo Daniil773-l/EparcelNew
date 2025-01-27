@@ -400,7 +400,7 @@ const PersonalCabinet = () => {
                             >
                                 <Address>
                                     <AddressHeader>Ваш адрес склада:</AddressHeader>
-                                    <AddressID>Ваш ID: #{user.userId}</AddressID>
+                                    <AddressID>Ваш ID: EKZ -{user.userId}</AddressID>
                                     <AddressInfo>* Не забывайте указывать Ваш ID при покупке товаров</AddressInfo>
                                     <AddressDetails>
                                         {currentInfo.address}

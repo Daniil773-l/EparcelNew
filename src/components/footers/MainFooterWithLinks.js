@@ -7,8 +7,7 @@ import ViberIcon from "../../images/icon/Viber.svg";
 import WhatsappIcon from "../../images/icon/whatsapp.svg";
 import ClassmatesIcon from "../../images/icon/classmates.svg";
 import VkIcon from "../../images/icon/vk.svg";
-import PhoneIcon from "../../images/icon/phone-call.png"; // Импорт иконки телефона
-import EmailIcon from "../../images/icon/email.png";
+import InstagramIcon from "../../images/logo/Instagram_logo_2022.svg";
 import { FiClock } from 'react-icons/fi';
 import { FiPhone, FiMail } from 'react-icons/fi';
 const Container = styled.div`
@@ -118,6 +117,9 @@ export default () => {
                             <SocialLink href="https://ok.ru">
                                 <img src={ClassmatesIcon} />
                             </SocialLink>
+                            <SocialLink>
+                                <img src={InstagramIcon}/>
+                            </SocialLink>
                             <SocialLink href="https://vk.com/feed">
                                 <img src={VkIcon} />
                             </SocialLink>
@@ -129,7 +131,7 @@ export default () => {
                             </div>
                             <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
                                 <FiMail style={{ color: "#0ABD19", marginRight: "8px", width: "25px", height: "25px" }} />
-                                <span>mailto:info@eparcel.kz</span>
+                                <span>info@eparcel.kz</span>
                             </div>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <FiClock style={{ color: "#0ABD19", marginRight: "8px", width: "25px", height: "25px" }} />

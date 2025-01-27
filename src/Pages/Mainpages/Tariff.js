@@ -120,7 +120,7 @@ export default () => {
         <AnimationRevealPage>
             <Header
                 heading="Тарифы для выгодных покупок вместе с Eparcel.kz"
-                paragraph="Доставка товаров осуществляется компанией Eparcel по тарифам в зависимости от региона, в котором Вы проживаете"
+                paragraph="Доставка товаров осуществляется компанией Eparcel по тарифам в зависимости от региона, в котором Вы проживаете."
                 imageSrc={DesignIllustration}
                 roundedHeaderButton={false}
             />

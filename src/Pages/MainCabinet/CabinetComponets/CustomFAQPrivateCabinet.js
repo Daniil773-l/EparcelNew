@@ -17,14 +17,15 @@ const FAQContent = styled.div`
 `;
 
 const Subheading = tw(SubheadingBase)`mb-4 text-center lg:text-left`;
-const HeadingContainer = tw.div`flex flex-col items-center lg:flex-row lg:justify-between w-full`;
+const HeadingContainer = tw.div`flex flex-col items-center justify-center w-full text-center`;
 
 const Heading = styled(SectionHeading)`
-    ${tw`text-center lg:text-left text-3xl lg:text-4xl`} /* Reduced heading size for mobile */
+    ${tw`text-center text-3xl lg:text-4xl`} /* Удалена привязка к lg:text-left */
     span {
         ${tw`text-green-1002`}
     }
 `;
+
 
 const FAQSContainer = tw.dl`mt-12 w-full`;
 const FAQ = styled.div`

@@ -115,9 +115,9 @@ export default () => {
             description: "Экономьте на своих покупках и возвращайте деньги",
         },
         {
-            imageSrc: "https://eparcel.ru/image/cache/catalog/statya-300x214.png",
-            title: "Объединение заказов бесплатно",
-            description: "Экономьте на своих покупках и возвращайте деньги",
+            imageSrc: "https://eparcel.ru/image/cache/webp/catalog/iherblogo-300x299.webp",
+            title: "20% на товары iHerb",
+            description: "Отличное качество и низкие цены!..",
         },
     ];
 

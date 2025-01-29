@@ -114,7 +114,7 @@ const Step4and5Step  = ({ onInsuranceUpdate }) => {
                         );
 
                         const totalKZT = totalUSD * usdToKztRate;
-                        const insurance = totalKZT * 0.02;
+                        const insurance = totalKZT * 0.2;
 
 
 

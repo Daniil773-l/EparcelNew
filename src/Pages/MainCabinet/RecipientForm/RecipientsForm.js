@@ -198,13 +198,14 @@ const Input = styled.input`
 const StyledPhoneInput = styled(PhoneInput)`
     width: 100%;
     margin-top: 16px;
+
     .form-control {
         ${tw`py-3 focus:outline-none font-medium transition duration-300 border-b-2`}
         color: #6c757d;
         border-color: transparent;
         border-bottom-color: #adb5bd;
         font-family: inherit;
-        padding-left: 50px;
+        padding-left: 10px; // Отступ для читаемости
         &::placeholder {
             color: #adb5bd;
         }
@@ -216,18 +217,7 @@ const StyledPhoneInput = styled(PhoneInput)`
         }
     }
     .flag-dropdown {
-        ${tw`py-3 focus:outline-none font-medium transition duration-300 border-b-2`}
-        border-color: transparent;
-        border-bottom-color: #adb5bd;
-        &::placeholder {
-            color: #adb5bd;
-        }
-        &:hover {
-            border-bottom-color: #0ABD19;
-        }
-        &:focus {
-            border-bottom-color: #0ABD19;
-        }
+        display: none; // Скрываем выбор страны
     }
 `;
 
@@ -469,7 +459,7 @@ const RecipientForm = () => {
                                             color: '#6c757d',
                                             fontFamily: 'inherit',
                                             fontSize: '16px',
-                                            paddingLeft: '45px', // Adjust padding to ensure country code is visible
+                                            paddingLeft: '10px',
                                             transition: 'border-bottom-color 0.3s',
                                             '&:hover': {
                                                 borderBottomColor: '#0ABD19',
@@ -481,7 +471,10 @@ const RecipientForm = () => {
                                                 color: '#adb5bd',
                                             },
                                         }}
-                                        isValid={(inputNumber, country) => {
+                                        disableDropdown={true} // Отключаем выпадающий список стран
+                                        countryCodeEditable={false} // Код страны нельзя редактировать
+                                        onlyCountries={['ru']} // Только Россия
+                                        isValid={(inputNumber) => {
                                             if (!inputNumber) return false;
                                             return /^\+?[\d\s-()]{10,20}$/.test(inputNumber);
                                         }}

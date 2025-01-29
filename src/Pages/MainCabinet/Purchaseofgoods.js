@@ -749,7 +749,7 @@ const ProductForm = ({index, handleDelete, handleChange}) => {
 
             <Form>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productType-${index}`}>Тип товара</Label>
+                    <Label htmlFor={`productType-${index}`}>Тип товара *</Label>
                     <CustomSelectWrapper>
                         <CustomSelect onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                             {selectedType}
@@ -775,32 +775,32 @@ const ProductForm = ({index, handleDelete, handleChange}) => {
                     </CustomSelectWrapper>
                 </FormGroup>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productBrand-${index}`}>Бренд товара</Label>
+                    <Label htmlFor={`productBrand-${index}`}>Бренд товара *</Label>
                     <Input id={`productBrand-${index}`} type="text" placeholder="Введите бренд товара"
                            onChange={(e) => handleChange(e, index)}/>
                 </FormGroup>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productColor-${index}`}>Цвет и размер</Label>
+                    <Label htmlFor={`productColor-${index}`}>Цвет и размер *</Label>
                     <Input id={`productColor-${index}`} type="text" placeholder="Введите цвет и размер"
                            onChange={(e) => handleChange(e, index)}/>
                 </FormGroup>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productQuantity-${index}`}>Количество товара(ов)</Label>
+                    <Label htmlFor={`productQuantity-${index}`}>Количество товара(ов) *</Label>
                     <Input id={`productQuantity-${index}`} type="number" placeholder="Введите количество"
                            onChange={(e) => handleChange(e, index)}/>
                 </FormGroup>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productPrice-${index}`}>Стоимость товара (за шт)</Label>
+                    <Label htmlFor={`productPrice-${index}`}>Стоимость товара (за шт) *</Label>
                     <Input id={`productPrice-${index}`} type="text" placeholder="Введите стоимость"
                            onChange={(e) => handleChange(e, index)}/>
                 </FormGroup>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productName-${index}`}>Назване товара на (англ)</Label>
+                    <Label htmlFor={`productName-${index}`}>Назване товара на (англ) *</Label>
                     <Input id={`productName-${index}`} type="text" placeholder="Введите название товара"
                            onChange={(e) => handleChange(e, index)}/>
                 </FormGroup>
                 <FormGroup style={{gridColumn: 'span 2'}}>
-                    <Label htmlFor={`productLink-${index}`}>Ссылка на товар</Label>
+                    <Label htmlFor={`productLink-${index}`}>Ссылка на товар *</Label>
                     <Input id={`productLink-${index}`} type="text" placeholder="Введите ссылку на товар"
                            onChange={(e) => handleChange(e, index)}/>
                 </FormGroup>
@@ -1500,7 +1500,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                                             </InfoMessageBox>
                                             <Container12> <Form>
                                                 <FormGroup>
-                                                    <Label htmlFor="warehouse">Выберите страну склада</Label>
+                                                    <Label htmlFor="warehouse">Выберите страну склада *</Label>
                                                     <CustomSelectWrapper>
                                                         <CustomSelect
                                                             onClick={() => setIsWarehouseOpen(!isWarehouseOpen)}>
@@ -1543,7 +1543,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
 
                                                 <FormGroup>
                                                     <Label htmlFor="storeName">Введите название магазина (на
-                                                        англ.)</Label>
+                                                        англ.) *</Label>
                                                     <Input
                                                         id="storeName"
                                                         type="text"
@@ -1556,7 +1556,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                                                 <FormGroup>
 
                                                     <Label htmlFor="priceChange">Что делать, если цена
-                                                        изменится?</Label>
+                                                        изменится? *</Label>
                                                     <CustomSelectWrapper>
                                                         <CustomSelect
                                                             onClick={() => setIsPriceChangeOpen(!isPriceChangeOpen)}>

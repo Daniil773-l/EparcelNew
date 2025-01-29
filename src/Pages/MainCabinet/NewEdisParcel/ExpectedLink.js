@@ -258,7 +258,7 @@ const ProductForm = ({index, handleChange, handleDelete}) => {
             </StepTitle>
             <Form>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productType-${index}`}>Тип товара</Label>
+                    <Label htmlFor={`productType-${index}`}>Тип товара *</Label>
                     <CustomSelectWrapper>
                         <CustomSelect onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                             {selectedType}
@@ -293,7 +293,7 @@ const ProductForm = ({index, handleChange, handleDelete}) => {
 
                 </FormGroup>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productBrand-${index}`}>Бренд товара</Label>
+                    <Label htmlFor={`productBrand-${index}`}>Бренд товара *</Label>
                     <Input id={`productBrand-${index}`} type="text" placeholder="Введите бренд товара"
                            onChange={(e) => handleChange(e, index)}/>
 
@@ -304,7 +304,7 @@ const ProductForm = ({index, handleChange, handleDelete}) => {
                     </Tippy>
                 </FormGroup>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productColor-${index}`}>Цвет и размер</Label>
+                    <Label htmlFor={`productColor-${index}`}>Цвет и размер *</Label>
                     <Input id={`productColor-${index}`} type="text" placeholder="Введите цвет и размер"
                            onChange={(e) => handleChange(e, index)}/>
 
@@ -325,7 +325,7 @@ const ProductForm = ({index, handleChange, handleDelete}) => {
                     </Tippy>
                 </FormGroup>
                 <FormGroup style={{gridColumn: 'span 1'}}>
-                    <Label htmlFor={`productPrice-${index}`}>Стоимость товара (за шт) $</Label>
+                    <Label htmlFor={`productPrice-${index}`}>Стоимость товара (за шт) $ *</Label>
                     <Input id={`productPrice-${index}`} type="number" placeholder="Введите стоимость"
                            onChange={(e) => handleChange(e, index)}/>
                     <Tippy content="Пример: 14$" placement="top">
@@ -335,7 +335,7 @@ const ProductForm = ({index, handleChange, handleDelete}) => {
                     </Tippy>
                 </FormGroup>
                 <FormGroup style={{ gridColumn: 'span 1' }}>
-                    <Label htmlFor={`productName-${index}`}>Название товара (англ)</Label>
+                    <Label htmlFor={`productName-${index}`}>Название товара (англ) *</Label>
                     <Input
                         id={`productName-${index}`}
                         type="text"
@@ -353,7 +353,7 @@ const ProductForm = ({index, handleChange, handleDelete}) => {
                 </FormGroup>
 
                 <FormGroup style={{ gridColumn: 'span 2' }}>
-                    <Label htmlFor={`productLink-${index}`}>Ссылка на товар</Label>
+                    <Label htmlFor={`productLink-${index}`}>Ссылка на товар *</Label>
                     <Input
                         id={`productLink-${index}`}
                         type="text"
@@ -620,7 +620,7 @@ const ExpectedLink = () => {
                         <Container>
                             <Form>
                                 <FormGroup>
-                                    <Label htmlFor="parcelName">Название посылки</Label>
+                                    <Label htmlFor="parcelName">Название посылки *</Label>
                                     <Input
                                         id="parcelName"
                                         type="text"
@@ -636,7 +636,7 @@ const ExpectedLink = () => {
                                     </Tippy>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label htmlFor="warehouse">Выберите склад</Label>
+                                    <Label htmlFor="warehouse">Выберите склад *</Label>
                                     <CustomSelectWrapper>
                                         <CustomSelect onClick={() => setIsOpen(!isOpen)}>
                                             {selectedOption}
@@ -665,7 +665,7 @@ const ExpectedLink = () => {
                                     </CustomSelectWrapper>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label htmlFor="trackingNumber">Трек-номер</Label>
+                                    <Label htmlFor="trackingNumber">Трек-номер *</Label>
                                     <Input
                                         id="trackingNumber"
                                         type="text"
@@ -686,7 +686,7 @@ const ExpectedLink = () => {
                                     </Tippy>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label htmlFor="storeName">Название магазина (на англ.)</Label>
+                                    <Label htmlFor="storeName">Название магазина (на англ.) *</Label>
                                     <Input
                                         id="storeName"
                                         type="text"

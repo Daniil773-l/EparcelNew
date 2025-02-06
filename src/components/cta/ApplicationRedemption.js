@@ -7,7 +7,7 @@ import tw from "twin.macro";
 import FlyAfter from "../../images/img/flyafter.svg";
 import Receive from "../../images/img/receive.svg";
 
-const Container = tw.div`relative bg-[#ddf2e6] text-gray-900 max-w-screen-xl mx-auto rounded-lg`;
+const Container = tw.div`relative bg-[ #e2ffe2] text-gray-900 max-w-screen-xl mx-auto rounded-lg`;
 const Content = tw.div`flex flex-col md:flex-row items-center justify-between max-w-screen-xl mx-auto py-12 mb-20`; // Added bottom margin
 
 const IllustrationContainer = styled.div`

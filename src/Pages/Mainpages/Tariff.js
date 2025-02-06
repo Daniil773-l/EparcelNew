@@ -146,7 +146,7 @@ export default () => {
                         <PriceTable>
                             <tbody>
                             <PriceRow>
-                                <PriceCell>Вес посылки</PriceCell>
+                                <PriceCell>Вес  посылки</PriceCell>
                                 <PriceCell>Стоимость доставки</PriceCell>
                             </PriceRow>
                             <PriceRow>

@@ -54,21 +54,26 @@ const Paragraph = styled.p`
 const IllustrationContainer = styled.div`
     ${tw`flex justify-center lg:justify-end items-center`}
 
+    margin-top: 40px; /* Отступ сверху */
+    margin-bottom: 40px; /* Отступ снизу */
 
     img {
-      // Ограничиваем высоту
-
         object-fit: contain;
+
         @media (max-width: 768px) {
             max-width: 100%; /* Растягиваем на всю ширину экрана на планшетах */
+            margin-top: 30px; /* Уменьшаем отступ сверху на планшетах */
+            margin-bottom: 30px; /* Уменьшаем отступ снизу на планшетах */
         }
 
         @media (max-width: 480px) {
             max-width: 90%; /* Немного уменьшаем ширину на мобильных устройствах */
+            margin-top: 20px; /* Ещё меньше отступ сверху на мобильных */
+            margin-bottom: 20px; /* Ещё меньше отступ снизу */
         }
     }
-   
-  `;
+`;
+
 
 // Random Decorator Blobs (shapes that you see in background)
 

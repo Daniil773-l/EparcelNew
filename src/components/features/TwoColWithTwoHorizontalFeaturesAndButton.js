@@ -29,17 +29,18 @@ const TextColumn = styled(Column)((props) => [
         ? tw`md:mr-8 lg:mr-10 md:order-first order-2` // Если текст слева
         : tw`md:ml-8 lg:ml-10 md:order-last order-2`, // Если текст справа
     css`
-
+        
         @media (max-width: 768px) {
             order: 1; /* На мобильных устройствах идет первым */
+            margin-top: 10px; /* Немного ниже на мобильных */
         }
 
         @media (min-width: 768px) {
-            margin-top: 20px; /* На десктопах слегка опускаем */
+            margin-top: 30px; /* На десктопах чуть больше */
         }
 
         @media (min-width: 1024px) {
-            margin-top: 50px; /* На больших экранах еще больше отступ */
+            margin-top: 60px; /* На больших экранах увеличен отступ */
         }
     `
 ]);

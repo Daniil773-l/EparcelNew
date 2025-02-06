@@ -81,22 +81,29 @@ export default () => {
 
     const sliderSettings = {
         arrows: false,
-        slidesToShow: 3,
+        slidesToShow: 3, // Показываем 3 карточки на экранах >1280px
         responsive: [
             {
                 breakpoint: 1280,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3, // 3 карточки на больших экранах
                 },
             },
             {
-                breakpoint: 900,
+                breakpoint: 1024,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2, // 2 карточки на средних экранах
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1, // 1 карточка на мобильных
                 },
             },
         ],
     };
+
 
     const cards = [
         {

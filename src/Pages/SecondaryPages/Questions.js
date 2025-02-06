@@ -542,7 +542,7 @@ export default function App() {
     return (
         <AnimationRevealPage>
             <Header
-                heading="Идеи для покупок, советы и многое другое от Eparcel.kz"
+                heading="У вас остались вопросы?"
                 paragraph="Мы собрали для Вас самую интересную и свежую информацию,а также расскажем, как сэкономить время и деньги."
                 imageSrc=   {Photo}
                 roundedHeaderButton={false}

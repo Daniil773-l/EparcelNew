@@ -34,7 +34,7 @@ const Description = styled.p`
 
 export default ({
 
-                    heading = "У Вас остались вопросы? ",
+
                     faqs = [
                         {
                             question: "Is lunch provided free of cost?",
@@ -69,7 +69,7 @@ export default ({
         <Container>
             <ContentWithPaddingXl>
                 <Column>
-                    <Heading>{heading}</Heading>
+
                     <FAQSContainer>
                         {faqs.map((faq, index) => (
                             <FAQ

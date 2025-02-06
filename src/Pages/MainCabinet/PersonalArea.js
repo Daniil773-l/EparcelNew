@@ -30,7 +30,7 @@ const LeftColumn = styled.div`
 
 const Banner = styled.div`
     ${tw`w-full text-xl font-medium py-8 mb-16 text-center`}
-    background: #0ABD19;
+    background:   #DDF2E6;
 
     color: #000000;
     @media (max-width: 768px) {
@@ -55,7 +55,7 @@ const CardsContainer = styled.div`
 
 const NavigationBanner = styled.div`
     ${tw`w-full py-8 mb-12 mt-10 text-center`}
-    background: #EBFAE5;
+    background:  #DDF2E6;
     font-size: 1rem;
     color: #2D2D2D;
 

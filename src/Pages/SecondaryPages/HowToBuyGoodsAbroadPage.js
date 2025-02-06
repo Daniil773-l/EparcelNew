@@ -30,10 +30,10 @@ const GreenLink = styled.a`
 
 const HeadingDescription = styled.p`
     ${tw`text-lg font-medium`}
-    font-size: 22px;
+
     line-height: 32px;
     color: #2D2D2D;
-    font-family: 'Gilroy Medium', sans-serif;
+
     margin-top: 12px; /* Добавлено для выравнивания текста ниже */
 `;
 

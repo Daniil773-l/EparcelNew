@@ -401,6 +401,31 @@ const RecipientForm = () => {
         setIssueDate("");
 
     };
+// Функция преобразования формата даты (ГГГГ-ММ-ДД → ДД.ММ.ГГГГ)
+    const formatDate = (inputDate) => {
+        if (!inputDate) return ""; // Если пустая строка, не обрабатываем
+        const date = new Date(inputDate);
+        if (isNaN(date.getTime())) return ""; // Проверяем, является ли дата валидной
+
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0"); // Месяцы начинаются с 0
+        const year = date.getFullYear();
+
+        return `${day}.${month}.${year}`;
+    };
+// Функция для преобразования даты из YYYY-MM-DD в DD.MM.YYYY
+    const formatDateToDisplay = (inputDate) => {
+        if (!inputDate) return "";
+        const [year, month, day] = inputDate.split("-");
+        return `${day}.${month}.${year}`;
+    };
+
+// Функция для преобразования даты обратно в формат YYYY-MM-DD (для <input type="date">)
+    const formatDateToInput = (inputDate) => {
+        if (!inputDate.includes(".")) return inputDate; // Если дата уже в формате YYYY-MM-DD, не менять
+        const [day, month, year] = inputDate.split(".");
+        return `${year}-${month}-${day}`;
+    };
 
     return (
 
@@ -565,10 +590,12 @@ const RecipientForm = () => {
                                     <Input
                                         id="issueDate"
                                         type="date"
-                                        placeholder="Пример: info@eparcel.ru"
-                                        value={issueDate}
-                                        onChange={(e) => setIssueDate(e.target.value)}
+                                        value={formatDateToInput(issueDate)} // Дата в формате YYYY-MM-DD
+                                        onChange={(e) => setIssueDate(formatDateToDisplay(e.target.value))} // Конвертируем в DD.MM.YYYY
                                     />
+
+
+
                                 </FormGroup>
                             </Form>
                         </Container>

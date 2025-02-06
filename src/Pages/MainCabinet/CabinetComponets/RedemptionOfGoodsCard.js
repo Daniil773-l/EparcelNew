@@ -9,7 +9,7 @@ import {collection, doc, getDoc, getDocs, getFirestore, query, where} from "fire
 const CardContainer = styled.div`
     ${tw`w-full max-w-2xl mx-auto my-8`}
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 2px solid #979FFF;
+    border: 4px solid    #a0c1aa;
     min-height: 300px;
     border-radius: 20px;
     @media (max-width: 768px) {
@@ -31,7 +31,7 @@ const CardHeaderLink = styled.a`
     transform: rotate(180deg);
     text-align: center;
     padding-right: 20px;
-    border-left: 2px solid #979FFF;
+    border-left: 4px solid #a0c1aa;
     padding-left: 20px;
     cursor: pointer;
     display: flex;
@@ -39,13 +39,13 @@ const CardHeaderLink = styled.a`
     justify-content: center;
     height: auto;
     min-height: 34%;
-    
+
     @media (max-width: 768px) {
         writing-mode: horizontal-tb;
         transform: rotate(0);
         padding: 10px;
         border-left: none;
-        border-bottom: 2px solid #979FFF;
+        border-bottom: 3px solid  #a0c1aa;
     }
 `;
 

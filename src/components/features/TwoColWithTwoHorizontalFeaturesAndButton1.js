@@ -1,6 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { SectionHeading, Subheading as SubheadingBase } from "../misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "../misc/Buttons.js";
 import TeamIllustrationSrc from "../../images/img/team-illustration-2.svg";
@@ -19,11 +19,14 @@ const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative z-10 mt-[-50px]`
 const TextColumn = styled(Column)(({ textOnLeft }) => [
     tw`md:w-6/12 mt-0`, // Убираем верхний отступ
     textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`,
+    css
     `
+        margin-top: -200px;
     @media (max-width: 768px) {
       margin-top: 0; /* Убираем отступ сверху на мобильных устройствах */
     }
   `,
+
 ]);
 
 
@@ -46,7 +49,7 @@ const Subheading = styled(SubheadingBase)`
 const Heading = tw(
     SectionHeading
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
-const Description = tw.p`mt-8 text-center md:text-left text-base xl:text-lg my-2 lg:my-4 text-gray-700`;
+const Description = tw.p`mt-8 text-center md:text-left text-base xl:text-xl my-2 lg:my-4 text-gray-700`;
 
 const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-col max-w-xs lg:max-w-none w-full`;
 

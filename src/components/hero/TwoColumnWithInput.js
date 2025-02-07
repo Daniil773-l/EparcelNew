@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import tw from "twin.macro";
 
 import Header from "../headers/light.js";
-import DesignIllustration from "../../images/img/kz1.png";
+import DesignIllustration from "../../images/img/kz-2.png";
 import DesignIllustration1 from "../../images/img/cards2.png";
 import DesignIllustration2 from "../../images/img/cards1.png";
 import { useNavigate } from "react-router-dom";

@@ -46,7 +46,7 @@ const DeliveryHeading = styled.h2`
 
 
 const Paragraph = styled.p`
-    ${tw` mt-4 text-base xl:text-lg my-2 lg:my-4 text-gray-700`}
+    ${tw` mt-4 text-base xl:text-xl my-2 lg:my-4 text-gray-700`}
     margin-bottom: 10px; /* Added margin bottom */
     line-height: 1.8; /* Adjusted line height for more space between lines */
 `;
@@ -89,7 +89,7 @@ const CardHeading = styled.h4`
 `;
 
 const CardParagraph = styled.p`
-    ${tw`text-lg xl:text-lg my-2 lg:my-4     text-center`}
+    ${tw`text-lg xl:text-xl my-2 lg:my-4     text-center`}
 `;
 
 const EmailSectionContainer = styled.div`

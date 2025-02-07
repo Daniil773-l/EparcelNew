@@ -1,70 +1,73 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import Select from "react-select";
-
+import axios from "axios";
 import styled, { css, keyframes } from "styled-components";
-const cities = [
-    { value: "Almaty", label: "Алматы" },
-    { value: "Astana", label: "Астана" },
-    { value: "Shymkent", label: "Шымкент" },
-    { value: "Karaganda", label: "Караганда" },
-    { value: "Aktobe", label: "Актобе" },
-    { value: "Pavlodar", label: "Павлодар" },
-    { value: "Semey", label: "Семей" },
-    { value: "Atyrau", label: "Атырау" },
-    { value: "Kostanay", label: "Костанай" },
-    { value: "Taraz", label: "Тараз" },
-    { value: "Oral", label: "Уральск" },
-    { value: "Kyzylorda", label: "Кызылорда" },
-    { value: "Aktau", label: "Актау" },
-    { value: "Taldykorgan", label: "Талдыкорган" },
-    { value: "Zhezkazgan", label: "Жезказган" },
-    { value: "Petropavlovsk", label: "Петропавловск" },
-    { value: "Turkestan", label: "Туркестан" },
-    { value: "Ekibastuz", label: "Экибастуз" },
-    { value: "Rudny", label: "Рудный" },
-    { value: "Temirtau", label: "Темиртау" },
-    { value: "Kokshetau", label: "Кокшетау" },
-    { value: "Stepnogorsk", label: "Степногорск" },
-    { value: "Baykonur", label: "Байконур" },
-    { value: "Saryagash", label: "Сарыагаш" },
-    { value: "Zharkent", label: "Жаркент" },
-    { value: "Ayagoz", label: "Аягоз" },
-    { value: "Balkhash", label: "Балхаш" },
-    { value: "Zhanaozen", label: "Жанаозен" },
-    { value: "Kapchagay", label: "Капшагай" },
-    { value: "Satpayev", label: "Сатпаев" },
-    { value: "Shakhtinsk", label: "Шахтинск" },
-    { value: "Abay", label: "Абай" },
-    { value: "Kentau", label: "Кентау" },
-    { value: "Ridder", label: "Риддер" },
-    { value: "Zyryanovsk", label: "Зыряновск" },
-    { value: "Lisakovsk", label: "Лисаковск" },
-    { value: "Esik", label: "Есик" },
-    { value: "Shu", label: "Шу" },
-    { value: "Talgar", label: "Талгар" },
-    { value: "Tekeli", label: "Текели" },
-    { value: "Zharkent", label: "Жаркент" },
-    { value: "Aksay", label: "Аксай" },
-    { value: "Kurchatov", label: "Курчатов" },
-    { value: "Shardara", label: "Шардара" },
-    { value: "Zhetysay", label: "Жетысай" },
-    { value: "Sarkand", label: "Сарканд" },
-    { value: "Lenger", label: "Ленгер" },
-    { value: "Usharal", label: "Ушарал" },
-    { value: "Zaysan", label: "Зайсан" },
-    { value: "Fort-Shevchenko", label: "Форт-Шевченко" },
-    { value: "Aralsk", label: "Аральск" },
-    { value: "Zhanatas", label: "Жанатас" },
-    { value: "Karazhal", label: "Каражал" },
-    { value: "Priozersk", label: "Приозёрск" },
-    { value: "Kandyagash", label: "Кандыагаш" },
-    { value: "Atbasar", label: "Атбасар" },
-    { value: "Bulaevo", label: "Булаево" },
-    { value: "Stepnyak", label: "Степняк" },
-    { value: "Zhualy", label: "Жуалы" },
-    { value: "Derzhavinsk", label: "Державинск" }
 
+const API_URL = "https://api.exchangerate-api.com/v4/latest/USD";
+const cities = [
+    { value: "Almaty", label: "Алматы" ,zone:1 },
+    { value: "Astana", label: "Астана",zone: 2 },
+    {value: "Balkhash",label: "Балкаш", zone: 2 },
+    { value: "Shymkent", label: "Шымкент" ,zone: 2 },
+    { value: "Karaganda", label: "Караганда", zone: 2 },
+    {value: "Kosshy",label: "Косшы", zone: 2 },
+    { value: "Aktobe", label: "Актобе", zone: 3 },
+    { value: "Pavlodar", label: "Павлодар", zone: 3 },
+    { value: "Semey", label: "Семей" ,zone: 3},
+    {value: "Ust-Kamenogorsk",label: "Усть-Каменогорск", zone: 3},
+    {value: "Shemonaikha",label: "Шемонаиха", zone: 3 },
+    { value: "Atyrau", label: "Атырау", zone: 3 },
+    { value: "Kostanay", label: "Костанай" ,zone: 2 },
+    { value: "Taraz", label: "Тараз", zone: 2 },
+    { value: "Oral", label: "Уральск", zone: 3 },
+    { value: "Kyzylorda", label: "Кызылорда", zone: 3 },
+    { value: "Aktau", label: "Актау", zone: 3 },
+    { value: "Taldykorgan", label: "Талдыкорган", zone:1 },
+    { value: "Zhezkazgan", label: "Жезказган", zone: 2 },
+    { value: "Zhitikara", label: "Житикара", zone: 2 },
+    { value: "Petropavlovsk", label: "Петропавловск", zone: 2 },
+    { value: "Turkestan", label: "Туркестан", zone:2 },
+    { value: "Ekibastuz", label: "Экибастуз", zone:3 },
+    { value: "Rudny", label: "Рудный", zone:2 },
+    { value: "Temirtau", label: "Темиртау",zone: 2},
+    { value: "Kokshetau", label: "Кокшетау" ,zone:2},
+    { value: "Stepnogorsk", label: "Степногорск", zone:2 },
+    {value: "Tayynsha",label: "Тайынша",zone: 2},
+    {value:"Tobyl" ,label: "Тобыл", zone:2 },
+    {value:"Altai" ,label: "Алтай", zone:3 },
+    {value: "Shchuchinsk", label: "Щучинск", zone:2 },
+    { value: "Saryagash", label: "Сарыагаш" ,zone:2},
+    { value: "Zhanaozen", label: "Жанаозен", zone:3 },
+    { value: "Satpayev", label: "Сатпаев",zone: 2 },
+    { value: "Shakhtinsk", label: "Шахтинск", zone:2 },
+    { value: "Abay", label: "Абай" ,zone:1},
+    {value: "Besagash",label: "Бесагаш",zone:1},
+    {value: "Boraldai",label: "Боралдай",zone:1},
+    {value:"Kaskelen",label: "Каскелен", zone:1},
+    {value: "Otegen-Batyr",label: "Отеген-Батыр", zone:1},
+    { value: "Ridder", label: "Риддер",zone: 3 },
+    { value: "Zyryanovsk", label: "Зыряновск" },
+    { value: "Lisakovsk", label: "Лисаковск" , zone: 2},
+    {value: "Novoishimskoe",label: "Новоишимское", zone:2 },
+    { value: "Esik", label: "Есик" ,zone:1},
+    {value: "Konaev",label: "Конаев", zone:1},
+    {value: "Korday",label: "Кордай", zone:1},
+    { value: "Talgar", label: "Талгар", zone:1 },
+    {value: "Tuzdybastau",label: "Туздыбастау", zone:1},
+    { value: "Aksay", label: "Аксай",zone: 3 },
+    { value: "Lenger", label: "Ленгер", zone: 2 },
+    { value: "Priozersk", label: "Приозёрск", zone:2 },
+    {value: "Saran",label: "Сарань",zone: 2},
+    { value: "Kandyagash", label: "Кандыагаш" },
+    { value: "Atbasar", label: "Атбасар", zone:2 },
 ];
+
+const tariffs = {
+    1: [10, 14, 21, 28, 35, 42, 14], // Тарифы для зоны 1
+    2: [11, 15, 22, 29, 36, 43, 15], // Тарифы для зоны 2
+    3: [12, 16, 23, 30, 37, 44, 16], // Тарифы для зоны 3
+};
+
 const customStyles = {
     control: (base, state) => ({
         ...base,
@@ -293,40 +296,52 @@ const AnimatedWrapper = styled.div`
             `}
 `;
 function Calculator() {
-    const [country, setCountry] = useState("USA");
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState(null);
     const [weight, setWeight] = useState("");
     const [length, setLength] = useState("");
     const [width, setWidth] = useState("");
     const [height, setHeight] = useState("");
-    const [currency, setCurrency] = useState("USD");
-    const [deliveryCost, setDeliveryCost] = useState(0);
     const [showDimensions, setShowDimensions] = useState(false);
-    const exchangeRates = { USD: 1.0, EUR: 1.18, TRY: 0.054 }; // Example rates
-    const [isVisible, setIsVisible] = useState(true);
+    const [deliveryCost, setDeliveryCost] = useState(null);
+    const [currency, setCurrency] = useState("USD");
+    const [exchangeRates, setExchangeRates] = useState({});
+    const [country, setCountry] = useState("USA");
+    // Получаем курс валют при загрузке страницы
+    useEffect(() => {
+        axios
+            .get(API_URL)
+            .then((response) => setExchangeRates(response.data.rates))
+            .catch((error) => console.error("Ошибка загрузки курса валют:", error));
+    }, []);
+
     const calculateDeliveryCost = (event) => {
         event.preventDefault();
-        if (!length || !width || !height || !weight) {
-            alert("Please fill in all fields with numbers.");
+        if (!city || !weight) {
+            alert("Выберите город и введите вес!");
             return;
         }
 
-        const lengthNum = parseFloat(length);
-        const widthNum = parseFloat(width);
-        const heightNum = parseFloat(height);
+        const zone = city.zone;
         const weightNum = parseFloat(weight);
 
-        const totalVolume = lengthNum * widthNum * heightNum;
-        const volumeWeight = totalVolume / 5000;
-        const adjustedWeight = Math.max(weightNum, volumeWeight);
+        if (weightNum <= 0) {
+            alert("Введите корректный вес!");
+            return;
+        }
 
-        const ratePerKg = country === "USA" ? 5 : 7;
-        let cost = adjustedWeight * ratePerKg;
+        let cost;
+        if (weightNum <= 0.5) cost = tariffs[zone][0];
+        else if (weightNum <= 1) cost = tariffs[zone][1];
+        else if (weightNum <= 1.5) cost = tariffs[zone][2];
+        else if (weightNum <= 2) cost = tariffs[zone][3];
+        else if (weightNum <= 2.5) cost = tariffs[zone][4];
+        else if (weightNum <= 3) cost = tariffs[zone][5];
+        else cost = tariffs[zone][6] * (Math.ceil(weightNum) - 3) + tariffs[zone][5];
 
-        const rate = exchangeRates[currency];
-        cost *= rate;
+        const rate = exchangeRates[currency] || 1; // Проверяем наличие курса
+        const convertedCost = cost / rate;
 
-        setDeliveryCost(cost);
+        setDeliveryCost(isNaN(convertedCost) ? 0 : convertedCost);
     };
 
 
@@ -354,6 +369,7 @@ function Calculator() {
                     type="checkbox"
                     checked={showDimensions}
                     onChange={() => setShowDimensions(!showDimensions)}
+                    disabled={country === "Turkey"} // Блокируем переключение при выборе Турции
                 />
             </ToggleContainer>
             <Form onSubmit={calculateDeliveryCost}>
@@ -362,17 +378,19 @@ function Calculator() {
                         options={cities}
                         value={city}
                         onChange={(selectedOption) => setCity(selectedOption)}
-                        placeholder="Выберите город"
+                        placeholder={country === "Turkey" ? "Скоро" : "Выберите город"}
                         isClearable
+                        isDisabled={country === "Turkey"} // Блокируем выбор
                         noOptionsMessage={() => "Город не найден"}
                         styles={customStyles} // Применение кастомных стилей
                     />
 
                     <Input
-                        type="number"
-                        placeholder="Вес (кг)"
-                        value={weight}
+                        type="text"
+                        placeholder={country === "Turkey" ? "Скоро" : "Вес (кг)"}
+                        value={country === "Turkey" ? "" : weight}
                         onChange={(e) => setWeight(e.target.value)}
+                        disabled={country === "Turkey"} // Блокируем ввод
                     />
                 </Row>
                 {showDimensions && (
@@ -399,8 +417,7 @@ function Calculator() {
                 )}
                 <Row>
                     <select
-                        value={currency}
-                        onChange={(e) => setCurrency(e.target.value)}
+                        value={currency} onChange={(e) => setCurrency(e.target.value)}
                         style={{
                             flex: 1,
                             padding: "10px",
@@ -415,9 +432,18 @@ function Calculator() {
                 </Row>
                 <Button type="submit">Рассчитать</Button>
             </Form>
-            <Result>
-                Стоимость доставки: <strong>{deliveryCost.toFixed(2)} {currency}</strong>
-            </Result>
+            {deliveryCost !== null && country !== "Turkey" && (
+                <Result>
+                    Стоимость доставки: <strong>{Number(deliveryCost).toFixed(2)} {currency}</strong>
+                </Result>
+            )}
+
+            {country === "Turkey" && (
+                <Result>
+                    <strong>Скоро!</strong>
+                </Result>
+            )}
+
         </Wrapper>
 
     );

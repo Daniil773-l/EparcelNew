@@ -10,6 +10,7 @@ import Bacround_tarif2 from "../../images/img/Bacround-tarrif-2.svg";
 import DutyCalculator from "./componets/customsDutyCalculator";
 import MainFeature1 from "../../components/features/TwoColWithTwoHorizontalFeaturesAndButton1.js";
 import Modal from "react-modal";
+import { motion, AnimatePresence } from "framer-motion";
 export default () => {
 
 
@@ -73,7 +74,7 @@ export default () => {
 
     const BlockTitle = styled.h3`
         ${tw`text-3xl font-bold mb-4`}
-        color: #1BA557;
+
         display: flex;
         align-items: center;
         justify-content: center;
@@ -88,9 +89,11 @@ export default () => {
     `;
 
     const BlockTitleText = styled.span`
-        color: black;
+        ${tw`text-2xl sm:text-3xl font-black tracking-wide text-center`}
+
         margin-right: 5px;
     `;
+
 
     const PriceTable = styled.table`
         ${tw`w-full text-left`}
@@ -120,8 +123,7 @@ export default () => {
         const [modalIsOpen, setModalIsOpen] = useState(false);
 
         return (
-            <div>
-
+            <>
                 <button
                     onClick={() => setModalIsOpen(true)}
                     style={{
@@ -137,67 +139,75 @@ export default () => {
                     Посмотреть
                 </button>
 
-                <Modal
-                    isOpen={modalIsOpen}
-                    onRequestClose={() => setModalIsOpen(false)}
-                    style={{
-                        overlay: {
-                            backgroundColor: "rgba(0, 0, 0, 0.5)", // Затемнение фона
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            position: "fixed",
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                        },
-                        content: {
-                            width: "340px", // Размер окна
-                            maxHeight: "350px",
-                            overflowY: "auto",
-                            backgroundColor: "#fff",
-                            borderRadius: "12px",
-                            padding: "15px",
-                            textAlign: "center",
-                            boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.2)",
-                            border: "none",
-                            margin: "auto", // Центрирование
-                            position: "relative", // Убираем абсолютное позиционирование
-                            transition: "opacity 0.3s ease, transform 0.3s ease",
-                            opacity: modalIsOpen ? "1" : "0",
-                            transform: modalIsOpen ? "scale(1)" : "scale(0.95)",
-                        },
-                    }}
-                >
-                    <h2 style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "8px" }}>
-                        Города Тарифной Зоны {zoneNumber}
-                    </h2>
-                    <p style={{ fontSize: "14px", lineHeight: "1.4", color: "#333", marginBottom: "12px" }}>
-                        {cities}
-                    </p>
-                    <button
-                        onClick={() => setModalIsOpen(false)}
-                        style={{
-                            marginTop: "10px",
-                            padding: "8px 16px",
-                            backgroundColor: "#e74c3c",
-                            color: "white",
-                            fontSize: "14px",
-                            border: "none",
-                            borderRadius: "6px",
-                            cursor: "pointer",
-                            transition: "background 0.3s",
-                        }}
-                        onMouseEnter={(e) => (e.target.style.backgroundColor = "#c0392b")}
-                        onMouseLeave={(e) => (e.target.style.backgroundColor = "#e74c3c")}
-                    >
-                        Закрыть
-                    </button>
-                </Modal>
+                <AnimatePresence>
+                    {modalIsOpen && (
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={() => setModalIsOpen(false)}
+                            style={{
+                                overlay: {
+                                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                },
+                                content: {
+                                    border: "none",
+                                    background: "transparent",
+                                    overflow: "hidden",
+                                    padding: 0,
+                                    inset: "unset",
+                                },
+                            }}
+                            ariaHideApp={false}
+                        >
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                style={{
+                                    width: "340px",
+                                    maxHeight: "350px",
+                                    backgroundColor: "#fff",
+                                    borderRadius: "12px",
+                                    padding: "15px",
+                                    textAlign: "center",
+                                    boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.2)",
+                                    margin: "auto",
+                                }}
+                            >
+                                <h2 style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "8px" }}>
+                                    Города Тарифной Зоны {zoneNumber}
+                                </h2>
+                                <p style={{ fontSize: "14px", lineHeight: "1.4", color: "#333", marginBottom: "12px" }}>
+                                    {cities}
+                                </p>
+                                <button
+                                    onClick={() => setModalIsOpen(false)}
+                                    style={{
+                                        marginTop: "10px",
+                                        padding: "8px 16px",
+                                        backgroundColor: "#e74c3c",
+                                        color: "white",
+                                        fontSize: "14px",
+                                        border: "none",
+                                        borderRadius: "6px",
+                                        cursor: "pointer",
+                                        transition: "background 0.3s",
+                                    }}
+                                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#c0392b")}
+                                    onMouseLeave={(e) => (e.target.style.backgroundColor = "#e74c3c")}
+                                >
+                                    Закрыть
+                                </button>
+                            </motion.div>
+                        </Modal>
+                    )}
+                </AnimatePresence>
+            </>
 
 
-            </div>
         );
     };
 

@@ -81,28 +81,24 @@ export default () => {
 
     const sliderSettings = {
         arrows: false,
-        slidesToShow: 3, // Показываем 3 карточки на экранах >1280px
+        slidesToShow: 3, // Всегда 3 карточки
+        infinite:false, // Зацикленный слайдер
         responsive: [
             {
-                breakpoint: 1280,
+                breakpoint: 1024, // Средние экраны (например, планшеты)
                 settings: {
-                    slidesToShow: 3, // 3 карточки на больших экранах
+                    slidesToShow: 3, // Все равно 3 карточки
                 },
             },
             {
-                breakpoint: 1024,
+                breakpoint: 768, // Маленькие экраны (например, телефоны)
                 settings: {
-                    slidesToShow: 2, // 2 карточки на средних экранах
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1, // 1 карточка на мобильных
+                    slidesToShow: 3, // Все равно 3 карточки
                 },
             },
         ],
     };
+
 
 
     const cards = [

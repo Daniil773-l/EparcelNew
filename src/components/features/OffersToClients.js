@@ -74,7 +74,7 @@ export default ({
                             Designed & Developed by <span tw="text-primary-500">Professionals.</span>
                         </>
                     ),
-                    description = "Eparcel - Ваш надежный мейлфорвард — с собственными методами доставки и удобными автоматизированными складами.",
+                    description = "Eparcel - Выыаш надежный мейлфорвард — с собственными методами доставки и удобными автоматизированными складами.",
                     description1 = "Доставка товаров из-за границы — наша основная деятельность, сотни тысяч клиентов из Казахстана получают свои покупки благодаря нам.",
                     primaryButtonText = "Learn More",
                     primaryButtonUrl = "https://timerse.com",

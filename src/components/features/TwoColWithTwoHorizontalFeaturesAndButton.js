@@ -8,13 +8,14 @@ import {ReactComponent as MoneyIcon} from "feather-icons/dist/icons/dollar-sign.
 
 
 const Container = tw.div`relative`;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-8 md:py-10 items-center`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto items-center mt-0 pt-0`;
+
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = styled(Column)`
     ${tw`md:w-6/12 flex-shrink-0 relative mt-8`}
-
+ 
     order: 1; /* На всех устройствах по умолчанию первый */
-
+margin-top: 155px;
     @media (min-width: 768px) {
         order: 1; /* На десктопах также первый */
     }
@@ -53,8 +54,8 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left `;
 const Heading = tw(
     SectionHeading
 )`mt-6 font-black  text-3xl  sm:text-4xl lg:text-5xl text-center md:text-left leading-tight md:leading-normal`;
+const Description = tw.p`text-left text-base xl:text-lg my-2 lg:my-4 text-gray-700 leading-relaxed `;
 
-const Description = tw.p`text-center md:text-left text-sm md:text-base lg:text-xl font-medium leading-relaxed text-secondary-100`;
 
 const FeatureHeadingContainer = tw.div`
   flex items-center mt-2 mb-2
@@ -79,7 +80,7 @@ const FeatureContent = tw.div`flex flex-col`;
 
 const FeatureHeading = tw.div`font-extrabold text-2xl  mb-2`;
 
-const FeatureDescription = tw.div`text-base font-medium leading-relaxed`;
+const FeatureDescription = tw.div`text-base xl:text-lg  text-gray-700 leading-relaxed`;
 
 
 
@@ -141,7 +142,7 @@ export default ({
                             методами доставки и удобными автоматизированными складами.
                         </Description>
                         <Description>
-                            <span style={{color: "#0ABD19"}}>Доставка</span> товаров из-за границы — наша основная
+                            <span style={{color: "#0ABD19"}}>Доставка</span> - товаров из-за границы — наша основная
                             деятельность, сотни тысяч клиентов из Казахстана получают свои покупки благодаря нам.
                         </Description>
                     </TextContent>

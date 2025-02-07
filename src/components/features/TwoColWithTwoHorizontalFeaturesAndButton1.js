@@ -21,7 +21,7 @@ const TextColumn = styled(Column)(({ textOnLeft }) => [
     textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`,
     css
     `
-        margin-top: -200px;
+        margin-top: -140px;
     @media (max-width: 768px) {
       margin-top: 0; /* Убираем отступ сверху на мобильных устройствах */
     }

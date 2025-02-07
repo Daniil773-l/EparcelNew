@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import tw from "twin.macro";
-import styled from "styled-components";
+import styled ,{css }from "styled-components";
 import {SectionHeading, Subheading as SubheadingBase} from "../../../components/misc/Headings.js";
-
+import axios from "axios";
+const API_URL = "https://api.exchangerate-api.com/v4/latest/EUR"; // API для курса валют (основа - EUR)
 
 const Container = tw.div`relative`; // Убрали отступы сверху и снизу полностью
 
@@ -13,8 +14,9 @@ const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const TextColumn = styled(Column)(({ textOnLeft }) => [
     tw`md:w-6/12`,
     textOnLeft ? tw`md:mr-8 lg:mr-10 md:order-first` : tw`md:ml-8 lg:ml-10 md:order-last`,
-    `
-    margin-top: -20px; /* Поднимаем текст вверх */
+    css`
+        
+    margin-top: -75px; /* Поднимаем текст вверх */
 
     @media (max-width: 768px) {
       margin-top: 0; /* Убираем отрицательный отступ на мобильных устройствах */
@@ -28,7 +30,7 @@ const Heading = tw(
     SectionHeading
 )`font-black text-left text-3xl sm:text-3xl lg:text-4xl text-center md:text-left leading-tight mt-0`; // Убрали отступ сверху для заголовка
 
-const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-2xl font-medium leading-relaxed text-secondary-100`; // Сократили отступ сверху для описания
+const Description = tw.p`mt-4 text-center md:text-left text-base xl:text-xl my-2 lg:my-4 text-gray-700`; // Сократили отступ сверху для описания
 
 const CalculatorColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative mt-8`;
 
@@ -59,12 +61,9 @@ const Wrapper = styled.div`
   font-family: Arial, sans-serif;
 `;
 
-const Title = styled.h2`
-  text-align: center;
-  color: #333;
-  margin-bottom: 20px;
-  font-size: 24px;
-`;
+const Title = tw(
+    SectionHeading
+)`font-black text-3xl sm:text-2xl lg:text-2xl text-center leading-tight`;
 
 const SubTitle = styled.p`
   text-align: center;
@@ -143,25 +142,68 @@ const CustomsDutyCalculator = ({
         </>
     ), textOnLeft = true
                                }) => {
-    const [itemPrice, setItemPrice] = useState('');
-    const [itemWeight, setItemWeight] = useState('');
-    const [currency, setCurrency] = useState('EUR'); // Default currency
-    const [customsDuty, setCustomsDuty] = useState(0);
-    const exchangeRates = {USD: 1.0, EUR: 1.18, TRY: 0.054}; // Example rates
+    const [itemPrice, setItemPrice] = useState("");
+    const [currency, setCurrency] = useState("EUR");
+    const [customsDuty, setCustomsDuty] = useState(null);
+    const [exchangeRates, setExchangeRates] = useState({});
+
+    useEffect(() => {
+        axios
+            .get(API_URL)
+            .then((response) => {
+                setExchangeRates(response.data.rates);
+            })
+            .catch((error) => {
+                console.error("Ошибка загрузки курса валют:", error);
+                setExchangeRates({ USD: 1, EUR: 1, TRY: 30 }); // Фиксированный курс для TRY, если API не доступно
+            });
+    }, []);
 
     const handleCalculate = (event) => {
         event.preventDefault();
-        const rate = exchangeRates[currency];
-        const duty = (parseFloat(itemPrice) * parseFloat(itemWeight)) * rate;
-        setCustomsDuty(duty);
+        const priceUSD = parseFloat(itemPrice.replace(",", ".")); // Цена вводится в долларах
+
+        if (isNaN(priceUSD) || priceUSD <= 0) {
+            alert("Введите корректную сумму!");
+            return;
+        }
+
+        // Получаем курс обмена USD → EUR
+        const usdToEurRate = exchangeRates["USD"] ? 1 / exchangeRates["USD"] : 1;
+
+        // Конвертируем цену товара в евро
+        const priceEUR = priceUSD * usdToEurRate;
+
+        console.log("Введенная цена в USD:", priceUSD);
+        console.log("Курс USD → EUR:", usdToEurRate);
+        console.log("Цена в EUR после конвертации:", priceEUR);
+
+        let dutyEUR = 0;
+        if (priceEUR > 200) {
+            const excessAmount = priceEUR - 200;
+            dutyEUR = excessAmount * 0.15; // 15% на сумму выше 200€
+        }
+
+        console.log("Таможенная пошлина в EUR:", dutyEUR);
+
+        // Конвертируем пошлину в выбранную валюту
+        const rate = exchangeRates[currency] || 1;
+        const convertedDuty = dutyEUR * rate;
+
+        console.log("Курс обмена в выбранную валюту:", rate);
+        console.log("Рассчитанная пошлина в", currency, ":", convertedDuty);
+
+        setCustomsDuty(convertedDuty);
     };
+
+
 
     return (
         <Container>
             <TwoColumn>
                 <CalculatorColumn>
                     <Wrapper>
-                        <Title>Калькулятор доставки</Title>
+                        <Title>Калькулятор таможенной пошлины</Title>
                         <SubTitle>Укажите габариты посылки</SubTitle>
                         <form onSubmit={handleCalculate}>
                             <InputGroup>
@@ -171,22 +213,16 @@ const CustomsDutyCalculator = ({
                                     <option value="TRY">Турецкая лира (TRY)</option>
                                 </Select>
                                 <Input
-                                    type="text"
-                                    placeholder="Цена товара"
+                                    type="number"
+                                    placeholder="Цена товара (€)"
                                     value={itemPrice}
                                     onChange={(e) => setItemPrice(e.target.value)}
-                                />
-                                <Input
-                                    type="number"
-                                    placeholder="Вес посылки"
-                                    value={itemWeight}
-                                    onChange={(e) => setItemWeight(e.target.value)}
                                 />
                             </InputGroup>
                             <Button type="submit">Рассчитать</Button>
                         </form>
                         <Result>
-                            Стоимость доставки: <strong>{customsDuty.toFixed(2)} {currency}</strong>
+                            Стоимость доставки: <strong>{customsDuty !== null ? customsDuty.toFixed(2) : "0.00"} {currency}</strong>
                         </Result>
                     </Wrapper>
                 </CalculatorColumn>
@@ -195,12 +231,13 @@ const CustomsDutyCalculator = ({
                         <Subheading>{subheading}</Subheading>
                         <Heading>{heading}</Heading>
                         <Description>
-                            <span style={{color: "#0ABD19"}}>Если стоимость товаров</span>более €200, оплачивается таможенная пошлина в размере 15% на то, что свыше 200. Лимит 31 кг. на одного клиента, включая объемный вес (габариты). Превышение – начисляется €2 за каждый дополнительный кг.
+                            <span style={{ color: "#0ABD19" }}>Если стоимость товаров </span>более €200, оплачивается
+                            таможенная пошлина в размере 15% на то, что свыше 200. Лимит 31 кг. на одного клиента, включая объемный
+                            вес (габариты). Превышение – начисляется €2 за каждый дополнительный кг.
                         </Description>
                     </TextContent>
                 </TextColumn>
             </TwoColumn>
-
         </Container>
     );
 };

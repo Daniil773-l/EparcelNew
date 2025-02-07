@@ -1,8 +1,9 @@
 import React, { useState ,useEffect} from "react";
 import Select from "react-select";
 import axios from "axios";
+import tw from "twin.macro";
 import styled, { css, keyframes } from "styled-components";
-
+import { SectionHeading, Subheading as SubheadingBase } from "../../../components/misc/Headings.js";
 const API_URL = "https://api.exchangerate-api.com/v4/latest/USD";
 const cities = [
     { value: "Almaty", label: "Алматы" ,zone:1 },
@@ -147,12 +148,10 @@ const Wrapper = styled.div`
     position: relative;
 `;
 
-const Title = styled.h2`
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-`;
+const Title = tw(
+    SectionHeading
+)`font-black text-3xl sm:text-2xl lg:text-2xl text-center leading-tight`;
+
 
 const CountrySwitcher = styled.div`
     display: flex;

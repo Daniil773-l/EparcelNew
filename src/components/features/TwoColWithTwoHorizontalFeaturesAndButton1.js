@@ -17,11 +17,11 @@ const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative z-10 mt-[-50px]`;
 
 const TextColumn = styled(Column)(({ textOnLeft }) => [
-    tw`md:w-6/12 mt-16 md:mt-0`,
+    tw`md:w-6/12 mt-0`, // Убираем верхний отступ
     textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`,
     `
     @media (max-width: 768px) {
-      margin-top: 8px; /* Уменьшаем отступ сверху на мобильных устройствах */
+      margin-top: 0; /* Убираем отступ сверху на мобильных устройствах */
     }
   `,
 ]);
@@ -34,7 +34,9 @@ const Image = styled.img(props => [
 ]);
 
 
-const TextContent = tw.div`lg:py-8 text-center md:text-left`;
+
+const TextContent = tw.div`lg:py-4 text-center md:text-left`; // Уменьшаем отступ сверху
+
 
 const Subheading = styled(SubheadingBase)`
     ${tw`text-center md:text-left`}
@@ -44,7 +46,7 @@ const Subheading = styled(SubheadingBase)`
 const Heading = tw(
     SectionHeading
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
-const Description = tw.p`mt-8 text-center md:text-left text-sm md:text-base lg:text-2xl font-medium leading-relaxed text-secondary-100`;
+const Description = tw.p`mt-8 text-center md:text-left text-base xl:text-lg my-2 lg:my-4 text-gray-700`;
 
 const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-col max-w-xs lg:max-w-none w-full`;
 
@@ -125,11 +127,11 @@ export default ({
                         <Subheading>{subheading}</Subheading>
                         <Heading>{heading}</Heading>
                         <Description>
-                            <span style={{ color: "#0ABD19" }}>Заказывайте</span>товары на наш склад, при необходимости мы переупакуем  посылки для снижения объемного веса и отправим Вам надежно упакованными.
+                            <span style={{ color: "#0ABD19" }}>Заказывайте</span> товары на наш склад, при необходимости мы переупакуем  посылки для снижения объемного веса и отправим Вам надежно упакованными.
                         </Description>
                         <Description>
-                            <span style={{ color: "#0ABD19" }}>Калькулятор</span>
-                   стоимости доставки товара поможет рассчитать стоимость доставки до Вашего города.
+                            <span style={{ color: "#0ABD19" }}>Калькулятор </span>
+                    стоимости доставки товара поможет рассчитать стоимость доставки до Вашего города.
                         </Description>
                         
 

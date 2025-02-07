@@ -9,7 +9,7 @@ import Bacround_tarif from "../../images/img/Bacround-cardtarif.svg";
 import Bacround_tarif2 from "../../images/img/Bacround-tarrif-2.svg";
 import DutyCalculator from "./componets/customsDutyCalculator";
 import MainFeature1 from "../../components/features/TwoColWithTwoHorizontalFeaturesAndButton1.js";
-
+import Modal from "react-modal";
 export default () => {
 
 
@@ -116,6 +116,91 @@ export default () => {
             border-right: none;
         }
     `;
+    const TarifZone = ({ zoneNumber, cities }) => {
+        const [modalIsOpen, setModalIsOpen] = useState(false);
+
+        return (
+            <div>
+
+                <button
+                    onClick={() => setModalIsOpen(true)}
+                    style={{
+                        marginTop: "10px",
+                        padding: "10px 20px",
+                        backgroundColor: "#0ABD19",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer",
+                    }}
+                >
+                    Посмотреть
+                </button>
+
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={() => setModalIsOpen(false)}
+                    style={{
+                        overlay: {
+                            backgroundColor: "rgba(0, 0, 0, 0.5)", // Затемнение фона
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            position: "fixed",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                        },
+                        content: {
+                            width: "340px", // Размер окна
+                            maxHeight: "350px",
+                            overflowY: "auto",
+                            backgroundColor: "#fff",
+                            borderRadius: "12px",
+                            padding: "15px",
+                            textAlign: "center",
+                            boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.2)",
+                            border: "none",
+                            margin: "auto", // Центрирование
+                            position: "relative", // Убираем абсолютное позиционирование
+                            transition: "opacity 0.3s ease, transform 0.3s ease",
+                            opacity: modalIsOpen ? "1" : "0",
+                            transform: modalIsOpen ? "scale(1)" : "scale(0.95)",
+                        },
+                    }}
+                >
+                    <h2 style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "8px" }}>
+                        Города Тарифной Зоны {zoneNumber}
+                    </h2>
+                    <p style={{ fontSize: "14px", lineHeight: "1.4", color: "#333", marginBottom: "12px" }}>
+                        {cities}
+                    </p>
+                    <button
+                        onClick={() => setModalIsOpen(false)}
+                        style={{
+                            marginTop: "10px",
+                            padding: "8px 16px",
+                            backgroundColor: "#e74c3c",
+                            color: "white",
+                            fontSize: "14px",
+                            border: "none",
+                            borderRadius: "6px",
+                            cursor: "pointer",
+                            transition: "background 0.3s",
+                        }}
+                        onMouseEnter={(e) => (e.target.style.backgroundColor = "#c0392b")}
+                        onMouseLeave={(e) => (e.target.style.backgroundColor = "#e74c3c")}
+                    >
+                        Закрыть
+                    </button>
+                </Modal>
+
+
+            </div>
+        );
+    };
+
     return (
         <AnimationRevealPage>
             <Header
@@ -137,9 +222,10 @@ export default () => {
                         <BlockTitle>
                             <BlockTitleText>Тарифная</BlockTitleText> <ZoneNumber>Зона 1</ZoneNumber>
                         </BlockTitle>
-                        <BlockDescription>
-                            Алматы, Абай, Бесагаш, Боралдай, Каскелен, Отеген-Батыр, Талгар, Туздыбастау, Есик, Конаев, Кордай, Талдыкорган
-                        </BlockDescription>
+                        <TarifZone
+                            zoneNumber="1"
+                            cities="Алматы, Абай, Бесагаш, Боралдай, Каскелен, Отеген-Батыр, Талгар, Туздыбастау, Есик, Конаев, Кордай, Талдыкорган"
+                        />
                     </Block>
 
                     <Block2>
@@ -187,7 +273,11 @@ export default () => {
                     <BlockTitle>
                         <BlockTitleText>Тарифная</BlockTitleText> <ZoneNumber>Зона 2</ZoneNumber>
                     </BlockTitle>
-                    <BlockDescription>Астана, Балкаш, Караганда, Косшы, Ленгер, Приозёрск, Сарань, Сарыагаш, Тараз, Темиртау, Туркестан, Шахтинск, Шымкент, Атбасар, Жезказган, Житикара, Кокшетау, Костанай, Лисаковск, Новоишимское, Петропавловск, Рудный, Сатпаев, Степногорск, Тайынша, Тобыл, Щучинск</BlockDescription>
+
+                    <TarifZone
+                        zoneNumber="2"
+                        cities=" Астана, Балкаш, Караганда, Косшы, Ленгер, Приозёрск, Сарань, Сарыагаш, Тараз, Темиртау, Туркестан, Шахтинск, Шымкент, Атбасар, Жезказган, Житикара, Кокшетау, Костанай, Лисаковск, Новоишимское, Петропавловск, Рудный, Сатпаев, Степногорск, Тайынша, Тобыл, Щучинск"
+                        />
                 </Block>
                     <Block2>
                         <PriceTable>
@@ -233,8 +323,10 @@ export default () => {
                     <BlockTitle>
                         <BlockTitleText>Тарифная</BlockTitleText> <ZoneNumber>Зона 3</ZoneNumber>
                     </BlockTitle>
-                    <BlockDescription>
-                        Алтай, Кызылорда, Павлодар, Риддер, Семей, Усть-Каменогорск, Шемонаиха, Экибастуз, Аксай, Актау, Актобе, Атырау, Жанаозен, Уральск</BlockDescription>
+                    <TarifZone
+                        zoneNumber="3"
+                       cities=" Алтай, Кызылорда, Павлодар, Риддер, Семей, Усть-Каменогорск, Шемонаиха, Экибастуз, Аксай, Актау, Актобе, Атырау, Жанаозен, Уральск"
+                        />
                 </Block>
                     <Block2>
                         <PriceTable>

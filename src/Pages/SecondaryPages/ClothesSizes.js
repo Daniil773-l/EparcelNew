@@ -6,7 +6,7 @@ import Footer from "../../components/footers/MainFooterWithLinks";
 import DressRoom from "../../images/img/Zameru.svg";
 import UsaMap from "../../images/icon/usa.svg";
 import TurkeyMap from "../../images/icon/TurkeyMap.svg";
-
+import {SectionSteps} from "../../components/misc/Headings";
 import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
 
 const Container = tw.div`relative`;
@@ -17,21 +17,18 @@ const InfoColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-aut
 
 
 const HighlightedText = styled.span`
-    ${tw`font-bold text-black`}
-    color: #2D2D2D;
+    ${tw`  text-base xl:text-lg  text-gray-700`}
+
 `;
 
-const MapTitle = styled.h2`
-    ${tw`text-lg md:text-xl lg:text-2xl `}
-    margin-bottom: 20px;
-    color: #2D2D2D;
-    text-align: center;
-`;
+const MapTitle =  tw(
+    SectionSteps
+)` font-extrabold text-3xl sm:text-3xl  lg:text-3xl text-center leading-tight`;
 
-const TableTitle = styled.h2`
-    ${tw`font-semibold text-2xl my-4`}
-    color: #2D2D2D;
-`;
+const TableTitle =  tw(
+    SectionSteps
+)` font-extrabold text-3xl sm:text-3xl  lg:text-3xl text-left leading-tight `;
+
 
 const TableWrapper = styled.div`
     ${tw`overflow-x-auto`}
@@ -51,10 +48,10 @@ const StyledTable = styled.table`
 `;
 
 const InfoText = styled.p`
-    ${tw`my-4 text-base md:text-lg lg:text-xl xl:text-xl`}
+    ${tw` mt-4 text-base xl:text-lg my-2 lg:my-4 text-gray-700`}
     font-size: 22px;
     line-height: 32px;
-    color: #2D2D2D;
+
     font-weight: normal;
 `;
 
@@ -83,7 +80,6 @@ export default () => {
                                 </ImageWrapper>
                                 <br/>
                                 В отличие от Казахстана, где используется система размеров, основанная на единицах измерения в сантиметрах, в США используются другие единицы измерения, такие как дюймы и футы.<br/><br/>
-                                Размерная сетка для одежды<br/><br/>
                                 В США размер одежды определяется по системе, которая основывается на мере груди, талии и бедер. Обычно размерная сетка для одежды включает в себя следующие размеры: <HighlightedText>XS</HighlightedText>  (экстра-маленький), <HighlightedText>S</HighlightedText> (маленький), <HighlightedText>M</HighlightedText> (средний), <HighlightedText>L</HighlightedText> (большой), <HighlightedText>XL</HighlightedText> (экстра-большой) и <HighlightedText>XXL</HighlightedText> (очень большой). Кроме того, в США используется также система размеров, основанная на росте и весе.<br/><br/>
                                 Чтобы определить свой размер одежды в США, необходимо знать свои параметры – грудь, талию и бедра. Обычно размерная сетка для одежды включает в себя таблицу, которая позволяет определить свой размер на основе этих параметров. Например, если ваша грудь составляет 88 см, талия - 70 см и бедра - 94 см, то ваш размер одежды в США будет <HighlightedText>M</HighlightedText>.
                             </InfoText>

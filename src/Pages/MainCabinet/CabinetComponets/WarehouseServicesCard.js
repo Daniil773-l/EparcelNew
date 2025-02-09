@@ -8,7 +8,7 @@ import {collection, doc, getDoc, getDocs, getFirestore, query, where} from "fire
 const CardContainer = styled.div`
     ${tw`w-full max-w-2xl mx-auto my-8`}
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 2px solid #FFC0B7;
+    border: 4px solid #a0c1aa;
     min-height: 300px;
     border-radius: 20px;
 
@@ -30,10 +30,10 @@ const CardHeaderLink = styled.a`
     ${tw`text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline`}
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    color: #FFC0B7;
+    color:  #a0c1aa;
     text-align: center;
     padding-right: 20px;
-    border-left: 2px solid #FFC0B7;
+    border-left:4px solid #a0c1aa;
     padding-left: 20px;
     cursor: pointer;
     display: flex;
@@ -47,7 +47,7 @@ const CardHeaderLink = styled.a`
         transform: rotate(0);
         padding: 10px;
         border-left: none;
-        border-bottom: 2px solid #FFC0B7;
+        border-bottom: 4px solid #a0c1aa;
     }
 `;
 
@@ -68,7 +68,7 @@ const Icon = styled.img`
 `;
 
 const CardContent = styled.div`
-    ${tw`text-gray-700 text-base mb-6 text-lg `}
+    ${tw`text-gray-700 text-base mb-6 text-xl `}
 `;
 
 const CardStats = styled.div`
@@ -80,11 +80,11 @@ const Stat = styled.div`
 `;
 
 const StatLabel = styled.div`
-    ${tw`flex items-center`}
+    ${tw`flex items-center text-base xl:text-lg text-gray-700`}
 `;
 
 const StatValue = styled.div`
-    ${tw`ml-1 flex-grow text-right mr-12`}
+    ${tw`ml-1 flex-grow text-right mr-12 text-base xl:text-lg text-gray-700`}
     @media (max-width: 768px) {
     ${tw`text-sm`} /* Уменьшение размера текста для мобильных устройств */
 }
@@ -107,7 +107,7 @@ const Button = styled.button`
         ${tw`mr-2`}
     }
     border: none;
-    background-color: #FFC0B7;
+    background-color: #a0c1aa;
     width: 48%; /* Match the width of the button in the upper card */
     min-width: 200px; /* Adjust the min-width to make buttons the same size */
 

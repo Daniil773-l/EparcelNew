@@ -40,7 +40,7 @@ const Banner = styled.div`
 `;
 
 const BannerLink = styled.a`
-    ${tw`text-white`}
+    ${tw`text-green-1002`}
     text-decoration: none;
     cursor: pointer;
 `;

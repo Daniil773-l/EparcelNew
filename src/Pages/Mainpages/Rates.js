@@ -70,12 +70,12 @@ const SidebarContainer = styled.div`
 `;
 
 const TabButton = styled.button`
-    ${tw`text-lg  leading-tight text-black `};
+    ${tw`text-lg sm:text-xl font-semibold text-center`}
     display: flex;
     
     align-items: center;
     background: ${({ active }) => (active ? '#DDF2E6' : 'transparent')};
-    color: #000000;
+    color: #243e63; /* Установлен синий цвет */
     border: none;
     padding: 10px 22px;
     line-height: 18px;
@@ -91,12 +91,12 @@ const TabButton = styled.button`
     }
 `;
 
-const Title = styled.h1`
-    font-size: 24px;
-    line-height: 29px;
-    color: #2D2D2D;
-    margin-bottom: 20px;
-    font-weight: 700;
+const Title =styled.h1`
+    ${tw`font-bold text-2xl md:text-2xl lg:text-2xl  leading-tight`}
+    /* Центрируем текст на маленьких экранах */
+   
+
+  
 `;
 
 const SectionContainer = styled.div`

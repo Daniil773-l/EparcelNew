@@ -26,8 +26,9 @@ const CardHeaderContainer = styled.div`
 `;
 
 const CardHeaderLink = styled.a`
-    ${tw`text-purple-600 text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline`}
+    ${tw` text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline`}
     writing-mode: vertical-rl;
+    color: #a0c1aa;
     transform: rotate(180deg);
     text-align: center;
     padding-right: 20px;
@@ -65,7 +66,7 @@ const CardContentContainer = styled.div`
 `;
 
 const CardContent = styled.div`
-    ${tw`text-gray-700 text-lg  text-base mb-6`}
+    ${tw`text-gray-700 text-xl  text-base mb-6`}
     @media (max-width: 768px) {
     ${tw`text-sm`} /* Уменьшение размера текста для мобильных устройств */
 }
@@ -80,11 +81,11 @@ const Stat = styled.div`
 `;
 
 const StatLabel = styled.div`
-    ${tw`flex items-center`}
+    ${tw`flex items-center text-base xl:text-lg text-gray-700`}
 `;
 
 const StatValue = styled.div`
-    ${tw`ml-2 text-right mr-6`}
+    ${tw`ml-2 text-right mr-6 text-base xl:text-lg text-gray-700`}
 `;
 
 const CardActions = styled.div`
@@ -100,7 +101,7 @@ const Button = styled.button`
         ${tw`mr-2`}
     }
     border: none;
-    background-color: #979FFF;
+    background-color: #a0c1aa;
     width: 48%; /* Ensure buttons take 48% width to fit in one line */
     min-width: 200px;
     @media (max-width: 768px) {

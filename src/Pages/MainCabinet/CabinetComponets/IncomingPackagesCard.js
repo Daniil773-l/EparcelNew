@@ -7,7 +7,7 @@ import { getAuth } from 'firebase/auth';
 const CardContainer = styled.div`
     ${tw`w-full max-w-2xl mx-auto my-8`}
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 2px solid #00bc00;
+    border: 4px solid #a0c1aa;
     min-height: 300px;
     border-radius: 20px;
     @media (max-width: 768px) {
@@ -24,12 +24,13 @@ const CardHeaderContainer = styled.div`
 `;
 
 const CardHeaderLink = styled.a`
-    ${tw`text-green-500 text-lg font-medium relative flex-shrink-0 h-auto py-10 no-underline`}
+    ${tw`text-lg font-medium relative flex-shrink-0 h-auto py-10 no-underline`}
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     text-align: center;
     padding-right: 20px;
-    border-left: 2px solid #00bc00;
+    color:  #a0c1aa;
+    border-left:4px solid #a0c1aa;
     padding-left: 20px;
     cursor: pointer;
     display: flex;
@@ -42,7 +43,7 @@ const CardHeaderLink = styled.a`
         transform: rotate(0);
         padding: 10px;
         border-left: none;
-        border-bottom: 2px solid #00bc00;
+        border-bottom:4px solid #a0c1aa;
     }
 `;
 
@@ -56,7 +57,7 @@ const CardContentContainer = styled.div`
 `;
 
 const CardContent = styled.div`
-    ${tw`text-gray-700 text-lg text-base mb-6`}
+    ${tw`text-gray-700 text-xl text-base mb-6`}
     @media (max-width: 768px) {
     ${tw`text-sm`} /* Уменьшение размера текста для мобильных устройств */
 }
@@ -71,7 +72,7 @@ const Stat = styled.div`
 `;
 
 const StatLabel = styled.div`
-    ${tw`flex items-center justify-between`}
+    ${tw`flex items-center justify-between text-base xl:text-lg  text-gray-700`}
 `;
 
 const StatValue = styled.div`
@@ -91,10 +92,11 @@ const Navlink = styled.a`
 `;
 
 const Button = styled.button`
-    ${tw`flex items-center justify-center py-4 bg-green-1002 text-white rounded-lg font-bold transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none`}
+    ${tw`flex items-center justify-center py-4  text-white rounded-lg font-bold transition duration-300 ease-in-out  focus:outline-none`}
     svg {
         ${tw`mr-2`}
     }
+    background-color:  #a0c1aa;
     border: none;
     width: 48%; // Ensure both buttons have the same width
     min-width: 200px; // Adjust the min-width to make buttons the same size

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
-
+import {SectionSteps} from "../../components/misc/Headings";
 import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
 import Header from '../../components/headers/MainHeader';
 import Footer from "../../components/footers/MainFooterWithLinks";
@@ -12,16 +12,14 @@ import CustomImage from "../../images/img/BannerCustoms.svg"; // Import the uplo
 
 const Container = tw.div`relative`;
 
-const Heading = styled.h1`
-    ${tw`font-bold text-3xl md:text-4xl lg:text-4xl leading-tight`}
-    color: #000;
-    margin-bottom: 10px;
-`;
+const Heading = tw(
+    SectionSteps
+)` font-extrabold text-3xl sm:text-3xl  lg:text-3xl text-left leading-tight`;
 
 
 const Paragraph = styled.p`
-    ${tw`text-base md:text-lg lg:text-xl`}
-    color: #2d2d2d;
+    ${tw`mt-4 text-base xl:text-lg my-2 lg:my-4 text-gray-700`}
+   
 
     font-weight: normal;
     margin-bottom: 20px;
@@ -119,7 +117,7 @@ export default ({roundedHeaderButton}) => {
                                     </ImageContainer>
                                     <InfoText>
                                         <strong style={{
-                                            color: "#000000",
+                                            color:"#192b45",
                                             fontSize: "30px",
                                             display: "block",
                                             marginBottom: "10px"

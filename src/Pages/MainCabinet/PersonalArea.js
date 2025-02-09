@@ -47,7 +47,7 @@ const BannerLink = styled.a`
 
 const CardsContainer = styled.div`
     ${tw`grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-screen-xl mx-auto`}
-    margin-top: 16px; /* Reduced top margin */
+    margin-top: 1px; /* Reduced top margin */
     @media (max-width: 768px) {
         ${tw`gap-2`}
     }
@@ -123,7 +123,7 @@ const PrimaryLink = styled(NavigationLink)`
 `;
 
 const CardsContainer1 = styled.div`
-    ${tw`grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-xl mx-auto mb-20`}
+    ${tw`grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-xl mx-auto mb-8`}
     margin-top: 46px; /* Reduced top margin */
     @media (max-width: 768px) {
         ${tw`gap-4`}

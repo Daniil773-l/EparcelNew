@@ -5,7 +5,7 @@ import LogoImage from "../../images/logo/logo-kz.svg";
 import TelegramIcon from "../../images/icon/telegram.svg";
 import ViberIcon from "../../images/icon/Viber.svg";
 import WhatsappIcon from "../../images/icon/whatsapp.svg";
-import ClassmatesIcon from "../../images/icon/classmates.svg";
+import ClassmatesIcon from "../../images/icon/Tik-Tok.svg";
 import VkIcon from "../../images/icon/vk.svg";
 import InstagramIcon from "../../images/logo/Instagram_logo_2022.svg";
 import { FiClock } from 'react-icons/fi';
@@ -114,15 +114,13 @@ export default () => {
                             <SocialLink href="https://web.whatsapp.com">
                                 <img src={WhatsappIcon} />
                             </SocialLink>
-                            <SocialLink href="https://ok.ru">
+                            <SocialLink href="https://www.tiktok.com/">
                                 <img src={ClassmatesIcon} />
                             </SocialLink>
                             <SocialLink>
                                 <img src={InstagramIcon}/>
                             </SocialLink>
-                            <SocialLink href="https://vk.com/feed">
-                                <img src={VkIcon} />
-                            </SocialLink>
+
                         </SocialLinksContainer>
                         <CompanyAddress>
                             <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>

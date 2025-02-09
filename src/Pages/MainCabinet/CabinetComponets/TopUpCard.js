@@ -36,8 +36,8 @@ const CardHeader = styled.div`
 `;
 
 const BalanceText = styled.div`
-    ${tw`text-lg mt-4 font-medium`}
-    color: #2D2D2D;
+    ${tw`font-extrabold text-xl sm:text-xl mt-2 ml-12 lg:text-xl text-center leading-tight`}
+  
     padding-right: 20%;
     span {
         color: #0ABD19;
@@ -91,7 +91,7 @@ const Button = styled.button`
 `;
 
 const Description = styled.div`
-    ${tw`text-gray-600 font-medium text-lg mt-4`}
+    ${tw`mt-4 text-base xl:text-lg my-2 lg:my-4 text-gray-700`}
     text-align: left;
     width: 100%;
     line-height: 1.2;

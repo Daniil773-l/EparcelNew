@@ -43,8 +43,8 @@ const CardHeader = styled.div`
 `;
 
 const HeaderText = styled.h2`
-    ${tw`text-xl mt-4 font-bold`}
-    color: #2D2D2D;
+    ${tw`font-extrabold text-xl sm:text-xl mt-2  lg:text-xl text-center leading-tight`}
+
     padding-right: 20%;
     span {
         color: #0ABD19;
@@ -71,9 +71,9 @@ const Divider = styled.div`
 `;
 
 const CurrencyText = styled.span`
-    ${tw`text-gray-700 text-lg text-base`}
+    ${tw`text-base xl:text-lg   text-gray-700`}
     color: #2D2D2D; /* Change text color to match the design */
-    font-weight: 500; /* Make the font weight bolder */
+     /* Make the font weight bolder */
 `;
 
 const CurrencyValue = styled.span`

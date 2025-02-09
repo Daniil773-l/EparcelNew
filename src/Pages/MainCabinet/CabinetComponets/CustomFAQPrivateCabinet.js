@@ -7,7 +7,7 @@ import { ReactComponent as PlusIcon } from "feather-icons/dist/icons/plus.svg";
 import { ReactComponent as MinusIcon } from "feather-icons/dist/icons/minus.svg";
 
 const Container = tw.div`relative`;
-const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
+const Content = tw.div`max-w-screen-xl mx-auto `;
 
 const TwoColumn = tw.div`flex flex-col items-center`;
 const Column = tw.div`w-full`;
@@ -53,7 +53,7 @@ const QuestionToggleIcon = styled.span`
         ${tw`w-6 h-6`} /* Increased size of the plus/minus icons */
     }
 `;
-const Answer = motion(tw.dd`pointer-events-none text-sm sm:text-base leading-relaxed`);
+const Answer = motion(tw.dd`pointer-events-none mt-4 text-base xl:text-lg my-2 lg:my-4 text-gray-700  leading-relaxed `);
 
 export default ({
                     subheading = "",

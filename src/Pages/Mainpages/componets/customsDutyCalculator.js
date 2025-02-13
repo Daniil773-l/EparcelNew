@@ -4,8 +4,8 @@ import styled ,{css }from "styled-components";
 import {SectionHeading, Subheading as SubheadingBase} from "../../../components/misc/Headings.js";
 import axios from "axios";
 const API_URL = "https://api.exchangerate-api.com/v4/latest/EUR"; // API для курса валют (основа - EUR)
+const Container = tw.div`relative mb-8`;
 
-const Container = tw.div`relative`; // Убрали отступы сверху и снизу полностью
 
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-4 items-center`; // Сократили общий отступ до минимального (py-4)
 

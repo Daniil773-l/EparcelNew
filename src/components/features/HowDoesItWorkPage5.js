@@ -40,7 +40,8 @@ const PlanHeader = styled.div`
 const PlanFeatures = styled.div`
     ${tw`flex flex-col -mx-8 px-8 py-8 border-t-2 border-b-2 flex-1 text-lg`}
     .mainFeature {
-        ${tw`text-base xl:text-xl text-gray-700 text-center `}
+        ${tw`text-base xl:text-xl text-secondary-600 text-center `}
+        
     }
 `;
 

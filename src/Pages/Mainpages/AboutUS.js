@@ -34,7 +34,7 @@ const IconContainer = styled.div`
     flex-shrink: 0;
 `;
 const Description = styled.p`
-    ${tw`text-base xl:text-lg my-2 lg:my-4 text-gray-700`}
+    ${tw`text-base xl:text-lg  text-gray-700`}
     margin: 0 0 0 15px; 
     font-size: 20px;
 `;
@@ -184,7 +184,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>Дешевые и фиксированные тарифы доставки</Description>
+                                <Description>Дешевые и фиксированные тарифы доставки.</Description>
                             </FeatureItem>
                         ),
                     },
@@ -192,7 +192,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>Отсутствие скрытых комиссий и дополнительных платежей</Description>
+                                <Description>Отсутствие скрытых комиссий и дополнительных платежей.</Description>
                             </FeatureItem>
                         ),
                     },
@@ -200,7 +200,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>Понятные и простые правила расчета посылок</Description>
+                                <Description>Понятные и простые правила расчета посылок.</Description>
                             </FeatureItem>
                         ),
                     },
@@ -208,7 +208,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>Выкуп товаров в других странах и доставка по всему Казахстану, даже в самые удаленные города</Description>
+                                <Description>Выкуп товаров в других странах и доставка по всему Казахстану, даже в самые удаленные города.</Description>
                             </FeatureItem>
                         ),
                     },
@@ -216,7 +216,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>Различные способы оплаты для максимального удобства наших клиентов</Description>
+                                <Description>Различные способы оплаты для максимального удобства наших клиентов.</Description>
                             </FeatureItem>
                         ),
                     },
@@ -224,7 +224,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>Большой выбор дополнительных услуг</Description>
+                                <Description>Большой выбор дополнительных услуг.</Description>
                             </FeatureItem>
                         ),
                     },
@@ -232,7 +232,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>Индивидуальное консультирование по всем вопросам</Description>
+                                <Description>Индивидуальное консультирование по всем вопросам.</Description>
                             </FeatureItem>
                         ),
                     },
@@ -240,7 +240,7 @@ export default () => {
                         description: (
                             <FeatureItem>
                                 <SmallStar />
-                                <Description>Гарантия быстрой и качественной доставки</Description>
+                                <Description>Гарантия быстрой и качественной доставки.</Description>
                             </FeatureItem>
                         ),
                     },

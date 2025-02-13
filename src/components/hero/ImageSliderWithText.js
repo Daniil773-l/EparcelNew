@@ -7,8 +7,9 @@ const Container = tw.div`relative mx-auto mt-0 max-w-screen-xl py-12 px-6`; // �
 const TwoColumn = tw.div`flex flex-col lg:flex-row items-center lg:items-start`; // Убираем лишние отступы и выравниваем содержимое
 
 const LeftColumn = styled.div`
-    ${tw`w-full lg:w-1/2 flex flex-col items-start`}
+    ${tw`w-full lg:w-1/2 flex flex-col items-start -mt-16`}
 `;
+
 
 const RightColumn = styled.div`
     ${tw`w-full lg:w-1/2 flex justify-center`}
@@ -17,7 +18,7 @@ const RightColumn = styled.div`
 const Heading = tw.h1`text-3xl sm:text-5xl font-bold font-black leading-tight text-center lg:text-left`; // Текст выравнивается влево на больших экранах
 
 // Увеличиваем ширину текста еще больше
-const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-2xl`;
+const Paragraph = tw.p`  text-base xl:text-xl text-gray-700`;
 
 const Button = styled.button`
     ${tw`mt-6 px-6 py-3 bg-green-1002 text-white font-bold rounded-full transition duration-300`}

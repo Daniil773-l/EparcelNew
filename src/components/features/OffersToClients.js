@@ -64,7 +64,7 @@ const FeatureHeadingContainer = tw.div`flex items-center`;
 
 const FeatureHeading = tw.div`ml-3 font-bold text-xl`;
 
-const FeatureDescription = tw.div`mt-2 text-center md:text-left text-gray-600 leading-relaxed`; // Reduced the margin-top
+const FeatureDescription = tw.div` text-center md:text-left text-gray-600 leading-relaxed`; // Reduced the margin-top
 
 
 export default ({

@@ -14,25 +14,25 @@ const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-
 const Heading = tw(SectionHeading)`mt-2 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`; // уменьшение отступа сверху
 
 
-const TextColumn = tw(Column)`md:w-5/12 md:order-first flex flex-col gap-4`; // Между элементами в колонке добавил gap-4
-const FormColumn = tw(Column)`md:w-6/12 flex items-center justify-center`;
+const TextColumn = tw(Column)`md:w-5/12 md:order-first flex flex-col gap-4 mb-auto`; // Между элементами в колонке добавил gap-4
+const FormColumn = tw(Column)`md:w-6/12 flex items-center justify-center mb-auto`;
 
 
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
-const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-2xl font-medium leading-relaxed text-secondary-100 md:leading-snug`; // Уменьшил межстрочный интервал
+const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-2xl font-medium leading-relaxed text-secondary-600 md:leading-snug`; // Уменьшил межстрочный интервал
 
 
 const Form = tw.form`mt-8 md:mt-10 text-sm flex flex-col max-w-2xl mx-auto md:mx-0`;
 const Input = styled.input`
     ${tw`mt-8 first:mt-0 py-3 focus:outline-none font-medium transition duration-300 border-b-2 text-lg`};
-    color: #6c757d;
+    color: #203859;
     border-color: transparent;
     border-bottom-color: #adb5bd;
     font-family: inherit;
 
     &::placeholder {
-        color: #adb5bd;
+        color: #203859;
     }
 
     &:hover {
@@ -52,7 +52,7 @@ const PhoneInput = styled(InputMask)`
     font-family: inherit;
 
     &::placeholder {
-        color: #adb5bd;
+        color: #203859;
     }
 
     &:hover {
@@ -74,7 +74,7 @@ const SelectButton = styled.button`
     border-left: 0;
     border-right: 0;
     padding-left: 0;
-    color: ${({selected}) => (selected ? '#6c757d' : '#adb5bd')};
+    color: ${({selected}) => (selected ? '#203859' : '#203859')};
     font-family: inherit;
 
     &:hover {

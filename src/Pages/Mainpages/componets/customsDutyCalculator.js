@@ -30,7 +30,7 @@ const Heading = tw(
     SectionHeading
 )`font-black text-left text-3xl sm:text-3xl lg:text-4xl text-center md:text-left leading-tight mt-0`; // Убрали отступ сверху для заголовка
 
-const Description = tw.p`mt-4 text-center md:text-left text-base xl:text-xl my-2 lg:my-4 text-gray-700`; // Сократили отступ сверху для описания
+const Description = tw.p`mt-4 text-center md:text-left text-base xl:text-xl my-2 lg:my-4 text-secondary-600`; // Сократили отступ сверху для описания
 
 const CalculatorColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative mt-8`;
 

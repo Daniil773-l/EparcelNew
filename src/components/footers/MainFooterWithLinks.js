@@ -34,9 +34,9 @@ const LinkList = styled.ul`
 `;
 const LinkListItem = tw.li`mt-3`;
 const Link = styled.a`
-    ${tw`hover:text-green-500  font-bold text-lg text-base cursor-pointer`};
+    ${tw`hover:text-green-500 text-secondary-500  font-bold text-lg text-base cursor-pointer`};
     text-decoration: none; // Ensures no underline at all
-color: #1d324f;
+
     &:hover {
         text-decoration: none; // Prevents any text-decoration on hover as well
     }

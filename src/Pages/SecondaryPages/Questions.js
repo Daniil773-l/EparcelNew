@@ -19,7 +19,7 @@ import FAQs from '../../components/faqs/SingleCol';
 import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
 import Footer from "../../components/footers/MainFooterWithLinks";
 import Header from "../../components/headers/MainHeader";
-import Photo from "../../images/img/FAQs-pana.svg";
+import Photo from "../../images/img/quest.png";
 
 const Layout = styled.div`
     display: flex;
@@ -69,11 +69,9 @@ const TabButton = styled.button`
     display: flex;
     align-items: center;
     background: ${({ active }) => (active ? '#DDF2E6' : 'transparent')};
-    color: #243e63; /* Установлен синий цвет */
+    color: #243e63;
     border: none;
-    padding: 20px 22px; /* Увеличенные отступы */
-     /* Расстояние между табами */
-
+     /* Уменьшенные отступы */
     cursor: pointer;
     flex: 1;
     white-space: nowrap;
@@ -83,32 +81,33 @@ const TabButton = styled.button`
     }
 
     svg {
-        margin-right: 10px;
-        width: 20px;
-        height: 20px;
+        margin-right: 8px;
+        width: 18px;
+        height: 18px;
 
         @media (min-width: 768px) {
-            margin-right: 15px;
-            width: 24px;
-            height: 24px;
+            margin-right: 12px;
+            width: 22px;
+            height: 22px;
         }
 
         @media (min-width: 1024px) {
-            margin-right: 20px;
-            width: 30px;
-            height: 30px;
+            margin-right: 15px;
+            width: 26px;
+            height: 26px;
         }
     }
 
     @media (min-width: 768px) {
-        font-size: 16px;
-        padding: 20px; /* Увеличенные отступы для планшетов */
+        font-size: 15px;
+        padding: 14px; /* Уменьшенные отступы для планшетов */
     }
 
     @media (min-width: 1024px) {
-        font-size: 18px;
+        font-size: 16px;
     }
 `;
+
 
 
 const ContentContainer = styled.div`

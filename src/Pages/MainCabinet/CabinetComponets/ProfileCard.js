@@ -90,8 +90,8 @@ const Icon1 = styled.img`
 `;
 
 const Name = styled.div`
-    ${tw`font-bold text-lg mt-2 ml-2`}
-    color: #2D2D2D;
+    ${tw`font-bold text-secondary-600 text-lg mt-2 ml-2`}
+
 `;
 
 const Balance = styled.div`
@@ -106,7 +106,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-    ${tw`flex items-center text-gray-700 text-lg`}  // Increase text size
+    ${tw`flex items-center  text-secondary-600 text-lg`}  // Increase text size
 `;
 
 const Icon = styled.img`
@@ -155,8 +155,8 @@ const Address = styled.div`
 `;
 
 const AddressHeader = styled.div`
-    ${tw`font-bold text-lg mb-2`}
-    color: #2D2D2D;
+    ${tw`font-bold  text-secondary-600 text-lg mb-2`}
+   
 `;
 
 const AddressID = styled.div`
@@ -164,11 +164,11 @@ const AddressID = styled.div`
 `;
 
 const AddressInfo = styled.div`
-    ${tw`text-gray-500 text-lg mb-2`}
+    ${tw`text-secondary-600 text-lg mb-2`}
 `;
 
 const AddressDetails = styled.div`
-    ${tw`text-gray-700 mt-6`}
+    ${tw`text-secondary-600 mt-6`}
 `;
 
 const AddressLine = styled.div`

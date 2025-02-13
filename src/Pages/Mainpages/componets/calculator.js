@@ -138,7 +138,8 @@ const fadeOut = keyframes`
 
 const Wrapper = styled.div`
     max-width: 480px;
-    margin: 50px auto;
+     /* Уменьшен отступ сверху */
+    margin-top: -80px;
     padding: 25px;
     background-color: #ffffff;
     border-radius: 16px;
@@ -147,6 +148,7 @@ const Wrapper = styled.div`
     font-family: Arial, sans-serif;
     position: relative;
 `;
+
 
 const Title = tw(
     SectionHeading

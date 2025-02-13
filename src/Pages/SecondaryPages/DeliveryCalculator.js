@@ -35,7 +35,7 @@ const Heading = tw(
 )`mt-4  text-left text-3xl sm:text-3xl lg:text-4xl text-center md:text-left leading-tight`;
 
 
-const Description = tw.p`mt-8 text-center md:text-left text-sm md:text-base lg:text-2xl font-medium leading-relaxed text-secondary-100`;
+const Description = tw.p`mt-8 text-center md:text-left text-sm md:text-base lg:text-2xl font-medium leading-relaxed text-secondary-500`;
 
 
 

@@ -29,10 +29,10 @@ const LeftColumn = styled.div`
 `;
 
 const Banner = styled.div`
-    ${tw`w-full text-xl font-medium py-8 mb-16 text-center`}
+    ${tw`w-full text-secondary-600 text-xl font-medium py-8 mb-16 text-center`}
     background:   #DDF2E6;
 
-    color: #000000;
+
     @media (max-width: 768px) {
         font-size: 1rem;
         padding: 4px;
@@ -74,11 +74,11 @@ const NavigationLinkContainer = styled.div`
 `;
 
 const NavigationLink = styled.a`
-    font-family: 'SFUIText', sans-serif;
-    ${tw`text-lg mx-6 my-0 font-medium tracking-wide transition duration-300 pb-1`}
+
+    ${tw`text-lg mx-6 my-0 font-medium tracking-wide transition duration-300 pb-1 text-secondary-600`}
     ${tw`hover:border-primary-500 hover:text-primary-500 focus:text-primary-500`}
     text-decoration: none;
-    color: #2D2D2D;
+   
 
     &:hover, &:focus {
         color: #0ABD19;

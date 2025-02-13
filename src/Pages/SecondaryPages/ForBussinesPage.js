@@ -7,8 +7,8 @@ import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
 import DressRoom from "../../images/img/Для бизнеса. КЗ.png";
 
 const Container = tw.div`relative`;
-const Content = tw.div`max-w-screen-xl mx-auto py-8 lg:py-12`;
-const HeadingColumn = tw.div`text-left max-w-4xl mx-auto`;
+const Content = tw.div`max-w-screen-2xl mx-auto py-8 lg:py-12`; // Увеличил max-w до 2xl
+const HeadingColumn = tw.div`text-left max-w-full mx-auto`; // Увеличил max-w до 5xl
 
 const GreenLink = styled.p`
     color: #0ABD19;

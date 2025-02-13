@@ -57,7 +57,7 @@ const CardContentContainer = styled.div`
 `;
 
 const CardContent = styled.div`
-    ${tw`text-gray-700 text-xl text-base mb-6`}
+    ${tw`text-secondary-600 text-xl text-base mb-6`}
     @media (max-width: 768px) {
     ${tw`text-sm`} /* Уменьшение размера текста для мобильных устройств */
 }
@@ -72,11 +72,11 @@ const Stat = styled.div`
 `;
 
 const StatLabel = styled.div`
-    ${tw`flex items-center justify-between text-base xl:text-lg  text-gray-700`}
+    ${tw`flex items-center justify-between text-base xl:text-lg  text-secondary-600`}
 `;
 
 const StatValue = styled.div`
-    ${tw`ml-1 text-right mr-6`}
+    ${tw`ml-1 text-right text-secondary-600  mr-6`}
 `;
 
 const CardActions = styled.div`
@@ -88,7 +88,7 @@ const CardActions = styled.div`
 
 const Navlink = styled.a`
     text-decoration: none;
-    ${tw`flex items-center justify-center text-white font-bold`}
+    ${tw`flex items-center justify-center text-secondary-600 font-bold`}
 `;
 
 const Button = styled.button`
@@ -96,7 +96,7 @@ const Button = styled.button`
     svg {
         ${tw`mr-2`}
     }
-    background-color:  #a0c1aa;
+    background-color:  #0abd19;
     border: none;
     width: 48%; // Ensure both buttons have the same width
     min-width: 200px; // Adjust the min-width to make buttons the same size

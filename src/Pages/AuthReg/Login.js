@@ -21,8 +21,8 @@ const LeftContainer = tw.div`w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-c
 const RightContainer = tw.div`hidden lg:flex w-1/2 bg-gray-100 items-center justify-center overflow-hidden`;
 
 const Logo = tw.img`h-12 mb-6`;
-const Heading = tw.h1`text-3xl font-bold text-gray-800 mb-2 text-center`;
-const SubText = tw.p`text-lg text-gray-600 mb-6 text-center`;
+const Heading = tw.h1`text-3xl font-bold text-secondary-600 mb-2 text-center`;
+const SubText = tw.p`text-lg text-secondary-600 mb-6 text-center`;
 
 const Form = tw.form`w-full max-w-sm`;
 const Input = styled.input`

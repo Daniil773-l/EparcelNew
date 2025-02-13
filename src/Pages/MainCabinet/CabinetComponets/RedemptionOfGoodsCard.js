@@ -66,14 +66,14 @@ const CardContentContainer = styled.div`
 `;
 
 const CardContent = styled.div`
-    ${tw`text-gray-700 text-xl  text-base mb-6`}
+    ${tw`text-secondary-600 text-xl  text-base mb-6`}
     @media (max-width: 768px) {
     ${tw`text-sm`} /* Уменьшение размера текста для мобильных устройств */
 }
 `;
 
 const CardStats = styled.div`
-    ${tw`flex flex-col text-gray-500 text-base`}
+    ${tw`flex flex-col text-secondary-600 text-base`}
 `;
 
 const Stat = styled.div`
@@ -81,11 +81,11 @@ const Stat = styled.div`
 `;
 
 const StatLabel = styled.div`
-    ${tw`flex items-center text-base xl:text-lg text-gray-700`}
+    ${tw`flex items-center text-base xl:text-lg text-secondary-600`}
 `;
 
 const StatValue = styled.div`
-    ${tw`ml-2 text-right mr-6 text-base xl:text-lg text-gray-700`}
+    ${tw`ml-2 text-right mr-6 text-base xl:text-lg text-secondary-600`}
 `;
 
 const CardActions = styled.div`
@@ -101,7 +101,7 @@ const Button = styled.button`
         ${tw`mr-2`}
     }
     border: none;
-    background-color: #a0c1aa;
+    background-color:  #0abd19;
     width: 48%; /* Ensure buttons take 48% width to fit in one line */
     min-width: 200px;
     @media (max-width: 768px) {

@@ -48,12 +48,12 @@ const PrevButton = styled(ControlButton)``;
 const NextButton = styled(ControlButton)``;
 
 const CardSlider = styled(Slider)`
-    ${tw`mt-16`}
+    ${tw`mt-16 overflow-hidden`} /* Скрываем лишние карточки */
     .slick-track {
         ${tw`flex`}
     }
     .slick-slide {
-        ${tw`h-auto flex justify-center mb-1`}
+        ${tw`h-auto flex justify-center`}
     }
 `;
 
@@ -81,24 +81,24 @@ export default () => {
 
     const sliderSettings = {
         arrows: false,
-        slidesToShow: 3, // Всегда 3 карточки
-        infinite:false, // Зацикленный слайдер
+        slidesToShow: 3, // Показывать ровно 3 карточки
+        infinite: false, // Без зацикливания
+        slidesToScroll: 1, // Скролл по 1 карточке
         responsive: [
             {
                 breakpoint: 1024, // Средние экраны (например, планшеты)
                 settings: {
-                    slidesToShow: 3, // Все равно 3 карточки
+                    slidesToShow: 3,
                 },
             },
             {
                 breakpoint: 768, // Маленькие экраны (например, телефоны)
                 settings: {
-                    slidesToShow: 3, // Все равно 3 карточки
+                    slidesToShow: 3,
                 },
             },
         ],
     };
-
 
 
     const cards = [

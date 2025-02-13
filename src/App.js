@@ -3,10 +3,8 @@ import tw from "twin.macro";
 import styled from 'styled-components';
 import AnimationRevealPage from "./components/helpers/AnimationRevealPage.js";
 import Hero from "./components/hero/TwoColumnWithInput.js";
-
 import FeatureWithSteps from "./components/features/TwoColWithSteps.js";
 import MainFeature2 from "./components/features/TwoColWithTwoHorizontalFeaturesAndButton.js";
-
 import SliderCard from "./components/cards/ThreeColSlider.js";
 import Footer from "./components/footers/MainFooterWithLinks";
 

@@ -8,14 +8,14 @@ import {ReactComponent as MoneyIcon} from "feather-icons/dist/icons/dollar-sign.
 
 
 const Container = tw.div`relative`;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto items-center mt-0 pt-0`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto items-center `;
 
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = styled(Column)`
     ${tw`md:w-6/12 flex-shrink-0 relative mt-8`}
  
     order: 1; /* На всех устройствах по умолчанию первый */
-margin-top: 155px;
+margin-top: 170px;
     @media (min-width: 768px) {
         order: 1; /* На десктопах также первый */
     }

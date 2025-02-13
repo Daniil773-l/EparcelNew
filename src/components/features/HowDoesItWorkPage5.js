@@ -39,12 +39,8 @@ const PlanHeader = styled.div`
 
 const PlanFeatures = styled.div`
     ${tw`flex flex-col -mx-8 px-8 py-8 border-t-2 border-b-2 flex-1 text-lg`}
-    .feature {
-        ${tw`mt-2 first:mt-0 font-medium`} // Reduced vertical spacing
-        ${tw`text-gray-600`} // Darker text for features
-    }
     .mainFeature {
-        ${tw`text-gray-500 font-bold tracking-widest`}
+        ${tw`text-base xl:text-xl text-gray-700 text-center `}
     }
 `;
 

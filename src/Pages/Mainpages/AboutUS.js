@@ -33,12 +33,12 @@ const IconContainer = styled.div`
     margin-right: 15px;
     flex-shrink: 0;
 `;
-
 const Description = styled.p`
-    margin: 0;
+    ${tw`text-base xl:text-lg my-2 lg:my-4 text-gray-700`}
+    margin: 0 0 0 15px; 
     font-size: 20px;
-    margin-left: 15px;
 `;
+
 
 const SectionContainer = styled.section`
     ${tw`mx-auto w-full`}

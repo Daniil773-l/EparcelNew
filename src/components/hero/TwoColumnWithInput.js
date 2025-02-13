@@ -82,7 +82,7 @@ const Heading = styled.h1`
 `;
 
 const Paragraph = styled.p`
-    ${tw`text-base xl:text-lg my-2 lg:my-4 text-gray-700`}
+    ${tw`text-base xl:text-xl my-2 lg:my-4 text-gray-700`}
    
     margin: 0 auto;
 

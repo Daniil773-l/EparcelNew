@@ -5,7 +5,7 @@ import styled, { keyframes, createGlobalStyle, css } from "styled-components";
 import useAnimatedNavToggler from "../helpers/useAnimatedNavToggler";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "../../FireBaseConfig"; // Make sure to import your Firebase config
-import logo from "../../images/logo/logo.svg";
+import logo from "../../images/logo/logo-kz.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
@@ -31,7 +31,7 @@ const NavLink = styled.a`
   ${tw`hover:border-primary-500 hover:text-primary-500 focus:text-primary-500`}
   ${css`
     text-decoration: none;
-    color: #000000;
+    color:#1d324f;
 
     &:hover, &:focus {
       color: #0ABD19;

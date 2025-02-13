@@ -7,7 +7,7 @@ import tw from "twin.macro";
 import FlyAfter from "../../images/img/flyafter.svg";
 import Receive from "../../images/img/receive.svg";
 
-const Container = tw.div`relative bg-[ #e2ffe2] text-gray-900 max-w-screen-xl mx-auto rounded-lg`;
+const Container = tw.div`relative bg-[ #e2ffe2]  max-w-screen-xl mx-auto rounded-lg`;
 const Content = tw.div`flex flex-col md:flex-row items-center justify-between max-w-screen-xl mx-auto py-12 mb-20`; // Added bottom margin
 
 const IllustrationContainer = styled.div`
@@ -21,11 +21,11 @@ const IllustrationContainer = styled.div`
 const TextContainer = tw.div`flex flex-col items-center text-center md:w-1/3`;
 
 const Heading = styled.h1`
-    ${tw`font-bold text-4xl text-gray-900 my-4`}
+    ${tw`font-bold text-4xl  my-4`}
 `;
 
 const Paragraph = styled.p`
-    ${tw`text-lg text-gray-900 mb-4 `}
+    ${tw`text-lg text-gray-700 mb-4 `}
 `;
 
 const StyledLink = styled(Link)`

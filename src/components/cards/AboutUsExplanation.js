@@ -11,7 +11,7 @@ const HeadingColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-
 const HeadingTitle = tw.h1`text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-black leading-none`;
 
 
-const HeadingDescription = tw.p`my-5 lg:my-8 text-base xl:text-2xl `;
+const HeadingDescription = tw.p`my-5 lg:my-8 text-base xl:text-xl text-gray-700 `;
 
 const Break = styled.div`
   ${tw`my-4`}

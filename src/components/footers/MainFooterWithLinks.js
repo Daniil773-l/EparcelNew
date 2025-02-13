@@ -3,38 +3,40 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import LogoImage from "../../images/logo/logo-kz.svg";
 import TelegramIcon from "../../images/icon/telegram.svg";
-import ViberIcon from "../../images/icon/Viber.svg";
+import {SectionFooter, SectionHeading, SectionSteps} from "../misc/Headings";
 import WhatsappIcon from "../../images/icon/whatsapp.svg";
 import ClassmatesIcon from "../../images/icon/Tik-Tok.svg";
-import VkIcon from "../../images/icon/vk.svg";
 import InstagramIcon from "../../images/logo/Instagram_logo_2022.svg";
 import { FiClock } from 'react-icons/fi';
 import { FiPhone, FiMail } from 'react-icons/fi';
 const Container = styled.div`
-    ${tw`relative text-gray-100 -mx-8 -mb-8 px-8 p-10`}
+    ${tw`relative  -mx-8 -mb-8 px-8 p-10`}
     background-color: #e2ffe2 !important; // Ensure it takes precedence
-    color: #2D2D2D;
+
 `;
 
 const Content = tw.div`max-w-screen-xl mx-auto pt-16 pb-8`;
 const FiveColumns = tw.div`flex flex-wrap justify-between`;
+
 
 const Column = tw.div`w-1/2 md:w-1/5 mb-8 md:mb-0 text-sm sm:text-base text-center md:text-left`;
 const CompanyColumn = tw.div`text-center md:text-left mb-16 lg:mb-0 w-full lg:w-1/5`;
 
 const CompanyAddress = tw.p`mt-4 max-w-xs font-medium text-lg mx-auto lg:mx-0 lg:mr-4 leading-loose text-center lg:text-left`;
 
+const ColumnHeading = styled(SectionFooter)`
+  ${tw`ml-10 font-bold text-lg uppercase`};
 
-const ColumnHeading = tw.h5`ml-10 font-bold text-lg uppercase`;
+`;
 
 const LinkList = styled.ul`
     ${tw`mt-4 text-base font-medium list-none`}; // Removes bullets
 `;
 const LinkListItem = tw.li`mt-3`;
 const Link = styled.a`
-    ${tw`hover:text-green-500  text-lg text-base cursor-pointer`};
+    ${tw`hover:text-green-500  font-bold text-lg text-base cursor-pointer`};
     text-decoration: none; // Ensures no underline at all
-    color: #2D2D2D;
+color: #1d324f;
     &:hover {
         text-decoration: none; // Prevents any text-decoration on hover as well
     }

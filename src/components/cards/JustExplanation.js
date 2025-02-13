@@ -1,6 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
+import {SectionHeading} from "../misc/Headings";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto`; // Без отступов сверху
@@ -9,12 +10,9 @@ const Content = tw.div`max-w-screen-xl mx-auto`; // Без отступов св
 
 const HeadingColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-auto xl:mx-0`;
 
-const HeadingTitle = styled.h1`
-  ${tw`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900 leading-tight`}
-  margin-bottom: 50px; /* Увеличение отступа между заголовком и абзацем */
-`;
+const HeadingTitle = tw(SectionHeading)`w-full `;
 
-const HeadingDescription = tw.p`my-5 lg:my-8 text-base xl:text-2xl`;
+const HeadingDescription = tw.p`my-5 lg:my-8 text-base xl:text-xl my-2 lg:my-4 text-gray-700`;
 
 const Break = styled.div`
   ${tw`my-4`}

@@ -359,13 +359,8 @@ const ProductForm = ({index, handleChange, handleDelete}) => {
                         type="text"
                         placeholder="Введите ссылку на товар"
                         onChange={(e) => handleChange(e, index)}
-                        onInput={(e) => {
-                            const urlRegex = /^(https?:\/\/[^\s]*$|^$)/;
-                            if (!urlRegex.test(e.target.value)) {
-                                e.target.value = e.target.value.slice(0, -1); // Удаляем последний символ, если ввод некорректен
-                            }
-                        }}
                     />
+
                     <Tippy content="Пример: https://www.newbalance.com" placement="top">
                         <IconContainer>
                             <img src={InfoIconSrc} alt="Info icon" />

@@ -205,7 +205,8 @@ const StyledPhoneInput = styled(PhoneInput)`
         border-color: transparent;
         border-bottom-color: #adb5bd;
         font-family: inherit;
-        padding-left: 10px; // Отступ для читаемости
+
+        padding-left: 230px; // Отступ для читаемости
         &::placeholder {
             color: #adb5bd;
         }
@@ -215,9 +216,6 @@ const StyledPhoneInput = styled(PhoneInput)`
         &:focus {
             border-bottom-color: #0ABD19;
         }
-    }
-    .flag-dropdown {
-        display: none; // Скрываем выбор страны
     }
 `;
 
@@ -473,7 +471,7 @@ const RecipientForm = () => {
                                 <FormGroup style={{ display: 'flex', alignItems: 'center' }}>
                                     <Label htmlFor="phone" style={{ marginRight: '385px' }}>Телефон получателя</Label>
                                     <StyledPhoneInput
-                                        country={'ru'}
+                                        country={'kz'} // Устанавливаем Казахстан по умолчанию
                                         value={phone}
                                         onChange={(phone) => setPhone(phone)}
                                         inputStyle={{
@@ -484,25 +482,11 @@ const RecipientForm = () => {
                                             color: '#6c757d',
                                             fontFamily: 'inherit',
                                             fontSize: '16px',
-                                            paddingLeft: '10px',
+                                            paddingLeft: '50px',
                                             transition: 'border-bottom-color 0.3s',
-                                            '&:hover': {
-                                                borderBottomColor: '#0ABD19',
-                                            },
-                                            '&:focus': {
-                                                borderBottomColor: '#0ABD19',
-                                            },
-                                            '&::placeholder': {
-                                                color: '#adb5bd',
-                                            },
                                         }}
-                                        disableDropdown={true} // Отключаем выпадающий список стран
-                                        countryCodeEditable={false} // Код страны нельзя редактировать
-                                        onlyCountries={['ru']} // Только Россия
-                                        isValid={(inputNumber) => {
-                                            if (!inputNumber) return false;
-                                            return /^\+?[\d\s-()]{10,20}$/.test(inputNumber);
-                                        }}
+                                        enableSearch={true} // Включаем поиск стран
+                                        countryCodeEditable={true} // Даем возможность менять код страны
                                     />
                                 </FormGroup>
                                 <FormGroup>

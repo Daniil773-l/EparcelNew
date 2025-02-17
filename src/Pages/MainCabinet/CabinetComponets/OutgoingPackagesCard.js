@@ -24,12 +24,12 @@ const CardHeaderContainer = styled.div`
 `;
 
 const CardHeaderLink = styled.a`
-    ${tw`text-lg font-bold relative flex-shrink-0 h-auto py-10 no-underline`}
+    ${tw`text-lg font-bold relative flex-shrink-0 h-auto py-10 no-underline text-secondary-600`}
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     text-align: center;
     padding-right: 20px;
-    color:   #a0c1aa;
+
     border-left:4px solid #a0c1aa;
     padding-left: 20px;
     cursor: pointer;

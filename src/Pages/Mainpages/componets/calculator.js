@@ -139,7 +139,7 @@ const fadeOut = keyframes`
 const Wrapper = styled.div`
     max-width: 480px;
      /* Уменьшен отступ сверху */
-    margin-top: -80px;
+margin-left: 53px;
     padding: 25px;
     background-color: #ffffff;
     border-radius: 16px;

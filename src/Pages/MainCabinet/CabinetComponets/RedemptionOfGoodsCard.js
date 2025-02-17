@@ -26,9 +26,9 @@ const CardHeaderContainer = styled.div`
 `;
 
 const CardHeaderLink = styled.a`
-    ${tw` text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline`}
+    ${tw` text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline text-secondary-600`}
     writing-mode: vertical-rl;
-    color: #a0c1aa;
+
     transform: rotate(180deg);
     text-align: center;
     padding-right: 20px;

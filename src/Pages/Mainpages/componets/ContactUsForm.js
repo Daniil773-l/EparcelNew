@@ -20,7 +20,7 @@ const FormColumn = tw(Column)`md:w-6/12 flex items-center justify-center mb-auto
 
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
-const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-2xl font-medium leading-relaxed text-secondary-600 md:leading-snug`; // Уменьшил межстрочный интервал
+const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-2xl  text-secondary-600 md:leading-snug`; // Уменьшил межстрочный интервал
 
 
 const Form = tw.form`mt-8 md:mt-10 text-sm flex flex-col max-w-2xl mx-auto md:mx-0`;

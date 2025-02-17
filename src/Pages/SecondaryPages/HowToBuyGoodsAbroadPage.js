@@ -18,7 +18,7 @@ const HeadingColumn = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-
 const HeadingTitle = tw(SectionHeading)`
     text-3xl md:text-2xl lg:text-4xl xl:text-3xl leading-tight
     mb-5
-    text-[#2D2D2D]
+   text-secondary-600
     flex items-center
 `;
 
@@ -29,10 +29,10 @@ const GreenLink = styled.a`
 `;
 
 const HeadingDescription = styled.p`
-    ${tw`text-lg font-medium`}
+    ${tw`text-lg font-medium text-secondary-600`}
 
     line-height: 32px;
-    color: #2D2D2D;
+
 
     margin-top: 12px; /* Добавлено для выравнивания текста ниже */
 `;

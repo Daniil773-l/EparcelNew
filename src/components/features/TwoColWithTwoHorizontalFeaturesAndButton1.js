@@ -11,18 +11,21 @@ import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sig
 import Calculator from "../../Pages/Mainpages/componets/calculator";
 
 
-const Container = tw.div`relative`;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto items-center mt-16`;
+const Container = tw.div`relative mt-12`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto items-center  `;
 
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative z-10 mt-[-50px]`;
+const ImageColumn = tw(Column)`
+  md:w-6/12 flex-shrink-0 relative z-10 
+`;
+
 
 const TextColumn = styled(Column)(({ textOnLeft }) => [
     tw`md:w-6/12 mt-0`, // Убираем верхний отступ
     textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`,
     css
     `
-        margin-top: -140px;
+        margin-top: -100px;
     @media (max-width: 768px) {
       margin-top: 0; /* Убираем отступ сверху на мобильных устройствах */
     }

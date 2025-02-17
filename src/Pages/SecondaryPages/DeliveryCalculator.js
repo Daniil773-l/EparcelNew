@@ -97,9 +97,6 @@ export default ({
                                 <Description>
                                     <span style={{ color: "#0ABD19" }}>Онлайн калькулятор</span> стоимости доставки товара поможет рассчитать приблизительную стоимость доставки.
                                 </Description>
-                                <Description>
-                                    <span style={{ color: "#0ABD19" }}>Задайте</span> необходимые параметры посылки и кликните на кнопку Рассчитать
-                                </Description>
 
 
                             </TextContent>

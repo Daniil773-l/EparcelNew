@@ -1,50 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import styled from "styled-components";
-import { getAuth } from "firebase/auth";
-import {
-    collection,
-    addDoc,
-    doc,
-    setDoc,
-    getDoc,
-    getDocs,
-    query,
-    where,
-    updateDoc,
-} from "firebase/firestore";
-import AnimationRevealPage from "./AnimationRevealPage";
-import { db } from "../../FireBaseConfig";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-
-const stripePromise = loadStripe("pk_live_51QgSyxKfwgqVlmpdOqT3sTbecg1b2nclFWUeeAeOJ7ymrlJG7abA2Tt7zASaQNVCkDCRDHospMaSNKmygZ1C4Ifh00R92H0MSB");
-
-const Container = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #f4f4f9;
-    font-family: "Roboto", sans-serif;
-`;
-
-const FormContainer = styled.div`
-    background: linear-gradient(to bottom right, #1abc9c, #16a085);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    text-align: center;
-    color: white;
-`;
-
-const Title = styled.h1`
-    color: #fff;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-`;
 
 const Button = styled.button`
     background: linear-gradient(135deg, #27ae60, #2ecc71);
@@ -71,47 +27,20 @@ const Button = styled.button`
     }
 `;
 
-const Input = styled.input`
-    margin-top: 15px;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    width: 100%;
-    border: 2px solid #ecf0f1;
-    background-color: #ecf0f1;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
-    &:focus {
-        outline: none;
-        border-color: #1abc9c;
-        box-shadow: 0 0 5px rgba(26, 188, 156, 0.5);
-    }
-`;
-
-const CardInputWrapper = styled.div`
-    background: #ecf0f1;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 15px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-`;
-
-const StripeForm = ({ parcelId, servicesIds, user, balance, setBalance }) => {
+const StripeForm = ({ amount }) => {
     const stripe = useStripe();
     const elements = useElements();
-    const navigate = useNavigate();
-    const [amount, setAmount] = useState("");
+    const [clientSecret, setClientSecret] = useState("");
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!stripe || !elements) return;
-
+    const createPaymentIntent = async (amount) => {
         try {
+            // Отправляем запрос на сервер для создания PaymentIntent
             const response = await fetch("http://195.49.212.230:3001/create-payment-intent", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ amount: parseInt(amount, 10) * 100 }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ amount: amount }),
             });
 
             if (!response.ok) {
@@ -119,137 +48,50 @@ const StripeForm = ({ parcelId, servicesIds, user, balance, setBalance }) => {
                 return;
             }
 
-            const { clientSecret } = await response.json();
-
-            const cardElement = elements.getElement(CardElement);
-            const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
-                payment_method: {
-                    card: cardElement,
-                    billing_details: {
-                        name: user?.displayName || "Anonymous",
-                    },
-                },
-            });
-
-            if (error) {
-                console.error("Payment failed:", error.message);
-                navigate("/PaymentSuccess", { state: { success: false } });
-            } else if (paymentIntent.status === "succeeded") {
-                console.log("Payment succeeded:", paymentIntent);
-
-                if (parcelId) {
-                    const querySnapshot = await getDocs(
-                        query(collection(db, "parcels"), where("id", "==", parcelId))
-                    );
-                    if (!querySnapshot.empty) {
-                        const documentRef = querySnapshot.docs[0].ref;
-                        await updateDoc(documentRef, { status: "Оплачено" });
-                    }
-                }
-
-                if (servicesIds.length > 0) {
-                    const updatePromises = servicesIds.map((serviceId) =>
-                        updateDoc(doc(db, "applications", serviceId), { status: "Оплачено" })
-                    );
-                    await Promise.all(updatePromises);
-                }
-
-                await addDoc(collection(db, "payments"), {
-                    userId: user.uid,
-                    amount,
-                    date: new Date(),
-                });
-
-                const newBalance = balance + parseInt(amount, 10);
-                await setDoc(doc(db, "balances", user.uid), { balance: newBalance });
-                setBalance(newBalance);
-
-                navigate("/PaymentSuccess", { state: { success: true } });
-            }
+            const data = await response.json();
+            setClientSecret(data.clientSecret); // Сохраняем clientSecret
         } catch (error) {
-            console.error("Error processing payment:", error);
-            navigate("/PaymentSuccess", { state: { success: false } });
+            console.error("Ошибка при запросе на сервер:", error);
         }
     };
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (!stripe || !elements || !clientSecret) {
+            return;
+        }
+
+        const cardElement = elements.getElement(CardElement);
+
+        const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: cardElement,
+                billing_details: {
+                    name: "Test User",
+                },
+            },
+        });
+
+        if (error) {
+            console.error("Ошибка при обработке платежа:", error.message);
+        } else if (paymentIntent.status === "succeeded") {
+            console.log("Платеж успешен:", paymentIntent);
+        }
+    };
+
+    // При монтировании компонента создаем PaymentIntent
+    React.useEffect(() => {
+        createPaymentIntent(amount);
+    }, [amount]);
+
     return (
         <form onSubmit={handleSubmit}>
-            <CardInputWrapper>
-                <CardElement
-                    options={{
-                        style: {
-                            base: {
-                                fontSize: "16px",
-                                color: "#333",
-                                "::placeholder": { color: "#7f8c8d" },
-                            },
-                            invalid: { color: "#e74c3c" },
-                        },
-                    }}
-                />
-            </CardInputWrapper>
-            <Input
-                type="number"
-                placeholder="Введите сумму"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-            />
-            <Button type="submit" disabled={!stripe || !amount}>
-                🛒 Оплатить
+            <CardElement />
+            <Button type="submit" disabled={!stripe || !clientSecret}>
+                Оплатить
             </Button>
         </form>
     );
 };
 
-const PaymentForm = () => {
-    const location = useLocation();
-    const [user, setUser] = useState(null);
-    const [balance, setBalance] = useState(0);
-    const parcelId = location.state?.parcelId || null;
-    const servicesIds = location.state?.servicesIds || [];
-
-    useEffect(() => {
-        const auth = getAuth();
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-            setUser(currentUser);
-            fetchUserBalance(currentUser.uid);
-        }
-    }, []);
-
-    const fetchUserBalance = async (userId) => {
-        try {
-            const balanceDoc = await getDoc(doc(db, "balances", userId));
-            if (balanceDoc.exists()) {
-                setBalance(balanceDoc.data().balance);
-            } else {
-                console.log("No balance document found for user.");
-                await setDoc(doc(db, "balances", userId), { balance: 0 });
-                setBalance(0);
-            }
-        } catch (error) {
-            console.error("Error fetching user balance:", error);
-        }
-    };
-
-    return (
-        <AnimationRevealPage>
-            <Container>
-                <FormContainer>
-                    <Title>Оплата картой (Stripe)</Title>
-                    <Elements stripe={stripePromise}>
-                        <StripeForm
-                            parcelId={parcelId}
-                            servicesIds={servicesIds}
-                            user={user}
-                            balance={balance}
-                            setBalance={setBalance}
-                        />
-                    </Elements>
-                </FormContainer>
-            </Container>
-        </AnimationRevealPage>
-    );
-};
-
-export default PaymentForm;
+export default StripeForm;

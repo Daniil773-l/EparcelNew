@@ -25,15 +25,15 @@ const Heading = tw(
 )`mt-4 font-extrabold text-3xl sm:text-4xl lg:text-5xl text-center leading-tight`;
 
 const StepsContainer = styled.div`
-    ${tw`mt-1 flex flex-col justify-center items-center`}
+    ${tw`mt-1 flex justify-center items-stretch`} /* Используем items-stretch */
     gap: 1rem;
-    width: 100%; /* Полная ширина контейнера */
+    width: 100%;
 
     @media (min-width: 1024px) {
         ${tw`flex-row`}
-        flex-wrap: nowrap; /* Запрещаем перенос строк */
-        justify-content: center; /* Центрируем карточки в контейнере */
-        padding: 0 1rem; /* Добавляем отступы внутри контейнера */
+        flex-wrap: nowrap;
+        justify-content: center;
+        padding: 0 1rem;
     }
 `;
 
@@ -43,12 +43,12 @@ const Step = styled.div`
     background: #ffffff;
     border-radius: 12px;
     padding: 36px;
-    margin: auto auto; /* Центрируем карточки */
-    width: 100%; /* Для мобильных карточки занимают всю ширину */
-    max-width: min-content; /* Ограничиваем максимальную ширину */
-    min-width: 250px; /* Минимальная ширина карточки */
+    margin: auto auto;
+    width: 100%;
+    max-width: min-content;
+    min-width: 250px;
+    height: 100%; /* Растягиваем все карточки по высоте */
 
-    /* Добавляем зеленую закладку */
     &::before {
         content: "";
         position: absolute;
@@ -62,10 +62,11 @@ const Step = styled.div`
     }
 
     @media (min-width: 1024px) {
-        margin: 0; /* Убираем дополнительные отступы на десктопе */
-        width: calc(25% - 1rem); /* Каждая карточка занимает 25% пространства с учетом отступов */
+        margin: 0;
+        width: calc(25% - 1rem);
     }
 `;
+
 
 
 const StepNumber = styled.div`
@@ -74,9 +75,8 @@ const StepNumber = styled.div`
     min-width: 60px;
     margin-bottom: 20px; /* Отступ между номером и заголовком */
 `;
-
 const StepText = styled.div`
-    ${tw`flex flex-col  w-full text-center`} /* Выравниваем по центру */
+    ${tw`flex flex-col flex-grow justify-between w-full text-center`} /* Растягиваем содержимое */
 `;
 
 const StepHeading = styled.h6`
@@ -84,15 +84,13 @@ const StepHeading = styled.h6`
     margin: 0 0 12px 0;
     width: 100%;
     text-align: center;
-    margin-bottom: 16px; /* Отступ между заголовком и описанием */
 `;
 
 const StepDescription = styled.p`
     ${tw`text-base xl:text-xl my-2 lg:my-4 text-gray-700`}
     margin: 0 0 8px 0;
     width: 100%;
-    text-align: center; /* Центрируем текст */
-    word-wrap: break-word;
+    text-align: center;
 `;
 
 export default ({

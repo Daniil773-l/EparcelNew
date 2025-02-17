@@ -27,10 +27,10 @@ const CardHeaderContainer = styled.div`
 `;
 
 const CardHeaderLink = styled.a`
-    ${tw`text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline`}
+    ${tw`text-lg font-bold relative flex-shrink-0 h-auto py-8 no-underline text-secondary-600`}
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    color:  #a0c1aa;
+
     text-align: center;
     padding-right: 20px;
     border-left:4px solid #a0c1aa;

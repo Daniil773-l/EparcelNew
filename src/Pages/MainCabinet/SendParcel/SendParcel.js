@@ -44,19 +44,16 @@ const ExpectedLink = () => {
 
 
     const handleDataPass = (data) => {
-
-
         if (!data || typeof data !== "object") {
-
             return;
         }
 
         setPaymentData((prevState) => {
             const updatedData = { ...prevState, ...data };
-
             return updatedData;
         });
     };
+
 
 
     const handleInsuranceUpdate = (data) => {
@@ -98,11 +95,12 @@ const ExpectedLink = () => {
                 />
                 <Step2
                     onDataPass={(data) => {
-                        handleDataPass(data);
-                        handleDataPassFromStep1(data);
+                        handleDataPass(data); // Обновление всех данных
+                        handleDataPassFromStep1(data); // Обновление данных о получателе
                     }}
-                    city={paymentData.city}
+                    city={paymentData.city} // Передача города
                 />
+
                 <Step3Backend onDeliveryCostUpdate={handleStep3DeliveryCostUpdate} />
 
 

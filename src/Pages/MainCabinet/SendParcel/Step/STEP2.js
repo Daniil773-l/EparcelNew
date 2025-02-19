@@ -4,6 +4,64 @@ import {ExpecteLink} from "../../../../components/misc/Headings";
 import {useParams} from "react-router-dom";
 import {collection, getDocs, query, where} from "firebase/firestore";
 import {db} from "../../../../FireBaseConfig";
+const cityMapping = {
+    "Almaty": "Алматы",
+    "Abai": "Абай",
+    "Besagash": "Бесагаш",
+    "Boralday": "Боралдай",
+    "Kaskelen": "Каскелен",
+    "Otegen-Batyr": "Отеген-Батыр",
+    "Talgar": "Талгар",
+    "Tuzdybastau": "Туздыбастау",
+    "Esik": "Есик",
+    "Konayev": "Конаев",
+    "Korday": "Кордай",
+    "Taldykorgan": "Талдыкорган",
+    "Kapshagay": "Капшагай",
+    "Astana": "Астана",
+    "Balkhash": "Балкаш",
+    "Karaganda": "Караганда",
+    "Kosshe": "Косшы",
+    "Lenger": "Ленгер",
+    "Priozersk": "Приозёрск",
+    "Saran": "Сарань",
+    "Saryagash": "Сарыагаш",
+    "Taraz": "Тараз",
+    "Temirtau": "Темиртау",
+    "Turkestan": "Туркестан",
+    "Shakhtinsk": "Шахтинск",
+    "Shymkent": "Шымкент",
+    "Atbasar": "Атбасар",
+    "Zhezkazgan": "Жезказган",
+    "Zhitikara": "Житикара",
+    "Kokshetau": "Кокшетау",
+    "Kostanay": "Костанай",
+    "Lisakovsk": "Лисаковск",
+    "Novoishimskoe": "Новоишимское",
+    "Petropavlovsk": "Петропавловск",
+    "Rudny": "Рудный",
+    "Satpaev": "Сатпаев",
+    "Stepnogorsk": "Степногорск",
+    "Tainshe": "Тайынша",
+    "Tobyl": "Тобыл",
+    "Shchuchinsk": "Щучинск",
+    "Altai": "Алтай",
+    "Kyzylorda": "Кызылорда",
+    "Pavlodar": "Павлодар",
+    "Ridder": "Риддер",
+    "Semey": "Семей",
+    "Ust-Kamenogorsk": "Усть-Каменогорск",
+    "Shu": "Шу",
+    "Ekibastuz": "Экибастуз",
+    "Aksay": "Аксай",
+    "Aktau": "Актау",
+    "Aktobe": "Актобе",
+    "Atyrau": "Атырау",
+    "Zhanaozen": "Жанаозен",
+    "Uralsk": "Уральск",
+    "Zyryanovsk": "Зыряновск",
+};
+
 
 const FormContainer = styled.div`
     ${tw`flex justify-center items-center flex-grow`};
@@ -98,14 +156,23 @@ const Step2 = ({ onDataPass, city }) => {
     };
 
     // Calculate delivery cost
+    // Calculate delivery cost
     const calculateDeliveryCost = (city, weightKg) => {
         if (!weightKg || weightKg <= 0) return 0;
 
-        const roundedWeightKg = Math.ceil(weightKg);
+        const cityName = cityMapping[city] || city;  // Используем маппинг, если город есть, иначе оставляем как есть
+
+        const roundedWeightKg = [0.5, 1, 1.5, 2, 2.5, 3].reduce((prev, curr) =>
+            Math.abs(curr - weightKg) < Math.abs(prev - weightKg) ? curr : prev
+        );
+
         let cost = 0;
-        if (
-            ["Алматы", "Абай", "Бесагаш", "Боралдай", "Каскелен", "Отеген-Батыр", "Талгар", "Туздыбастау", "Есик", "Конаев", "Кордай", "Талдыкорган"].includes(city)
-        ) {
+
+        console.log('Rounded weight:', roundedWeightKg);  // Проверка округленного веса
+        console.log('Город:', cityName);  // Проверка, что город передается правильно
+
+        // Группировка городов по регионам
+        if (["Алматы", "Абай", "Бесагаш", "Боралдай", "Каскелен", "Отеген-Батыр", "Талгар", "Туздыбастау", "Есик", "Конаев", "Кордай", "Талдыкорган", "Капшагай"].includes(cityName)) {
             cost = roundedWeightKg <= 3
                 ? roundedWeightKg === 0.5 ? 10 :
                     roundedWeightKg === 1 ? 14 :
@@ -114,9 +181,7 @@ const Step2 = ({ onDataPass, city }) => {
                                 roundedWeightKg === 2.5 ? 35 :
                                     roundedWeightKg === 3 ? 42 : 0
                 : 42 + (roundedWeightKg - 3) * 14;
-        } else if (
-            ["Астана", "Балкаш", "Караганда", "Косшы", "Ленгер", "Приозёрск", "Сарань", "Сарыагаш", "Тараз", "Темиртау", "Туркестан", "Шахтинск", "Шымкент", "Атбасар", "Жезказган", "Житикара", "Кокшетау", "Костанай", "Лисаковск", "Новоишимское", "Петропавловск", "Рудный", "Сатпаев", "Степногорск", "Тайынша", "Тобыл", "Щучинск"].includes(city)
-        ) {
+        } else if (["Астана", "Балкаш", "Караганда", "Косшы", "Ленгер", "Приозёрск", "Сарань", "Сарыагаш", "Тараз", "Темиртау", "Туркестан", "Шахтинск", "Шымкент", "Атбасар", "Жезказган", "Житикара", "Кокшетау", "Костанай", "Лисаковск", "Новоишимское", "Петропавловск", "Рудный", "Сатпаев", "Степногорск", "Тайынша", "Тобыл", "Щучинск"].includes(cityName)) {
             cost = roundedWeightKg <= 3
                 ? roundedWeightKg === 0.5 ? 11 :
                     roundedWeightKg === 1 ? 15 :
@@ -125,9 +190,7 @@ const Step2 = ({ onDataPass, city }) => {
                                 roundedWeightKg === 2.5 ? 36 :
                                     roundedWeightKg === 3 ? 43 : 0
                 : 43 + (roundedWeightKg - 3) * 15;
-        } else if (
-            ["Алтай", "Кызылорда", "Павлодар", "Риддер", "Семей", "Усть-Каменогорск", "Шемонаиха", "Экибастуз", "Аксай", "Актау", "Актобе", "Атырау", "Жанаозен", "Уральск"].includes(city)
-        ) {
+        } else if (["Алтай", "Кызылорда", "Павлодар", "Риддер", "Семей", "Усть-Каменогорск", "Шемонаиха", "Экибастуз", "Аксай", "Актау", "Актобе", "Атырау", "Жанаозен", "Уральск", "Зыряновск"].includes(cityName)) {
             cost = roundedWeightKg <= 3
                 ? roundedWeightKg === 0.5 ? 12 :
                     roundedWeightKg === 1 ? 16 :
@@ -138,8 +201,12 @@ const Step2 = ({ onDataPass, city }) => {
                 : 44 + (roundedWeightKg - 3) * 16;
         }
 
+        console.log('Calculated delivery cost:', cost);  // Лог для проверки стоимости
         return cost;
     };
+
+
+
 
     // Update on changes
     useEffect(() => {
@@ -169,13 +236,19 @@ const Step2 = ({ onDataPass, city }) => {
             });
         }
     }, [parcelData, services, exchangeRate, deliveryCost]);
-
     useEffect(() => {
         if (parcelData && city) {
             const weightKg = parcelData.width * 0.453592; // Convert pounds to kg
-            setDeliveryCost(calculateDeliveryCost(city, weightKg));
+            const cost = calculateDeliveryCost(city.value, weightKg); // Передаем только строку city.value
+            setDeliveryCost(cost);  // Устанавливаем стоимость доставки
+            onDataPass({ deliveryCost: cost }); // Передаем в родительский компонент
         }
     }, [parcelData, city]);
+
+
+
+
+    // Добавьте это в useEffect для проверки, передается ли город
 
     return (
         <FormContainer>

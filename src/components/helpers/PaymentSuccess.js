@@ -113,14 +113,14 @@ const PaymentMessage = () => {
     const { id: parcelIdFromParams } = useParams();
     const parcelId = location.state?.parcelId || parcelIdFromParams || localStorage.getItem("currentParcelId");
 
-    // Если `parcelId` есть, сохраняем его для использования позже
     useEffect(() => {
         if (parcelId) {
             localStorage.setItem("currentParcelId", parcelId);
         }
     }, [parcelId]);
 
-    const success = location.state?.success || false;
+    // ✅ Если success = false, передаем undefined (чтобы избежать ошибки)
+    const success = location.state?.success ? true : undefined;
 
     const handleGoBack = () => {
         if (success) {
@@ -131,9 +131,6 @@ const PaymentMessage = () => {
             navigate("/SendParcelForm");
         }
     };
-
-
-
 
     return (
         <Wrapper>
@@ -162,5 +159,6 @@ const PaymentMessage = () => {
         </Wrapper>
     );
 };
+
 
 export default PaymentMessage;

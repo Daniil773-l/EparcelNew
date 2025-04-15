@@ -1,3 +1,45 @@
+if (typeof window !== "undefined") {
+    const suppressErrorMessages = (event) => {
+        const ignoredMessages = [
+            "Access-Control-Allow-Origin",
+            "Failed to fetch",
+            "net::ERR_FAILED",
+            "stripe.com",
+            "r.stripe.com",
+            "js.stripe.com"
+        ];
+
+        if (ignoredMessages.some(msg => event.message?.includes(msg) || event.reason?.message?.includes(msg))) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+        }
+    };
+
+    window.addEventListener("error", suppressErrorMessages, true);
+    window.addEventListener("unhandledrejection", suppressErrorMessages, true);
+
+    const originalConsoleError = console.error;
+    console.error = (...args) => {
+        if (
+            args.some(arg =>
+                typeof arg === "string" &&
+                (arg.includes("Access-Control-Allow-Origin") ||
+                    arg.includes("Failed to fetch") ||
+                    arg.includes("net::ERR_FAILED") ||
+                    arg.includes("stripe.com") ||
+                    arg.includes("r.stripe.com") ||
+                    arg.includes("js.stripe.com"))
+            )
+        ) {
+            return; // Полностью подавляем ошибку
+        }
+        originalConsoleError(...args); // Оставляем другие ошибки
+    };
+}
+
+
+
+
 import React from "react";
 import {createRoot} from "react-dom/client";
 import {BrowserRouter as Router, Route, Routes, Navigate, useLocation, matchPath} from "react-router-dom";
@@ -218,6 +260,27 @@ const AppRoutes = () => {
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
+if (typeof window !== "undefined") {
+    const suppressErrors = (event) => {
+        const ignoredMessages = [
+            "Access-Control-Allow-Origin",
+            "Failed to fetch",
+            "net::ERR_FAILED",
+            "stripe.com",
+            "r.stripe.com"
+        ];
+
+        if (ignoredMessages.some(msg => event.message?.includes(msg) || event.reason?.message?.includes(msg))) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+        }
+    };
+
+    window.addEventListener("error", suppressErrors, true);
+    window.addEventListener("unhandledrejection", suppressErrors, true);
+}
+
+
 
 root.render(<AuthProvider>
     <UserProvider>

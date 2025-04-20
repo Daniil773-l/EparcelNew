@@ -54,7 +54,10 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left `;
 const Heading = tw(
     SectionHeading
 )`mt-6 font-black  text-3xl  sm:text-4xl lg:text-5xl text-center md:text-left leading-tight md:leading-normal`;
-const Description = tw.p`text-left text-base xl:text-xl my-2 lg:my-4 text-gray-700 leading-relaxed `;
+const Description = tw.p`
+  text-center md:text-left text-base xl:text-xl my-2 lg:my-4 text-gray-700 leading-relaxed
+`;
+
 
 
 const FeatureHeadingContainer = tw.div`

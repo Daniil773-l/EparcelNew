@@ -386,7 +386,6 @@ const PersonalCabinet = () => {
                     <SecondCardGreenStrip />
                     <TabContainer>
                         <Tab active={activeTab === "usa"} onClick={() => setActiveTab("usa")}>США</Tab>
-                        <Tab active={activeTab === "turkey"} onClick={() => setActiveTab("turkey")}>Турция</Tab>
                     </TabContainer>
                     <TabContentWrapper>
                         <AnimatePresence exitBeforeEnter>

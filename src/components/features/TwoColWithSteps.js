@@ -25,12 +25,11 @@ const Heading = tw(
 )`mt-4 font-extrabold text-3xl sm:text-4xl lg:text-5xl text-center leading-tight`;
 
 const StepsContainer = styled.div`
-    ${tw`mt-1 flex justify-center items-stretch`} /* Используем items-stretch */
+    ${tw`mt-1 flex justify-center items-stretch flex-wrap`} // добавили flex-wrap
     gap: 1rem;
     width: 100%;
 
     @media (min-width: 1024px) {
-        ${tw`flex-row`}
         flex-wrap: nowrap;
         justify-content: center;
         padding: 0 1rem;
@@ -38,16 +37,16 @@ const StepsContainer = styled.div`
 `;
 
 
+
 const Step = styled.div`
     ${tw`flex flex-col items-center relative`}
     background: #ffffff;
     border-radius: 12px;
     padding: 36px;
-    margin: auto auto;
+    margin: auto;
     width: 100%;
-    max-width: min-content;
     min-width: 250px;
-    height: 100%; /* Растягиваем все карточки по высоте */
+    flex: 1 1 100%; // 👈 добавили
 
     &::before {
         content: "";
@@ -61,11 +60,15 @@ const Step = styled.div`
         border-bottom-left-radius: 12px;
     }
 
+    @media (min-width: 768px) {
+        flex: 1 1 calc(50% - 1rem); // 2 карточки в ряд
+    }
+
     @media (min-width: 1024px) {
-        margin: 0;
-        width: calc(25% - 1rem);
+        flex: 1 1 calc(25% - 1rem); // 4 карточки в ряд
     }
 `;
+
 
 
 

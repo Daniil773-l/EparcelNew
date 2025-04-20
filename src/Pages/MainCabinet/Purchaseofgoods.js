@@ -1063,7 +1063,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
     };
 
 
-    const warehouseOptions = ['Склад не выбран', 'США', 'Турция'];
+    const warehouseOptions = ['Склад не выбран', 'США'];
     const priceChangeOptions = [
         'Выкупать товар только по указанной цене',
         'Выкупать товар при увеличении цены до 10%',

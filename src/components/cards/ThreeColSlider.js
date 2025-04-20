@@ -81,41 +81,42 @@ export default () => {
 
     const sliderSettings = {
         arrows: false,
-        slidesToShow: 3, // Показывать ровно 3 карточки
-        infinite: false, // Без зацикливания
-        slidesToScroll: 1, // Скролл по 1 карточке
+        infinite: false,
+        slidesToShow: 3,
+        slidesToScroll: 1,
         responsive: [
             {
-                breakpoint: 1024, // Средние экраны (например, планшеты)
+                breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2, // На планшетах показываем 2 карточки
                 },
             },
             {
-                breakpoint: 768, // Маленькие экраны (например, телефоны)
+                breakpoint: 768,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 1, // На телефонах — 1 карточка
                 },
             },
         ],
     };
 
 
+
     const cards = [
         {
-            imageSrc: "https://eparcel.ru/image/cache/catalog/news/stock3-300x214.png",
-            title: "Где покупать товары с выгодой",
-            description: "Узнайте о самых выгодных магазинах в США",
+            imageSrc: "https://eparcel.ru/image/cache/webp/catalog/raschet-tovarov-300x180.webp",
+            title: "Как оплатить товар в Америке",
+            description: "Оплата покупок за границей в 2025 году остается доступной с банковской картой...",
         },
         {
-            imageSrc: "https://eparcel.ru/image/cache/catalog/news/luchshiye-brendy-sumok-e1676232705225-300x214.jpg",
-            title: "Получайте кэшбек с заказов",
-            description: "Экономьте на своих покупках и возвращайте деньги",
+            imageSrc: "https://eparcel.ru/image/cache/webp/catalog/pokupat-s-vygodoj1-300x289.webp",
+            title: "Где покупать товары с выгодой в США",
+            description: "Покупки в американских магазинах — это выгодный способ экономить на брендах...",
         },
         {
-            imageSrc: "https://eparcel.ru/image/cache/catalog/statya-300x214.png",
-            title: "Объединение заказов бесплатно",
-            description: "Экономьте на своих покупках и возвращайте деньги",
+            imageSrc: "https://eparcel.ru/image/cache/webp/catalog/kroksy-originalnye-300x242.webp",
+            title: "Как заказать оригинальные кроксы",
+            description: "Покупка оригинальных Crocs — это инвестиция в комфорт и долговечность...",
         },
         {
             imageSrc: "https://eparcel.ru/image/cache/webp/catalog/iherblogo-300x299.webp",

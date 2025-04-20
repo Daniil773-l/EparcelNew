@@ -60,10 +60,10 @@ export default function App() {
                 imageSrc={DesignIllustration}
                 roundedHeaderButton={false}
             />
-            <ButtonContainer>
-                <PrimaryButton onClick={() => setSelectedCountry('США')} selected={selectedCountry === 'США'}>США</PrimaryButton>
-                <PrimaryButton onClick={() => setSelectedCountry('Турция')} selected={selectedCountry === 'Турция'}>Турция</PrimaryButton>
-            </ButtonContainer>
+            {/*<ButtonContainer>*/}
+            {/*    <PrimaryButton onClick={() => setSelectedCountry('США')} selected={selectedCountry === 'США'}>США</PrimaryButton>*/}
+            {/*    /!*<PrimaryButton onClick={() => setSelectedCountry('Турция')} selected={selectedCountry === 'Турция'}>Турция</PrimaryButton>*!/*/}
+            {/*</ButtonContainer>*/}
             <ButtonContainer>
                 <SecondaryButton onClick={() => setSelectedCategory('Детский мир')} selected={selectedCategory === 'Детский мир'}>Детский мир</SecondaryButton>
                 <SecondaryButton onClick={() => setSelectedCategory('Здоровье')} selected={selectedCategory === 'Здоровье'}>Здоровье</SecondaryButton>

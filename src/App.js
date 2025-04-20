@@ -192,9 +192,9 @@ export default () => {
             </DeliveryMethodsContainer>
             <EmailSectionContainer>
                 <TextColumn>
-                    <Heading> Зарегистрируйтесь на нашем сайте, чтобы <HighlightedText>узнать адрес склада в США и Турции </HighlightedText> </Heading>
+                    <Heading> Зарегистрируйтесь на нашем сайте, чтобы <HighlightedText>узнать адрес склада в США  </HighlightedText> </Heading>
                     <Paragraph>
-                        Получите личный адрес в США и Турции  для покупок в интернет магазинах, а Eparcel доставит их Вам в Казахстан.</Paragraph>
+                        Получите личный адрес в США   для покупок в интернет магазинах, а Eparcel доставит их Вам в Казахстан.</Paragraph>
                     <Navlink href="/RegistrationPage"> <Button>Получить адрес доставки</Button></Navlink>
                 </TextColumn>
                 <ImageColumn>

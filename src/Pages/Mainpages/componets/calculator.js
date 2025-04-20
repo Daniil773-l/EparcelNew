@@ -357,12 +357,7 @@ function Calculator() {
                 >
                     из США
                 </CountryButton>
-                <CountryButton
-                    active={country === "Turkey"}
-                    onClick={() => setCountry("Turkey")}
-                >
-                    из Турции
-                </CountryButton>
+
             </CountrySwitcher>
             <ToggleContainer>
                 <ToggleLabel>Указать габариты посылки</ToggleLabel>

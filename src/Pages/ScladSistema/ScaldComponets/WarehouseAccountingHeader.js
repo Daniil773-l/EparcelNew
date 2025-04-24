@@ -145,7 +145,7 @@ const HeaderContainer = () => {
     const handleLogout = () => {
         const auth = getAuth();
         signOut(auth).then(() => {
-            navigate("/App");
+            navigate("/");
         }).catch((error) => {
             console.error("Ошибка выхода:", error);
         });

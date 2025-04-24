@@ -152,7 +152,7 @@ const PrintIcon = styled.img`
         transform: scale(1.1);
     }
 `;
-const AccpetParcel = () => {
+const UnknowParcel = () => {
     const [parcels, setParcels] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredParcels, setFilteredParcels] = useState([]);
@@ -164,8 +164,9 @@ const AccpetParcel = () => {
                 const querySnapshot = await getDocs(collection(db, "parcels"));
                 const parcelsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
                 const processedParcels = parcelsData.filter((parcel) =>
-                    parcel.status?.includes("На складе")
+                    parcel.status?.includes("На складе") && parcel.status?.includes("Неизвестная")
                 );
+
 
                 setParcels(processedParcels);
                 setFilteredParcels(processedParcels);
@@ -286,4 +287,4 @@ const AccpetParcel = () => {
     );
 };
 
-export default AccpetParcel;
+export default UnknowParcel;

@@ -123,7 +123,7 @@ const Sidebar = () => {
                     { name: "Входящие", href: "/IncomingPParcels" },
                     { name: "Обработанные", href: "/Parsed" },
                     { name: "Оплаченные посылки", href: "/paid" },
-                    { name: "Неизвестные посылки", href: "/unknown" },
+                    { name: "Неизвестные посылки", href: "/unknow-parcel" },
                     { name: "Поврежденные посылки", href: "/damaged" },
                     { name: "Услуги склада", href: "/servicesclad" },
                 ]}

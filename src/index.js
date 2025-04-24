@@ -1,3 +1,5 @@
+
+
 if (typeof window !== "undefined") {
     const suppressErrorMessages = (event) => {
         const ignoredMessages = [
@@ -105,6 +107,7 @@ import ListPallet from "./Pages/ScladSistema/Pallet/ListPallet";
 import AddPaletParcel from  "./Pages/ScladSistema/Pallet/AddParcelPalets"
 import Shipment from "./Pages/ScladSistema/Shipment/Shipment";
 import AddPalletShioment from "./Pages/ScladSistema/Shipment/AddPalletShioment";
+import UnknowParcel from "./Pages/ScladSistema/unknownParcel";
 // Компонент для защиты маршрутов
 const ProtectedRoute = ({children, role}) => {
     const {user} = useAuth();
@@ -148,7 +151,8 @@ const AppRoutes = () => {
         "/input-shipment",
         "/otgoingscaldparcel",
         "/purchaseofgoodssclad",
-        "/FormEditingPurchamse"];
+        "/FormEditingPurchamse",
+        "/unknow-parcel",];
 
     // Проверка на скрытие заголовка
     const shouldHideHeader = hideHeaderOnRoutes.some(route => matchPath(route, location.pathname));
@@ -251,6 +255,9 @@ const AppRoutes = () => {
             </ProtectedRoute>}/>
             <Route path="/input-shipment" element={<ProtectedRoute role="admin">
                 <AddPalletShioment/>
+            </ProtectedRoute>}/>
+            <Route path="/unknow-parcel" element={<ProtectedRoute role="admin">
+                <UnknowParcel/>
             </ProtectedRoute>}/>
         </Routes>
 

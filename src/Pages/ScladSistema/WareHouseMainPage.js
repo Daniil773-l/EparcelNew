@@ -141,31 +141,56 @@ const MainPage = () => {
             const q = query(collection(db, "parcels"), where("trackingNumber", "==", trackingId));
             const querySnapshot = await getDocs(q);
 
+            let newPackage;
+
             if (!querySnapshot.empty) {
+                // Посылка найдена — обновляем
                 const docRef = querySnapshot.docs[0].ref;
-                await updateDoc(docRef, { status: "На складе", dateReceived: currentDate });
+                await updateDoc(docRef, {
+                    status: "На складе",
+                    dateReceived: currentDate,
+                });
 
-                if (!packages.some(pkg => pkg.trackingId === trackingId)) {
-                    setPackages(prev => [
-                        ...prev,
-                        { service: selectedService, trackingId, date: currentDate }
-                    ]);
-                }
+                newPackage = {
+                    service: selectedService,
+                    trackingId,
+                    date: currentDate,
+                    status: "На складе",
+                };
             } else {
-                const newPackage = { service: selectedService, trackingId, date: currentDate };
-                await addDoc(collection(db, "receivedPackages"), newPackage);
+                // Посылка не найдена — добавляем её в parcels
+                const newParcel = {
+                    trackingNumber: trackingId,
+                    status: "На складе, Неизвестная посылка",
+                    dateReceived: currentDate,
+                    service: selectedService,
+                };
+                await addDoc(collection(db, "parcels"), newParcel);
 
-                setPackages(prev => [
-                    ...prev,
-                    newPackage
-                ]);
+                newPackage = {
+                    service: selectedService,
+                    trackingId,
+                    date: currentDate,
+                    status: "На складе, Неизвестная посылка",
+                };
             }
+
+            // Всегда добавляем в receivedPackages
+            await addDoc(collection(db, "receivedPackages"), newPackage);
+
+            // Добавляем в локальный state
+            if (!packages.some(pkg => pkg.trackingId === trackingId)) {
+                setPackages(prev => [...prev, newPackage]);
+            }
+
             setTrackingId('');
             trackingIdRef.current?.focus();
         } catch (error) {
             console.error("Error processing package:", error);
         }
     }, [selectedService, trackingId, currentDate, packages]);
+
+
 
     const handleAddPackage = async (e) => {
         e.preventDefault();

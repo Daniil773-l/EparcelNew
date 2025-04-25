@@ -135,7 +135,7 @@ const MainPage = () => {
     }, []);
 
     const processPackage = useCallback(async () => {
-        if (!selectedService || !trackingId) return;
+        if (!trackingId) return;
 
         try {
             const q = query(collection(db, "parcels"), where("trackingNumber", "==", trackingId));
@@ -144,41 +144,38 @@ const MainPage = () => {
             let newPackage;
 
             if (!querySnapshot.empty) {
-                // Посылка найдена — обновляем
                 const docRef = querySnapshot.docs[0].ref;
                 await updateDoc(docRef, {
                     status: "На складе",
                     dateReceived: currentDate,
+                    service: selectedService || "Не указано",
                 });
 
                 newPackage = {
-                    service: selectedService,
+                    service: selectedService || "Не указано",
                     trackingId,
                     date: currentDate,
                     status: "На складе",
                 };
             } else {
-                // Посылка не найдена — добавляем её в parcels
                 const newParcel = {
                     trackingNumber: trackingId,
                     status: "На складе, Неизвестная посылка",
                     dateReceived: currentDate,
-                    service: selectedService,
+                    service: selectedService || "Не указано",
                 };
                 await addDoc(collection(db, "parcels"), newParcel);
 
                 newPackage = {
-                    service: selectedService,
+                    service: selectedService || "Не указано",
                     trackingId,
                     date: currentDate,
                     status: "На складе, Неизвестная посылка",
                 };
             }
 
-            // Всегда добавляем в receivedPackages
             await addDoc(collection(db, "receivedPackages"), newPackage);
 
-            // Добавляем в локальный state
             if (!packages.some(pkg => pkg.trackingId === trackingId)) {
                 setPackages(prev => [...prev, newPackage]);
             }
@@ -189,6 +186,7 @@ const MainPage = () => {
             console.error("Error processing package:", error);
         }
     }, [selectedService, trackingId, currentDate, packages]);
+
 
 
 
@@ -214,19 +212,6 @@ const MainPage = () => {
                     <Divider />
                     <Form onSubmit={handleAddPackage}>
                         <InputContainer>
-                            <Label>Выберите службу доставки</Label>
-                            <Select value={selectedService} onChange={(e) => setSelectedService(e.target.value)}>
-                                <option value="">Выберите службу</option>
-                                {["Amazon", "UPS", "FedEx", "DHL", "Lazership", "USPS", "Other"].map(service => (
-                                    <option key={service} value={service}>{service}</option>
-                                ))}
-                            </Select>
-                        </InputContainer>
-                        <InputContainer>
-                            <Label>Дата</Label>
-                            <Input type="text" value={currentDate} readOnly />
-                        </InputContainer>
-                        <InputContainer>
                             <Label>Tracking ID</Label>
                             <Input
                                 placeholder="Введите ID"
@@ -236,6 +221,20 @@ const MainPage = () => {
                                 onKeyPress={handleScannerInput}
                             />
                         </InputContainer>
+                        <InputContainer>
+                            <Label>Дата</Label>
+                            <Input type="text" value={currentDate} readOnly />
+                        </InputContainer>
+
+                        <InputContainer>
+                            <Label>Выберите службу доставки</Label>
+                            <Select value={selectedService} onChange={(e) => setSelectedService(e.target.value)}>
+                                <option value="">Выберите службу</option>
+                                {["Amazon", "UPS", "FedEx", "DHL", "Lazership", "USPS", "Other"].map(service => (
+                                    <option key={service} value={service}>{service}</option>
+                                ))}
+                            </Select>
+                        </InputContainer>
                         <Button type="submit">Add Package</Button>
                     </Form>
                     {packages.length > 0 ? (
@@ -243,17 +242,19 @@ const MainPage = () => {
                             <Table>
                                 <thead>
                                 <tr>
-                                    <TableHeader>Служба доставки</TableHeader>
+
                                     <TableHeader>Tracking ID</TableHeader>
                                     <TableHeader>Дата</TableHeader>
+                                    <TableHeader>Служба доставки</TableHeader>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {packages.map((pkg, index) => (
                                     <TableRow key={index}>
-                                        <TableCell>{pkg.service}</TableCell>
+
                                         <TableCell>{pkg.trackingId}</TableCell>
                                         <TableCell>{pkg.date}</TableCell>
+                                        <TableCell>{pkg.service}</TableCell>
                                     </TableRow>
                                 ))}
                                 </tbody>

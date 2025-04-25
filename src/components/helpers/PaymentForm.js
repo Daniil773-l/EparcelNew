@@ -38,7 +38,7 @@
     import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
     // Подключаем Stripe
-    const stripePromise = loadStripe("pk_live_51QgSyxKfwgqVlmpdOqT3sTbecg1b2nclFWUeeAeOJ7ymrlJG7abA2Tt7zASaQNVCkDCRDHospMaSNKmygZ1C4Ifh00R92H0MSB");
+    const stripePromise = loadStripe("pk_test_51QgSyxKfwgqVlmpdoEV5sKhwdJGJpdigSxDgDszw8sJNH2BvsuIBCIa7R8knLIzI6ixIt4bRSVldXCHhKjQx89R000ugpLeE8i");
 
     // Стили
     const Container = styled.div`
@@ -143,6 +143,7 @@
                 const response = await fetch("http://195.49.212.230:3001/create-payment-intent", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
+
                     body: JSON.stringify({ amount: parseInt(amount, 10) * 100 }),
                     mode: "cors",
                 }).catch(() => {

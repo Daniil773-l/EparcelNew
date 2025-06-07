@@ -151,7 +151,7 @@ const IncomingPackagesCard = () => {
                 <CardHeaderLink href="/IncomingParcels">Входящие посылки</CardHeaderLink>
                 <CardContentContainer>
                     <CardContent>
-                        Ожидаемые посылки и посылки прибывшие на склад:
+                        Ожидаемые в сша  и доставленые посылки  на склад:
                     </CardContent>
                     <CardStats>
                         <Stat>

@@ -104,24 +104,53 @@ export default () => {
 
     const cards = [
         {
-            imageSrc: "https://eparcel.ru/image/cache/webp/catalog/raschet-tovarov-300x180.webp",
-            title: "Как оплатить товар в Америке",
-            description: "Оплата покупок за границей в 2025 году остается доступной с банковской картой...",
+            id: 1,
+            category: 'Новости',
+            title: '',
+            description: '',
+            image: ''
         },
         {
-            imageSrc: "https://eparcel.ru/image/cache/webp/catalog/pokupat-s-vygodoj1-300x289.webp",
-            title: "Где покупать товары с выгодой в США",
-            description: "Покупки в американских магазинах — это выгодный способ экономить на брендах...",
+            id: 2,
+            category: 'Новости',
+            title: '',
+            description: '',
+            image: ''
         },
         {
-            imageSrc: "https://eparcel.ru/image/cache/webp/catalog/kroksy-originalnye-300x242.webp",
-            title: "Как заказать оригинальные кроксы",
-            description: "Покупка оригинальных Crocs — это инвестиция в комфорт и долговечность...",
+            id: 3,
+            category: 'Новости',
+            title: '',
+            description: '',
+            image: ''
         },
         {
-            imageSrc: "https://eparcel.ru/image/cache/webp/catalog/iherblogo-300x299.webp",
-            title: "20% на товары iHerb",
-            description: "Отличное качество и низкие цены!..",
+            id: 4,
+            category: 'Скидки в магазинах',
+            title: '',
+            description: '',
+            image: ''
+        },
+        {
+            id: 5,
+            category: 'Скидки в магазинах',
+            title: '',
+            description: '',
+            image: ''
+        },
+        {
+            id: 6,
+            category: 'Скидки в магазинах',
+            title: '',
+            description: '',
+            image: ''
+        },
+        {
+            id: 7,
+            category: 'Скидки в магазинах',
+            title: '',
+            description: '',
+            image: ''
         },
     ];
 

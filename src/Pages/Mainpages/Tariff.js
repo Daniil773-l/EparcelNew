@@ -242,8 +242,9 @@ export default () => {
                         <PriceTable>
                             <tbody>
                             <PriceRow>
-                                <PriceCell>Вес  посылки</PriceCell>
-                                <PriceCell>Стоимость доставки</PriceCell>
+                                <PriceCell>Вес <br></br>посылки</PriceCell>
+                                <PriceCell>ПВЗ</PriceCell>
+                                <PriceCell>Курьер</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>0.5 кг</PriceCell>
@@ -293,8 +294,9 @@ export default () => {
                         <PriceTable>
                             <tbody>
                             <PriceRow>
-                                <PriceCell>Вес посылки</PriceCell>
-                                <PriceCell>Стоимость доставки</PriceCell>
+                                <PriceCell>Вес <br></br>посылки</PriceCell>
+                                <PriceCell>ПВЗ</PriceCell>
+                                <PriceCell>Курьер</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>0.5 кг</PriceCell>
@@ -342,8 +344,9 @@ export default () => {
                         <PriceTable>
                             <tbody>
                             <PriceRow>
-                                <PriceCell>Вес посылки</PriceCell>
-                                <PriceCell>Стоимость доставки</PriceCell>
+                                <PriceCell>Вес <br></br>посылки</PriceCell>
+                                <PriceCell>ПВЗ</PriceCell>
+                                <PriceCell>Курьер</PriceCell>
                             </PriceRow>
                             <PriceRow>
                                 <PriceCell>0.5 кг</PriceCell>

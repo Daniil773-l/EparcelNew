@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import styled from 'styled-components';
 import tw from "twin.macro";
-import { ReactComponent as Cabinet } from './QuestionsIcon/Cabinet.svg';
-import { ReactComponent as Ichoda} from './QuestionsIcon/Ichod.svg';
-import { ReactComponent as Ichodashia} from './QuestionsIcon/Ichodashia.svg';
-import { ReactComponent as NezvPos} from './QuestionsIcon/NezvPos.svg';
-import { ReactComponent as Yslugi} from './QuestionsIcon/Yslugi.svg';
-import { ReactComponent as Tariff} from './QuestionsIcon/QTariff.svg';
-import { ReactComponent as Dostavka} from './QuestionsIcon/QDostavka.svg';
-import { ReactComponent as Vozvrat} from './QuestionsIcon/QVozvrat.svg';
-import { ReactComponent as Vukyp} from './QuestionsIcon/QVukyp.svg';
-import { ReactComponent as Stahovka} from './QuestionsIcon/Qstrahovka.svg';
-import { ReactComponent as Oplata} from './QuestionsIcon/QOplata.svg';
-import { ReactComponent as Tamozha} from './QuestionsIcon/QTamozha.svg';
-import { ReactComponent as Zaprehka} from './QuestionsIcon/QZaprehenka.svg';
+import {ReactComponent as Cabinet} from './QuestionsIcon/Cabinet.svg';
+import {ReactComponent as Ichoda} from './QuestionsIcon/Ichod.svg';
+import {ReactComponent as Ichodashia} from './QuestionsIcon/Ichodashia.svg';
+import {ReactComponent as NezvPos} from './QuestionsIcon/NezvPos.svg';
+import {ReactComponent as Yslugi} from './QuestionsIcon/Yslugi.svg';
+import {ReactComponent as Tariff} from './QuestionsIcon/QTariff.svg';
+import {ReactComponent as Dostavka} from './QuestionsIcon/QDostavka.svg';
+import {ReactComponent as Vozvrat} from './QuestionsIcon/QVozvrat.svg';
+import {ReactComponent as Vukyp} from './QuestionsIcon/QVukyp.svg';
+import {ReactComponent as Stahovka} from './QuestionsIcon/Qstrahovka.svg';
+import {ReactComponent as Oplata} from './QuestionsIcon/QOplata.svg';
+import {ReactComponent as Tamozha} from './QuestionsIcon/QTamozha.svg';
+import {ReactComponent as Zaprehka} from './QuestionsIcon/QZaprehenka.svg';
 import FAQs from '../../components/faqs/SingleCol';
 
 import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
@@ -68,10 +68,10 @@ const TabButton = styled.button`
     ${tw`text-lg sm:text-xl font-semibold text-center`}
     display: flex;
     align-items: center;
-    background: ${({ active }) => (active ? '#DDF2E6' : 'transparent')};
+    background: ${({active}) => (active ? '#DDF2E6' : 'transparent')};
     color: #243e63;
     border: none;
-     /* Уменьшенные отступы */
+    /* Уменьшенные отступы */
     cursor: pointer;
     flex: 1;
     white-space: nowrap;
@@ -109,12 +109,11 @@ const TabButton = styled.button`
 `;
 
 
-
 const ContentContainer = styled.div`
     flex-grow: 1; /* Контейнер растягивается, чтобы занять оставшееся пространство */
     padding: 20px;
     transition: opacity 0.5s ease;
-    opacity: ${({ isActive }) => (isActive ? 1 : 0)};
+    opacity: ${({isActive}) => (isActive ? 1 : 0)};
     overflow: hidden; /* Убираем прокрутку */
 
     @media (min-width: 768px) {
@@ -128,6 +127,10 @@ const ContentContainer = styled.div`
 `;
 
 const IconContainer = styled.span``;
+const Title = styled.h1`
+    ${tw`font-bold text-2xl mb-6 text-center md:text-left`}
+    color: #243e63;
+`;
 
 const tabs = [
     {
@@ -135,6 +138,7 @@ const tabs = [
         Icon: Cabinet,
         content: (
             <div>
+                <Title>Личный кабинет</Title>
                 <FAQs faqs={[
                     {
                         question: "Как открыть личный кабинет на вашем сайте?",
@@ -160,17 +164,18 @@ const tabs = [
                         question: "Как мне оформить заказ в интернет-магазине с доставкой на ваш склад?",
                         answer: "Необходимо зарегистрироваться на нашем сайте. Вы получите свой персональный номер и адрес склада. Затем Вы сможете делать покупки в интернет-магазине и добавить их в корзину. При оформлении доставки указывайте свое имя на латинице, свой персональный номер (например, EPL-1000) и адрес склада. Как только Вы получите трекинг-номер доставки Ваших покупок, отправленный интернет-магазином на Вашу почту, обязательно внесите трекинг-номер в ожидаемые посылки в личном кабинете."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
     },
     {
         name:
-            "Входящие посылки" ,
+            "Входящие посылки",
         Icon: Ichodashia,
         content: (
             <div>
+                <Title>Входящие посылки</Title>
                 <FAQs faqs={[
                     {
                         question: "Что такое входящая посылка?",
@@ -192,17 +197,18 @@ const tabs = [
                         question: "Интернет-магазин задерживает доставку посылки с товарами на адрес склада. Можно ли ускорить этот процесс?",
                         answer: "Мы не несем ответственность за недобросовестность интернет-магазинов, в том числе в случаях, когда: товар выслан с задержкой; товар выслан, но не соответствует описанию; товар нерабочий (хотя заявлен как рабочий); товар вообще не выслан (случаи мошенничества)."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
     },
     {
         name:
-            " Исходящие посылки" ,
+            " Исходящие посылки",
         Icon: Ichoda,
         content: (
             <div>
+                <Title>Исходящие посылки</Title>
                 <FAQs faqs={[
                     {
                         question: "Что такое исходящая посылка?",
@@ -216,17 +222,18 @@ const tabs = [
                         question: "Как меняется статус моей исходящей посылки?",
                         answer: "Статус исходящей посылки будет меняться в зависимости от того, на каком этапе находится."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
     },
     {
         name:
-            "Неизвестные посылки" ,
+            "Неизвестные посылки",
         Icon: NezvPos,
         content: (
             <div>
+                <Title>Неизвестные посылки</Title>
                 <FAQs faqs={[
                     {
                         question: "Что такое неизвестная посылка?",
@@ -244,17 +251,18 @@ const tabs = [
                         question: "Я не хочу регистрироваться на сайте и открывать личный кабинет, Вы сможете мне отправить мою посылку?",
                         answer: "Да, мы сможем Вам отправить посылку. Вам необходимо связаться со службой поддержки для уточнения условий по доставке."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
     },
     {
         name:
-            "Услуги склада" ,
+            "Услуги склада",
         Icon: Yslugi,
         content: (
             <div>
+                <Title>Услуги склада</Title>
                 <FAQs faqs={[
                     {
                         question: "Какие услуги склада Вы оказываете?",
@@ -292,17 +300,18 @@ const tabs = [
                         question: "Какие бесплатные дополнительные услуги может предложить Ваша компания?",
                         answer: "Вы можете ознакомиться с перечнем бесплатных услуг на сайте в разделе \"Услуги и стоимость\"."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
     },
     {
         name:
-            "Тарифы" ,
-        Icon:  Tariff,
+            "Тарифы",
+        Icon: Tariff,
         content: (
             <div>
+                <Title>Тарифы</Title>
                 <FAQs faqs={[
                     {
                         question: "Как узнать конечную стоимость доставки?",
@@ -320,17 +329,18 @@ const tabs = [
                         question: "Что включено в стоимость тарифа?",
                         answer: "В стоимость тарифа включено: почтовый адрес склада, получение и регистрация Вашей посылки, упаковка, таможенное оформление и доставка до склада в г. Алматы. Доставка до получателя в КЗ оплачивается отдельно в зависимости от выбранной Вами службы доставки и суммируется к общей стоимости отправления."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
     },
     {
         name:
-            " Доставка" ,
-        Icon:  Dostavka,
+            " Доставка",
+        Icon: Dostavka,
         content: (
             <div>
+                <Title>Доставка</Title>
                 <FAQs faqs={[
                     {
                         question: "Как мне отслеживать статус посылки?",
@@ -364,17 +374,18 @@ const tabs = [
                         question: "Какая служба доставляет посылки в КЗ?",
                         answer: "Доставку по Казахстану осуществляет служба доставки СДЭК."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
     },
     {
         name:
-            "Возврат" ,
-        Icon:  Vozvrat,
+            "Возврат",
+        Icon: Vozvrat,
         content: (
             <div>
+                <Title>Возврат</Title>
                 <FAQs faqs={[
                     {
                         question: "Что такое возврат посылки?",
@@ -388,7 +399,7 @@ const tabs = [
                         question: "Как я могу вернуть поврежденный товар в посылке?",
                         answer: "Мы сообщим Вам через личный кабинет, что товар в Вашей посылке был поврежден, и предложим Вам несколько вариантов помощи в решении данной ситуации."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
@@ -396,10 +407,11 @@ const tabs = [
     ,
     {
         name:
-            "Выкуп товаров" ,
-        Icon:  Vukyp,
+            "Выкуп товаров",
+        Icon: Vukyp,
         content: (
             <div>
+                <Title>Выкуп товаров</Title>
                 <FAQs faqs={[
                     {
                         question: "Что такое возврат посылки?",
@@ -413,17 +425,18 @@ const tabs = [
                         question: "Как я могу вернуть поврежденный товар в посылке?",
                         answer: "Мы сообщим Вам через личный кабинет, что товар в Вашей посылке был поврежден, и предложим Вам несколько вариантов помощи в решении данной ситуации."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
-    } ,
+    },
     {
         name:
-            "Страхование" ,
-        Icon:  Stahovka,
+            "Страхование",
+        Icon: Stahovka,
         content: (
             <div>
+                <Title>Страхование</Title>
                 <FAQs faqs={[
                     {
                         question: "Я могу застраховать свою посылку?",
@@ -447,23 +460,24 @@ const tabs = [
                     },
                     {
                         question: "Как доказать, что товары в посылке были повреждены?",
-                        answer:"Если Вы получили поврежденную посылку, то обязательно снимите видео распаковки посылки и товаров и отправьте его в приложении с заявкой на страховой случай."
+                        answer: "Если Вы получили поврежденную посылку, то обязательно снимите видео распаковки посылки и товаров и отправьте его в приложении с заявкой на страховой случай."
                     },
                     {
                         question: "Я не получил посылку в течение 30 дней, что делать? Могу я отказаться от страховки отправления?",
                         answer: "Отправьте запрос на почту, указав всю необходимую информацию: Ваш ID, номер заявки, трекинг-номер Вашей посылки, или свяжитесь со службой поддержки по телефону."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
     },
     {
         name:
-            "Оплата" ,
-        Icon:  Oplata,
+            "Оплата",
+        Icon: Oplata,
         content: (
             <div>
+                <Title>Оплата</Title>
                 <FAQs faqs={[
                     {
                         question: "Какой валютой оплачивается заказ?",
@@ -473,17 +487,18 @@ const tabs = [
                         question: "Что делать, если банк задерживает перевод за оплату заказа?",
                         answer: "Eparcel не несет ответственность за действия смежных служб и сервисов, не принадлежащих нам, таких как: банки, почтовые службы, интернет-провайдеры, e-mail-сервисы, платежные системы и т.д."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
     },
     {
         name:
-            "Таможня" ,
-        Icon:  Tamozha,
+            "Таможня",
+        Icon: Tamozha,
         content: (
             <div>
+                <Title>Таможня</Title>
                 <FAQs faqs={[
                     {
                         question: "Что такое «таможенное оформление»?",
@@ -501,23 +516,24 @@ const tabs = [
                         question: "Что будет, если я не укажу состав посылки и характеристики товаров или укажу их неверно?",
                         answer: "При оформлении заказа Вы должны знать, что в случае предоставления недостоверной или заведомо ложной информации о товаре или его содержимом к нему может быть предъявлен гражданский иск и/или он может быть привлечен к административной или уголовной ответственности, в связи с чем к нему могут быть применены виды наказания в виде штрафов, конфискации и продажи товара. Перевозчик может на добровольной основе оказать содействие в осуществлении таможенного оформления и других процедур, но весь риск будет отнесен на счет заказчика. Вы будете должны возместить перевозчику убытки и оградить его от претензий, которые могут возникнуть в связи с предоставленной им информацией, а также от любых издержек, которые перевозчик может понести в связи с вышеизложенным, а также оплатить любые административные расходы, связанные с оказанием услуг, предусмотренных договором."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
     },
     {
         name:
-            "Запрещенные товары" ,
-        Icon:  Zaprehka,
+            "Запрещенные товары",
+        Icon: Zaprehka,
         content: (
             <div>
+                <Title>Запрещенные товары</Title>
                 <FAQs faqs={[
                     {
                         question: "Какие товары запрещены в доставке из-за границы в Казахстан?",
                         answer: "Вы можете ознакомиться с полным списком товаров, запрещенных в доставке, на нашем сайте в разделе «Запрещенные товары»."
                     }
-                ]} />
+                ]}/>
 
             </div>
         )
@@ -543,7 +559,7 @@ export default function App() {
             <Header
                 heading="У вас остались вопросы?"
                 paragraph="Мы собрали для Вас самую интересную и свежую информацию,а также расскажем, как сэкономить время и деньги."
-                imageSrc=   {Photo}
+                imageSrc={Photo}
                 roundedHeaderButton={false}
             />
             <Layout>
@@ -554,7 +570,9 @@ export default function App() {
                             active={index === activeTab}
                             onClick={() => setActiveTab(index)}
                         >
-                            <IconContainer><tab.Icon active={index === activeTab} /></IconContainer>
+                            <IconContainer>
+                                <tab.Icon active={index === activeTab}/>
+                            </IconContainer>
                             {tab.name}
                         </TabButton>
                     ))}
@@ -563,7 +581,7 @@ export default function App() {
                     {activeContent}
                 </ContentContainer>
             </Layout>
-            <Footer />
+            <Footer/>
         </AnimationRevealPage>
     );
 }

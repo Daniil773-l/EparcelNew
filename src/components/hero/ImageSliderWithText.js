@@ -34,20 +34,20 @@ const Image = styled.img`
 
 export default ({
                     heading = "Наш склад в США",
-                    description = "Склад в США расположен в безналоговом штате Делавэр, на адрес которого покупатели из Казахстана могут отправить свои товары, купленные в онлайн-магазинах. Мы доставим их на Ваш адрес в Казахстан. Надежная доставка товаров из США до Вашего дома – полностью на нас.",
+                    description = "У нас есть склад в безналоговом штате Делавэр (США). Вы можете указать его адрес \n" +
+                    "при заказе товаров из американских интернет-магазинов мы получим вашу посылку \n" +
+                    "и доставим её в Казахстан. Быстро, надёжно и прямо до вашей двери.",
                 }) => {
-    return (
-        <Container>
-            <TwoColumn>
-                <LeftColumn>
-                    <Heading>{heading}</Heading>
-                    <Paragraph>{description}</Paragraph>
-                    <Button>Получить адрес доставки</Button>
-                </LeftColumn>
-                <RightColumn>
-                    <Image src={Slide1} alt="Warehouse in USA" />
-                </RightColumn>
-            </TwoColumn>
-        </Container>
-    );
+    return (<Container>
+        <TwoColumn>
+            <LeftColumn>
+                <Heading>{heading}</Heading>
+                <Paragraph>{description}</Paragraph>
+                <Button>Получить адрес доставки</Button>
+            </LeftColumn>
+            <RightColumn>
+                <Image src={Slide1} alt="Warehouse in USA"/>
+            </RightColumn>
+        </TwoColumn>
+    </Container>);
 };

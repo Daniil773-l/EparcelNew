@@ -58,9 +58,9 @@ const LogoImg = styled.img`
 `;
 
 const LogoContainer = tw.div`
-  flex items-center justify-center lg:justify-start
-  p-4 // Добавляем отступы вокруг логотипа
+  flex items-center justify-start
 `;
+
 
 
 const SocialLinksContainer = tw.div`mt-4 flex justify-center lg:justify-start space-x-2`;
@@ -127,7 +127,7 @@ export default () => {
                         <CompanyAddress>
                             <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
                                 <FiPhone style={{ color: "#0ABD19", marginRight: "8px", width: "25px", height: "25px" }} />
-                                <span>8 (---) --- - --- - --</span>
+                                <span>+7 700 131 0757</span>
                             </div>
                             <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
                                 <FiMail style={{ color: "#0ABD19", marginRight: "8px", width: "25px", height: "25px" }} />

@@ -145,11 +145,6 @@ const CurrencyCard = () => {
                     <CurrencyValue>{rates.USD ? `${rates.USD.toFixed(2)} ₸` : 'Loading...'}</CurrencyValue>
                 </CurrencyRow>
                 <CurrencyRow>
-                    <Flag src={trFlag} alt="Turkey Flag" />
-                    <CurrencyText>Турецкая лира:</CurrencyText>
-                    <CurrencyValue>{rates.TRY ? `${rates.TRY.toFixed(2)} ₸` : 'Loading...'}</CurrencyValue>
-                </CurrencyRow>
-                <CurrencyRow>
                     <Flag src={euFlag} alt="EU Flag" />
                     <CurrencyText>Евро:</CurrencyText>
                     <CurrencyValue>{rates.EUR ? `${rates.EUR.toFixed(2)} ₸` : 'Loading...'}</CurrencyValue>

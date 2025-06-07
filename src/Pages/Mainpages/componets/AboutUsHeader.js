@@ -1,5 +1,5 @@
-import React  from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import tw from "twin.macro";
 
@@ -8,12 +8,13 @@ import tw from "twin.macro";
 import Header from "../../../components/headers/light.js";
 
 import DesignIllustration from "../../../images/img/о нас.png";
-import { getAuth } from "firebase/auth";
+import {getAuth} from "firebase/auth";
 
 
 const Container = styled.div`
     ${tw`relative`}
-    background-color: #e2ffe2;!important;  /* Set background color */
+    background-color: #e2ffe2;
+!important; /* Set background color */
 `;
 const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto py-2 md:py-2`;
 const LeftColumn = tw.div`relative lg:w-6/12 text-center max-w-lg mx-auto lg:max-w-none lg:text-left`;
@@ -30,7 +31,6 @@ const Paragraph = tw.p`my-2 lg:my-4 text-base xl:text-lg`; // Уменьшили
 
 const Actions = styled.div`
     ${tw`relative max-w-md text-center mx-auto lg:mx-0`}
-
     input {
         ${tw`sm:pr-48 pl-8 py-4 sm:py-5 rounded-full border-2 w-[225px] font-medium focus:outline-none transition duration-300`}
     }
@@ -56,23 +56,19 @@ const Actions = styled.div`
 
 const IllustrationContainer = styled.div`
     ${tw`flex justify-center lg:justify-end items-center`}
-
-
     img {
-      // Ограничиваем высоту
-      width: auto;
-      height: auto;
-     
+        // Ограничиваем высоту
+        width: auto;
+        height: auto;
+
     }
-   
-  `;
+
+`;
 
 // Random Decorator Blobs (shapes that you see in background)
 
 
-
-
-export default ({ roundedHeaderButton }) => {
+export default ({roundedHeaderButton}) => {
     const navigate = useNavigate(); // Используйте useNavigate
     const auth = getAuth();
     const user = auth.currentUser; // Получите текущего пользователя
@@ -87,13 +83,14 @@ export default ({ roundedHeaderButton }) => {
 
     return (
         <>
-            <Header roundedHeaderButton={roundedHeaderButton} />
+            <Header roundedHeaderButton={roundedHeaderButton}/>
             <Container>
                 <TwoColumn>
                     <LeftColumn>
-                        <Heading>Eparcel – самый выгодный</Heading>
+                        <Heading>Eparcel – служба доставки</Heading>
                         <Paragraph>
-                            Оказание качественных услуг, быстрая и надежная доставка посылок с товарами по минимальной стоимости для наших клиентов по минимальной стоимости для наших клиентов – главная цель Eparcel.
+                            Оказание качественных услуг, быстрая и надежная доставка посылок с товарами по минимальной
+                            стоимости для наших клиентов.
                         </Paragraph>
                         <Actions>
                             <button onClick={handleGetAddressClick}>Получить адрес</button>
@@ -101,7 +98,8 @@ export default ({ roundedHeaderButton }) => {
                     </LeftColumn>
                     <RightColumn>
                         <IllustrationContainer>
-                            <img tw="min-w-0 w-11/12 max-w-lg xl:max-w-3xl" src={DesignIllustration} alt="Design Illustration" />
+                            <img tw="min-w-0 w-11/12 max-w-lg xl:max-w-3xl" src={DesignIllustration}
+                                 alt="Design Illustration"/>
                         </IllustrationContainer>
                     </RightColumn>
                 </TwoColumn>

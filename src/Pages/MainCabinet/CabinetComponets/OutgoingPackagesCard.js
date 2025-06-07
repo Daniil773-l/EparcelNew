@@ -169,7 +169,7 @@ const OutgoingPackagesCard = () => {
                         </Stat>
                         <Stat>
                             <StatLabel>
-                                <div>Отправление:</div>
+                                <div>Ожидает оплаты:</div>
                             </StatLabel>
                             <StatValue>0 шт.</StatValue>
                         </Stat>

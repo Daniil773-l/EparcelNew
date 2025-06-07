@@ -71,10 +71,10 @@ const PrimaryLink = styled(NavLink)`
 
 
 const LogoLink = styled.a`
-  ${tw`flex items-center font-black border-b-0 mr-24`} /* Added margin-right */
-  img {
-    ${tw`w-40 h-auto`}
-  }
+    ${tw`flex items-center font-black border-b-0 mr-10`} /* Было mr-24 */
+    img {
+        ${tw`w-40 h-auto`}
+    }
 `;
 
 const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between lg:hidden`;

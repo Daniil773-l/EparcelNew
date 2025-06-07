@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import Arrow from "../../../images/icon/GreenSmallArrow.svg";
-import BoxIcon from "../../../images/icon/cardboard-box_11530648.png"; // Убедитесь, что иконка существует
+import BoxIcon from "../../../images/icon/cardboard-box_11530648.png";
 
 const SidebarContainer = styled.div`
     ${tw`bg-white`}
@@ -52,6 +52,14 @@ const SidebarToggleIcon = styled.img.attrs({ src: Arrow })`
     transform: ${({ isOpen }) => (isOpen ? "rotate(180deg)" : "rotate(0deg)")};
 `;
 
+const SearchInput = styled.input`
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+`;
+
 const SidebarMenu = ({ title, items }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [subItemOpen, setSubItemOpen] = useState({});
@@ -75,7 +83,10 @@ const SidebarMenu = ({ title, items }) => {
             {isOpen &&
                 items.map((item, index) => (
                     <React.Fragment key={index}>
-                        <SidebarSubItem href={item.href} onClick={(e) => item.subItems && e.preventDefault()}>
+                        <SidebarSubItem
+                            href={item.href}
+                            onClick={(e) => item.subItems && e.preventDefault()}
+                        >
                             <Icon src={BoxIcon} alt="icon" />
                             {item.name}
                             {item.subItems && (
@@ -104,14 +115,53 @@ const SidebarMenu = ({ title, items }) => {
 };
 
 const Sidebar = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+
+    const handleSearch = (query) => {
+        setSearchQuery(query);
+
+        const parcels = [
+            { id: "P001", status: "Ожидается", href: "/ExpectedParcels" },
+            { id: "P002", status: "Оплачена", href: "/paid" },
+            { id: "P003", status: "Обработана", href: "/Parsed" },
+        ];
+
+        if (query.trim() === "") {
+            setSearchResults([]);
+        } else {
+            const results = parcels.filter(
+                (p) =>
+                    p.id.toLowerCase().includes(query.toLowerCase()) ||
+                    p.status.toLowerCase().includes(query.toLowerCase())
+            );
+            setSearchResults(results);
+        }
+    };
+
     return (
         <SidebarContainer>
+            <SearchInput
+                type="text"
+                placeholder="Поиск посылки..."
+                value={searchQuery}
+                onChange={(e) => handleSearch(e.target.value)}
+            />
+
+            {searchResults.length > 0 && (
+                <div style={{ marginBottom: "16px" }}>
+                    {searchResults.map((result, i) => (
+                        <SidebarSubItem href={result.href} key={i}>
+                            <Icon src={BoxIcon} alt="icon" />
+                            {result.id} — {result.status}
+                        </SidebarSubItem>
+                    ))}
+                </div>
+            )}
+
             <SidebarMenu
                 title="Клиент"
-                items={[
-                    { name: "Выкуп товаров", href: "/purchaseofgoodssclad" },
-                    { name: "Статистика", href: "/subpage2" },
-                ]}
+                items={[{ name: "Выкуп товаров", href: "/purchaseofgoodssclad" }]}
             />
             <SidebarMenu
                 title="Склад"
@@ -131,17 +181,13 @@ const Sidebar = () => {
             <SidebarMenu
                 title="Доставка"
                 items={[
-                    {
-                        name: "Исходящие посылки",
-                        href: "/otgoingscaldparcel",
-                    },
+                    { name: "Исходящие посылки", href: "/otgoingscaldparcel" },
                     {
                         name: "Палет",
                         href: "/subpage5",
                         subItems: [
                             { name: "Добавить палет", href: "/add-pallet" },
                             { name: "Список палетов", href: "/pallet-list" },
-
                         ],
                     },
                     {
@@ -164,3 +210,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

@@ -97,54 +97,54 @@ const cardData = [
     {
         id: 1,
         category: 'Новости',
-        title: 'Как правильно указывать адрес для доставки',
-        description: 'Чтобы посылка точно пришла к нам на склад.',
-        image: 'https://eparcel.ru/image/cache/catalog/news/stock3-300x214.png'
+        title: '',
+        description: '',
+        image: ''
     },
     {
         id: 2,
         category: 'Новости',
-        title: 'Топ-10 люксовых брендов сумочек',
-        description: 'Ознакомьтесь с приведенным списком, чтобы узнать о самых роскошных сумках в мире.',
-        image: 'https://eparcel.ru/image/catalog/news/luchshiye-brendy-sumok-e1676232705225.jpg'
+        title: '',
+        description: '',
+        image: ''
     },
     {
         id: 3,
         category: 'Новости',
-        title: 'Timberland. Вечная классика в мире обуви',
-        description: 'Культовые модели и стильный дизайн – все это про Timberland!',
-        image: 'https://eparcel.ru/image/catalog/timberland.jpg'
+        title: '',
+        description: '',
+        image: ''
     },
     {
         id: 4,
         category: 'Скидки в магазинах',
-        title: 'Где покупать товары с выгодой',
-        description: 'Узнай, где самые выгодные покупки в США и Турции!',
-        image: 'https://eparcel.ru/image/catalog/news/shopping.jpeg'
+        title: '',
+        description: '',
+        image: ''
     },
     {
         id: 5,
         category: 'Скидки в магазинах',
-        title: 'Две пары джинсов по сниженной цене в Levi',
-        description: '50% на вторую пару!',
-        image: 'https://eparcel.ru/image/catalog/levis.png'
+        title: '',
+        description: '',
+        image: ''
     },
     {
         id: 6,
         category: 'Скидки в магазинах',
-        title: 'Флэш-распродажа в Walmart',
-        description: '65% на все!',
-        image: 'https://eparcel.ru/image/catalog/walmart.png'
+        title: '',
+        description: '',
+        image: ''
     },
     {
         id: 7,
         category: 'Скидки в магазинах',
-        title: 'Акция от Amazon',
-        description: 'Ищите нужную вещь: в Amazon она наверняка будет по скидке!',
-        image: 'https://eparcel.ru/image/catalog/amazon.png'
+        title: '',
+        description: '',
+        image: ''
     },
-
 ];
+
 
 export default function App() {
     const [activeCategory, setActiveCategory] = useState('Все');

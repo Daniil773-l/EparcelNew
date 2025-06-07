@@ -304,10 +304,10 @@ const PersonalCabinet = () => {
             id: "EPL-1021",
             address: (
                 <>
-                    <AddressLine>Street (Улица): 209 Carson Drive</AddressLine>
-                    <AddressLine>City (Город): Bear</AddressLine>
-                    <AddressLine>State (Штат): Delaware</AddressLine>
-                    <AddressLine>Zip (Индекс): 19701</AddressLine>
+                    <AddressLine> 209 Carson Drive</AddressLine>
+                    <AddressLine>Bear</AddressLine>
+                    <AddressLine> Delaware</AddressLine>
+                    <AddressLine> 19701</AddressLine>
                 </>
             ),
             phone: "+1 (484) 966-1610",

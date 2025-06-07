@@ -75,8 +75,11 @@ const ForgotPassword = () => {
             await sendPasswordResetEmail(auth, trimmedEmail);
             toast.success("Ссылка для сброса пароля отправлена на вашу почту.");
         } catch (error) {
-            toast.error("Ошибка при обработке запроса. Попробуйте снова.");
+            console.error("Ошибка сброса пароля:", error.code, error.message); // ← это обязательно
+            toast.error("Ошибка: " + error.message); // покажем текст ошибки
         }
+
+
     };
 
 

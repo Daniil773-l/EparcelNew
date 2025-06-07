@@ -10,10 +10,10 @@ import { db } from "../../FireBaseConfig";
 import { collection, query, where, onSnapshot, doc } from "firebase/firestore";
 import NavToggler from "../features/NavToggler";
 import MobileHeader from "./MobileHeader";
+
 const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'SFUIText';
-      
         font-weight: 300;
         font-style: normal;
     }
@@ -30,31 +30,28 @@ const Header = styled.header`
     ${tw`hidden lg:flex justify-between items-center bg-[#F9F9F9] h-[70px] px-12 lg:px-20`}
     box-sizing: border-box;
     margin-left: 0;
-    padding-left: 40px; /* Сдвигаем элементы вправо для согласованности */
-    border-bottom: 1px solid #E0E0E0; /* Добавляем нижнюю границу для разделения */
+    padding-left: 40px;
+    border-bottom: 1px solid #E0E0E0;
 `;
 
-
 const NavContainer = styled.div`
-    ${tw`flex justify-center flex-1`} /* Centering the links */
+    ${tw`flex justify-center flex-1`}
 `;
 
 const NavLinks = styled.div`
     ${tw`flex items-center space-x-6`}
-    margin-left: 0; /* Убираем лишний отступ */
+    margin-left: 0;
 `;
 
-
 const NavLink = styled.a`
-   
     ${tw`text-sm lg:text-base tracking-wide transition duration-300`}
     text-decoration: none;
     color: #2D2D2D;
-    padding: 8px 12px; /* Увеличиваем кликабельную область */
+    padding: 8px 12px;
 
     &:hover, &:focus {
         color: #0ABD19;
-        text-decoration: underline; /* Для дополнительного выделения */
+        text-decoration: underline;
     }
 `;
 
@@ -99,7 +96,6 @@ const InitialsCircle = styled.div`
 
 const IconContainer = styled.div`
     ${tw`flex items-center cursor-pointer`}
-
 `;
 
 const PlusIcon = styled(PlusIconSVG)`
@@ -118,22 +114,27 @@ const BalanceText = styled.span`
 
 const BalanceAndProfileContainer = styled.div`
     ${tw`flex items-center space-x-4`}
-    margin-right: 40px; /* Выравнивание с учетом второго хедера */
+    margin-right: 40px;
 `;
 
 const HeaderContainer = () => {
     const { isAuthenticated, user, loading } = useAuth();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
     const [userData, setUserData] = useState(() => {
-        // Используем локальный кэш для мгновенной загрузки
-        const cachedUser = JSON.parse(localStorage.getItem("userData"));
-        return cachedUser || null;
+        try {
+            const stored = localStorage.getItem("userData");
+            return stored && stored !== "undefined" ? JSON.parse(stored) : null;
+        } catch {
+            return null;
+        }
     });
+
     const [balance, setBalance] = useState(() => {
-        // Кэшируем баланс
-        const cachedBalance = localStorage.getItem("balance");
-        return cachedBalance ? parseFloat(cachedBalance) : 0.0;
+        const raw = localStorage.getItem("balance");
+        return raw && raw !== "undefined" ? parseFloat(raw) : 0.0;
     });
+
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
@@ -151,16 +152,15 @@ const HeaderContainer = () => {
                     const userDoc = snapshot.docs[0];
                     const data = { ...userDoc.data(), id: userDoc.id };
                     setUserData(data);
-                    localStorage.setItem("userData", JSON.stringify(data)); // Кэшируем данные
+                    localStorage.setItem("userData", JSON.stringify(data));
                     setIsLoading(false);
 
-                    // Обновляем баланс
                     const balanceDocRef = doc(db, "balances", userDoc.id);
                     if (unsubscribeBalanceRef.current) unsubscribeBalanceRef.current();
                     unsubscribeBalanceRef.current = onSnapshot(balanceDocRef, (docSnapshot) => {
                         const newBalance = docSnapshot.exists() ? docSnapshot.data().balance : 0.0;
                         setBalance(newBalance);
-                        localStorage.setItem("balance", newBalance.toString()); // Кэшируем баланс
+                        localStorage.setItem("balance", newBalance.toString());
                         setBalanceLoading(false);
                     });
                 } else {
@@ -175,7 +175,6 @@ const HeaderContainer = () => {
             if (unsubscribeBalanceRef.current) unsubscribeBalanceRef.current();
         };
     }, [user]);
-
 
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -205,7 +204,7 @@ const HeaderContainer = () => {
 
     const getInitials = () => {
         if (userData) {
-            return `${userData.firstName.charAt(0).toUpperCase()}${userData.lastName.charAt(0).toUpperCase()}`;
+            return `${userData.firstName?.[0]?.toUpperCase() || ""}${userData.lastName?.[0]?.toUpperCase() || ""}`;
         }
         return "П";
     };
@@ -216,7 +215,6 @@ const HeaderContainer = () => {
 
     return (
         <>
-
             <GlobalStyle />
             {isAuthenticated && (
                 <>
@@ -237,9 +235,7 @@ const HeaderContainer = () => {
                             </IconContainer>
                             <ProfileDropdownContainer ref={dropdownRef}>
                                 <ProfileButton onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                                    <InitialsCircle>
-                                        {getInitials()}
-                                    </InitialsCircle>
+                                    <InitialsCircle>{getInitials()}</InitialsCircle>
                                     Личный кабинет
                                 </ProfileButton>
                                 {isDropdownOpen && (

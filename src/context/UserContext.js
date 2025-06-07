@@ -14,26 +14,43 @@ export const UserProvider = ({ children }) => {
         const auth = getAuth();
         const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
             if (authUser) {
-                const userDoc = await getDoc(doc(db, "users", authUser.uid));
-                if (userDoc.exists()) {
-                    const userData = { uid: authUser.uid, ...userDoc.data() };
-                    setUser(userData);
-                    localStorage.setItem('userData', JSON.stringify(userData));
+                try {
+                    const userDoc = await getDoc(doc(db, "users", authUser.uid));
+                    if (userDoc.exists()) {
+                        const userData = { uid: authUser.uid, ...userDoc.data() };
+                        setUser(userData);
+                        localStorage.setItem("userData", JSON.stringify(userData));
+                    }
+                } catch (error) {
+                    console.error("Ошибка при загрузке данных пользователя:", error);
                 }
             } else {
                 setUser(null);
-                localStorage.removeItem('userData');
+                localStorage.removeItem("userData");
             }
         });
         return () => unsubscribe();
     }, []);
 
     useEffect(() => {
-        const cachedUser = localStorage.getItem('userData');
-        if (cachedUser) {
-            setUser(JSON.parse(cachedUser));
+        const raw = localStorage.getItem("userData");
+        if (raw === "undefined") {
+            localStorage.removeItem("userData");
+            return;
+        }
+        try {
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                setUser(parsed);
+            }
+        } catch (error) {
+            console.error("Ошибка при парсинге userData из localStorage:", error);
         }
     }, []);
 
-    return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
+    return (
+        <UserContext.Provider value={{ user, setUser }}>
+            {children}
+        </UserContext.Provider>
+    );
 };

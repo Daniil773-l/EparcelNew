@@ -29,11 +29,12 @@ const Heading = styled(SectionHeading)`
 
 const FAQSContainer = tw.dl`mt-12 w-full`;
 const FAQ = styled.div`
-    ${tw`cursor-pointer mt-8 select-none border lg:border-0 px-8 py-4 lg:p-0 rounded-lg lg:rounded-none`}
+    ${tw`cursor-pointer select-none border lg:border-0 px-8 py-4 lg:p-0 rounded-lg lg:rounded-none mt-4`}
     @media (max-width: 768px) {
-        ${tw`px-4 py-2`} /* Reduce padding for mobile */
-    }
+    ${tw`px-4 py-2`}
+}
 `;
+
 const Question = tw.dt`flex justify-between items-center`;
 const QuestionText = styled.span`
     ${tw`text-lg lg:text-xl font-semibold`}

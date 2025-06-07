@@ -61,8 +61,8 @@ export default function PurchasePage() {
                         Чтобы оставить заявку на выкуп товаров, необходимо авторизоваться в
                         <StyledLink to="/Login"> личном кабинете</StyledLink>.
                     </Paragraph>
-                    <StyledLink to="/Login">
-                        <ActionButton>Войти в личный кабинет</ActionButton>
+                    <StyledLink to="/Purchaseofgoods">
+                        <ActionButton>Перейти к выкупу товаров</ActionButton>
                     </StyledLink>
                 </TextContainer>
                 <IllustrationContainer>

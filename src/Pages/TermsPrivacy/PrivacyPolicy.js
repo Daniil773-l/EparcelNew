@@ -11,32 +11,33 @@ import { SectionHeading } from "../../components/misc/Headings";
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)` mb-10`;
 const Text = styled.div`
-  ${tw`text-lg `}
-  a {
-    text-decoration: none;
-  }
-  p {
-    ${tw`mt-2 leading-loose font-bold text-xl`}
-  }
-  h1 {
-    ${tw`text-3xl font-bold mt-10 `}
-  }
-  h2 {
-    ${tw`text-2xl font-bold mt-8`}
-  }
-  h3 {
-    ${tw`text-xl font-bold mt-6`}
-  }
-  ul {
-    ${tw`list-disc list-inside`}
-    li {
-      ${tw`ml-2 mb-3`}
-      p {
-        ${tw`mt-0 inline leading-normal`}
-      }
+    ${tw`text-lg`}
+    a {
+        text-decoration: none;
     }
-  }
+    p {
+        ${tw`mt-2 leading-loose text-xl`}
+    }
+    h1 {
+        ${tw`text-3xl mt-10`}
+    }
+    h2 {
+        ${tw`text-2xl mt-8`}
+    }
+    h3 {
+        ${tw`text-xl mt-6`}
+    }
+    ul {
+        ${tw`list-disc list-inside`}
+        li {
+            ${tw`ml-2 mb-3`}
+            p {
+                ${tw`mt-0 inline leading-normal`}
+            }
+        }
+    }
 `;
+
 export default ({ headingText = "Политика в отношении сбора, обработки и защиты персональных данных субъектов персональных данных" }) => {
     return (
         <AnimationRevealPage>

@@ -154,7 +154,7 @@ export default ({ roundedHeaderButton }) => {
 
     const headings = [
         <>Доставка товаров из США  в <HighlightedText>Казахстан</HighlightedText></>,
-        <>Различные способы получения посылок для наших клиентов в <HighlightedText>Казахстан</HighlightedText></>,
+        <>Различные способы получения посылок  в <HighlightedText>Казахстане</HighlightedText></>,
         <>Выкуп товаров</>
     ];
 

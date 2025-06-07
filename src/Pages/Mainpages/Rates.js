@@ -297,7 +297,7 @@ const tabs = [
         content: (
             <div>
                 <Title>
-                    <MailIcon style={{marginRight: '18px', width: '48px', height: '48px'}}/>
+                    <MailIcon style={{marginRight: '18px', width: '28px', height: '28px'}}/>
 
                     Почтовый адрес
                 </Title>
@@ -316,7 +316,7 @@ const tabs = [
     {
         name: "Доставка", content: (
             <div>
-                <Title> <DeliveryIcon style={{marginRight: '18px', width: '48px', height: '48px'}}/>Доставка</Title>
+                <Title> <DeliveryIcon style={{marginRight: '18px', width: '28px', height: '28px'}}/>Доставка</Title>
 
                 <StyledParagraph>Все посылки, полученные на адреса нашего  склада, доставляются
                     авиадоставкой до Алматы. Далее все посылки передаются в службу доставки по всему Казахстану.
@@ -332,7 +332,7 @@ const tabs = [
     {
         name: "Прием и регистрация посылки", content: (
             <div>
-                <Title> <RegistrationIcon style={{marginRight: '18px',width: '48px', height: '48px'}}/>Прием и
+                <Title> <RegistrationIcon style={{marginRight: '18px', width: '28px', height: '28px'}}/>Прием и
                     регистрация посылки</Title>
 
                 <NoSpacingParagraph>Все посылки, доставленные на наш склад, принимаются работниками склада. После чего
@@ -357,7 +357,7 @@ const tabs = [
     {
         name: "Хранение посылки на складе", content: (
             <div>
-                <Title> <StorageIcon style={{ marginRight: '18px',width: '48px', height: '48px'}} />Хранение посылки на складе</Title>
+                <Title> <StorageIcon style={{marginRight: '18px', width: '28px', height: '28px'}} />Хранение посылки на складе</Title>
 
                 <StyledParagraph>Срок хранения всех входящих посылок на складе, зарегистрированных в системе, составляет
                     60 дней. По истечении этого срока, если Вам понадобится продлить срок хранения посылки или груза, то
@@ -370,7 +370,7 @@ const tabs = [
     {
         name: "Фото товаров в посылке", content: (
             <div>
-                <Title> <PhotoIcon style={{ marginRight: '18px',width: '48px', height: '48px' }} />Фото товаров в посылке</Title>
+                <Title> <PhotoIcon style={{marginRight: '18px', width: '28px', height: '28px'}}/>Фото товаров в посылке</Title>
                 <StyledParagraph>Вам необходимо зайти в личный кабинет, в разделе «Услуги склада» выбрать нужную Вам
                     посылку, затем описать услугу. К примеру: "Прошу сфотографировать товары в посылке". В течение 24-48
                     часов мы выполним данную услугу.
@@ -384,7 +384,7 @@ const tabs = [
     {
         name: "Возврат посылки или товара", content: (
             <div>
-                <Title> <Track style={{ marginRight: '18px', width: '48px', height: '48px'}} />Возврат посылки или товара</Title>
+                <Title> <Track style={{marginRight: '18px', width: '28px', height: '28px'}}/>Возврат посылки или товара</Title>
 
                 <StyledParagraph>Если по каким-то причинам Вы пожелаете вернуть посылку, которая была доставлена на
                     адрес нашего склада обратно в магазин или иному продавцу Вашего купленного товара, то мы готовы
@@ -401,7 +401,7 @@ const tabs = [
         name: "Упаковка и вес посылки",
         content: (
             <div>
-                <Title> <Packaging style={{ marginRight: '18px', width: '48px', height: '48px'}} />Упаковка и вес посылки</Title>
+                <Title> <Packaging style={{marginRight: '18px', width: '28px', height: '28px'}}/>Упаковка и вес посылки</Title>
 
                 <StyledParagraph>Все входящие посылки с товарами полученные нашим складом вскрываются и осматриваются
                     сотрудником склада при получении. Если посылка с товарами пригодна для дальнейшей доставки до
@@ -488,7 +488,7 @@ const tabs = [
     {
         name: "Страхование", content: (
             <div>
-                <Title> <Insurance style={{ marginRight: '18px',width: '48px', height: '48px' }} />Страхование</Title>
+                <Title> <Insurance style={{marginRight: '18px', width: '28px', height: '28px'}} />Страхование</Title>
 
                 <StyledParagraph>Услуга по страхованию является обязательной. В случае, если Ваша посылка не будет
                     доставлена в течение 30 дней с момента отправки с зарубежного склада или будет утеряна в процессе
@@ -504,7 +504,7 @@ const tabs = [
     {
         name: "Выкуп товаров", content: (
             <div>
-                <Title><Ransom style={{ marginRight: '18px',width: '48px', height: '48px' }} />Выкуп товаров
+                <Title><Ransom style={{marginRight: '18px', width: '28px', height: '28px'}}/>Выкуп товаров
                 </Title>
 
                 <StyledParagraph>Данная услуга дает возможность приобрести товар в других странах напрямую и без
@@ -523,7 +523,7 @@ const tabs = [
     {
         name: "Таможенное оформление", content: (
             <div>
-                <Title><Customs style={{ marginRight: '18px',width: '48px', height: '48px' }} />Таможенное оформление
+                <Title><Customs style={{marginRight: '18px', width: '28px', height: '28px'}} />Таможенное оформление
                 </Title>
                 <StyledParagraph>Для упрощения процедуры мы сами заполним таможенную декларацию и передадим в таможенные
                     органы. Данная услуга сократит время прохождения таможенной очистки всего груза с посылками,
@@ -538,7 +538,7 @@ const tabs = [
     {
         name: "Оплата и возврат денежных средств", content: (
             <div>
-                <Title> <Payment style={{ marginRight: '18px',width: '48px', height: '48px' }} />Оплата и возврат денежных средств
+                <Title> <Payment style={{marginRight: '18px', width: '28px', height: '28px'}} />Оплата и возврат денежных средств
                 </Title>
 
                 <StyledParagraph>Предлагаем различные методы оплаты. Оплата за услуги производиться в различных валютах
@@ -561,7 +561,7 @@ const tabs = [
     {
         name: "Отслеживание доставки", content: (
             <div>
-                <Title> <Tracking style={{ marginRight: '18px', width: '48px', height: '48px' }} />Отслеживание доставки
+                <Title> <Tracking style={{marginRight: '18px', width: '28px', height: '28px'}} />Отслеживание доставки
                 </Title>
                 <StyledParagraph>Каждая входящая посылка регистрируется в нашей системе в течение 24 часов после
                     получения по адресу склада. Вы сможете отслеживать статус каждой посылки в личном кабинете.
@@ -576,7 +576,7 @@ const tabs = [
     {
         name: "Ограничения  службы  доставки ", content: (
             <div>
-                <Title>< Limitations style={{ marginRight: '18px', width: '48px', height: '48px' }} />Ограничения службы доставки
+                <Title>< Limitations style={{marginRight: '18px', width: '28px', height: '28px'}} />Ограничения службы доставки
                 </Title>
 
                 <StyledParagraph>Доставку посылок по Казахстану осуществляет СДЭК. Ограничение по максимальным габаритам
@@ -856,7 +856,7 @@ const tabs = [
     {
         name: "Дополнительная услуга", content: (
             <div>
-                <Title> <Service style={{ marginRight: '18px', width: '38px', height: '38px' }} />Дополнительная услуга
+                <Title> <Service style={{marginRight: '18px', width: '28px', height: '28px'}} />Дополнительная услуга
                 </Title>
                 <StyledParagraph>Наша служба доставки всегда готова предложить дополнительные услуги, чтобы
                     удовлетворить все потребности наших клиентов. Мы понимаем, что каждый заказ уникален и может

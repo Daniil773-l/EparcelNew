@@ -305,9 +305,8 @@ const PersonalCabinet = () => {
             address: (
                 <>
                     <AddressLine> 209 Carson Drive</AddressLine>
-                    <AddressLine>Bear</AddressLine>
-                    <AddressLine> Delaware</AddressLine>
-                    <AddressLine> 19701</AddressLine>
+                    <AddressLine>Bear  Delaware 19701</AddressLine>
+
                 </>
             ),
             phone: "+1 (484) 966-1610",

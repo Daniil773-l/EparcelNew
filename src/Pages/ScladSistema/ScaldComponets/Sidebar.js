@@ -161,7 +161,9 @@ const Sidebar = () => {
 
             <SidebarMenu
                 title="Клиент"
-                items={[{ name: "Выкуп товаров", href: "/purchaseofgoodssclad" }]}
+                items={[{ name: "Выкуп товаров", href: "/purchaseofgoodssclad"} ,
+                    {name:"Информация о клиентах",href: "/clientinfo"}]}
+
             />
             <SidebarMenu
                 title="Склад"

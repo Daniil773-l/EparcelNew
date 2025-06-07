@@ -22,7 +22,7 @@ export default () => {
         <Container>
             <Content>
                 <HeadingColumn>
-                    <HeadingTitle>O нас</HeadingTitle>
+
                     <HeadingDescription>
 
                         ЕPARCEL.kz является службой доставки посылок из зарубежных стран в Казахстан.

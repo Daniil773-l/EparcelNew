@@ -175,7 +175,7 @@ const WarehouseServiceCard = () => {
                 <CardHeaderLink href="/WarehouseServices">Услуги склада</CardHeaderLink>
                 <CardContentContainer>
                     <CardContent>
-                        Заявки на услуги склада:
+                        Заявки на услуги склада в США:
                     </CardContent>
                     <CardStats>
                         <Stat>

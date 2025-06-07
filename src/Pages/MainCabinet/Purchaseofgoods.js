@@ -832,6 +832,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
     const db = getFirestore();
     const [storeName, setStoreName] = useState("");
     const [validationErrors, setValidationErrors] = useState({});
+    const [comment, setComment] = useState('');
 
     const toggleExpand = () => setExpanded(!expanded);
 
@@ -1040,6 +1041,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                     warehouse: selectedWarehouse,
                     priceChange: selectedPriceChange,
                     products,
+                    comment,
                     requestNumber, // Номер заявки
                     createdAt: new Date(), // Дата создания
                     status: "Создан", // Статус по умолчанию
@@ -1053,6 +1055,7 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                     await addDoc(collection(db, "выкуп_товаров"), requestData);
                     toast.success("Заявка успешно отправлена!");
                     resetForm();
+                    setComment('');
                     setStoreName(""); // Сбрасываем поле магазина
                     setActiveTab("requests"); // Переключаемся на вкладку заявок
                 } catch (error) {
@@ -1580,7 +1583,19 @@ export default function Purchaseofgoods({roundedHeaderButton, parcel}) {
                                                             </CustomOptions>
                                                         )}
                                                     </CustomSelectWrapper>
+
                                                 </FormGroup>
+                                                <FormGroup style={{ gridColumn: 'span 2' }}>
+                                                    <Label htmlFor="comment">Комментарий к заявке</Label>
+                                                    <TextArea
+                                                        id="comment"
+                                                        placeholder="Введите комментарий, если необходимо"
+                                                        value={comment}
+                                                        onChange={(e) => setComment(e.target.value)}
+                                                        rows="3"
+                                                    />
+                                                </FormGroup>
+
                                             </Form>
                                             </Container12>
                                         </div>

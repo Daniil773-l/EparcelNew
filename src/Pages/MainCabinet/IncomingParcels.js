@@ -636,9 +636,9 @@ export default ({roundedHeaderButton, parcel}) => {
                                                                    alt="Country Flag"/>
                                                             Посылка #{parcel.id}
                                                             <ExpandButton>
-                                                                {expandedParcel === parcel.id ? <IoIosArrowUp/> :
-                                                                    <IoIosArrowDown/>}
+                                                                {expandedParcel === parcel.id ? 'Скрыть информацию' : 'Показать информацию'}
                                                             </ExpandButton>
+
                                                         </ParcelID>
                                                         <SectionTitle >{parcel.parcelName}</SectionTitle>
 
@@ -806,8 +806,7 @@ export default ({roundedHeaderButton, parcel}) => {
                                                                     alt="Country Flag"/>
                                                                 Посылка #{parcel.id}
                                                                 <ExpandButton>
-                                                                    {expandedParcel === parcel.id ? <IoIosArrowUp/> :
-                                                                        <IoIosArrowDown/>}
+                                                                    {expandedParcel === parcel.id ? 'Скрыть информацию' : 'Показать информацию'}
                                                                 </ExpandButton>
                                                             </ParcelID>
                                                             <SectionTitle style={{ marginLeft: '30px' }}>{parcel.parcelName}</SectionTitle>

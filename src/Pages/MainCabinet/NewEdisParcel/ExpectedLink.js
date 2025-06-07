@@ -242,6 +242,26 @@ const DeleteIconContainer = styled.div`
         }
     }
 `;
+const AddInput = styled.input`
+    ${tw`ml-4 w-auto bg-gray-300 text-gray-600 font-bold py-3 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300`}
+    border: none;
+    width: 200px;
+    height: 40px;
+    padding: 0 1rem;
+
+    &:hover,
+    &:focus {
+        transform: scale(1.1);
+        background-color: #0ABD19;
+        color: white;
+    }
+    &:focus::placeholder {
+        color: transparent;
+    }
+`;
+const BackButton = styled(AddInput)`
+    ${tw`w-auto bg-gray-300 text-gray-600 font-bold py-3 px-4 rounded-full flex items-center justify-center leading-none focus:outline-none transition duration-300 ml-auto`}
+`;
 
 const ProductForm = ({index, handleChange, handleDelete}) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -608,10 +628,20 @@ const ExpectedLink = () => {
             <MainCabinetHeader/>
             <PageContainer>
                 <Toaster/>
+
                 <FormContainer>
+
                     <div style={{width: '100%', maxWidth: '1280px'}}>
+                        <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "20px" }}>
+                            <BackButton
+                                type="button"
+                                value="Назад в личный кабинет"
+                                onClick={() => window.history.back()}
+                            />
+                        </div>
                         <StepTitle active={true}><HighlightedText>Шаг 1. </HighlightedText>Заполните информацию о
                             посылке</StepTitle>
+
                         <Container>
                             <Form>
                                 <FormGroup>

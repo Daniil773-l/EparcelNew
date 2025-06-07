@@ -108,22 +108,24 @@ import AddPaletParcel from  "./Pages/ScladSistema/Pallet/AddParcelPalets"
 import Shipment from "./Pages/ScladSistema/Shipment/Shipment";
 import AddPalletShioment from "./Pages/ScladSistema/Shipment/AddPalletShioment";
 import UnknowParcel from "./Pages/ScladSistema/unknownParcel";
+import ClientInfo from "./Pages/ScladSistema/ClientInfo";
 // Компонент для защиты маршрутов
-const ProtectedRoute = ({children, role}) => {
-    const {user} = useAuth();
+const ProtectedRoute = ({ children, role }) => {
+    const { user } = useAuth();
 
-    if (!user) {
-
-        return <Navigate to="/login" replace/>;
-    }
+    if (!user) return <Navigate to="/login" replace />;
 
     if (role === "admin" && user.email !== "admin@gmail.com") {
+        return <Navigate to="/login" replace />;
+    }
 
-        return <Navigate to="/login" replace/>;
+    if (role === "newsAdmin" && user.email !== "newsadmin@gmail.com") {
+        return <Navigate to="/login" replace />;
     }
 
     return children;
 };
+
 
 // Компонент для маршрутизации
 const AppRoutes = () => {
@@ -152,7 +154,8 @@ const AppRoutes = () => {
         "/otgoingscaldparcel",
         "/purchaseofgoodssclad",
         "/FormEditingPurchamse",
-        "/unknow-parcel",];
+        "/unknow-parcel",
+        "/clientinfo"];
 
     // Проверка на скрытие заголовка
     const shouldHideHeader = hideHeaderOnRoutes.some(route => matchPath(route, location.pathname));
@@ -258,6 +261,9 @@ const AppRoutes = () => {
             </ProtectedRoute>}/>
             <Route path="/unknow-parcel" element={<ProtectedRoute role="admin">
                 <UnknowParcel/>
+            </ProtectedRoute>}/>
+            <Route path="/clientinfo" element={<ProtectedRoute role="admin">
+                <ClientInfo/>
             </ProtectedRoute>}/>
         </Routes>
 

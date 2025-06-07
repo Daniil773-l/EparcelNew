@@ -158,7 +158,7 @@ const OutgoingPackagesCard = () => {
                 <CardHeaderLink href="/OutgoingParcels">Исходящие посылки</CardHeaderLink> {/* Change the href to your desired page */}
                 <CardContentContainer>
                     <CardContent>
-                        Отправленные и доставленные посылки:
+                        Отправленные и доставленные посылки в Казахстан:
                     </CardContent>
                     <CardStats>
                         <Stat>

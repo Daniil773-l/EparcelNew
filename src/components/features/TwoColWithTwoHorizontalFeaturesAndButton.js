@@ -141,11 +141,11 @@ export default ({
 
                         <Heading>{heading}</Heading>
                         <Description>
-                            <span style={{color: "#0ABD19"}}>Eparcel</span> - Ваш надежный мейлфорвард — с собственными
+                            <span style={{color: "#0ABD19"}}>Eparcel</span> - служба доставки — с собственными
                             методами доставки и удобными автоматизированными складами.
                         </Description>
                         <Description>
-                            <span style={{color: "#0ABD19"}}>Доставка</span> - товаров из-за границы — наша основная
+                            <span style={{color: "#0ABD19"}}>Доставка</span>  товаров из-за границы — наша основная
                             деятельность, сотни тысяч клиентов из Казахстана получают свои покупки благодаря нам.
                         </Description>
                     </TextContent>

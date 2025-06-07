@@ -7,7 +7,7 @@ import tw from "twin.macro";
 
 import Header from "../../../components/headers/light.js";
 
-import DesignIllustration from "../../../images/img/о нас.png";
+import DesignIllustration from "../../../images/img/onas_1.png";
 import {getAuth} from "firebase/auth";
 
 

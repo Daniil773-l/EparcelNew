@@ -1,9 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import {SectionHeading, SectionSteps} from "../misc/Headings";
-
-
+import { SectionSteps } from "../misc/Headings";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col items-center justify-center max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -14,18 +12,14 @@ const TextColumn = styled(Column)(props => [
     props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
 ]);
 
-
-
-
 const TextContent = tw.div`lg:py-8 text-center`;
-
 
 const Heading = tw(
     SectionSteps
 )`mt-4 font-extrabold text-3xl sm:text-4xl lg:text-5xl text-center leading-tight`;
 
 const StepsContainer = styled.div`
-    ${tw`mt-1 flex justify-center items-stretch flex-wrap`} // добавили flex-wrap
+    ${tw`mt-1 flex justify-center items-stretch flex-wrap`}
     gap: 1rem;
     width: 100%;
 
@@ -36,17 +30,13 @@ const StepsContainer = styled.div`
     }
 `;
 
-
-
 const Step = styled.div`
-    ${tw`flex flex-col items-center relative`}
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 36px;
-    margin: auto;
+    ${tw`relative flex flex-col items-center bg-white rounded-lg p-8`}
+
     width: 100%;
     min-width: 250px;
-    flex: 1 1 100%; // 👈 добавили
+    flex: 1 1 100%;
+    position: relative;
 
     &::before {
         content: "";
@@ -61,25 +51,23 @@ const Step = styled.div`
     }
 
     @media (min-width: 768px) {
-        flex: 1 1 calc(50% - 1rem); // 2 карточки в ряд
+        flex: 1 1 calc(50% - 1rem);
     }
 
     @media (min-width: 1024px) {
-        flex: 1 1 calc(25% - 1rem); // 4 карточки в ряд
+        flex: 1 1 calc(25% - 1rem);
     }
 `;
 
-
-
-
 const StepNumber = styled.div`
-    ${tw`font-semibold text-4xl leading-none text-[#0ABD19]`}
-    margin-top: -25px;
-    min-width: 60px;
-    margin-bottom: 20px; /* Отступ между номером и заголовком */
+    ${tw`font-semibold text-4xl text-[#0ABD19]`}
+    margin-bottom: 16px;
+    align-self: center; // <-- по центру карточки
 `;
+
+
 const StepText = styled.div`
-    ${tw`flex flex-col flex-grow justify-between w-full text-center`} /* Растягиваем содержимое */
+    ${tw`flex flex-col justify-start items-center w-full text-center`}
 `;
 
 const StepHeading = styled.h6`
@@ -97,18 +85,14 @@ const StepDescription = styled.p`
 `;
 
 export default ({
-
                     heading = (
                         <>
                             Как это <span tw="text-primary-500">работает?</span>
                         </>
                     ),
-
                     textOnLeft = true,
                     steps = null,
-
                 }) => {
-
     const defaultSteps = [
         {
             heading: "РЕГИСТРАЦИЯ",
@@ -138,7 +122,7 @@ export default ({
                         <Heading>{heading}</Heading>
                         <StepsContainer>
                             {steps.map((step, index) => (
-                                <Step key={index} style={{ borderRight: index === 3 ? '10px solid #0ABD19' : undefined }}>
+                                <Step key={index}>
                                     <StepNumber>{(index + 1).toString().padStart(2, '0')}</StepNumber>
                                     <StepText>
                                         <StepHeading>{step.heading}</StepHeading>

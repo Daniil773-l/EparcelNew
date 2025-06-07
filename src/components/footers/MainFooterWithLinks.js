@@ -174,9 +174,7 @@ export default () => {
                             <LinkListItem>
                                 <Link href="ProhibitedProductsPage">Запрещенные товары</Link>
                             </LinkListItem>
-                            <LinkListItem>
-                                <Link href="CustomRegulations">Таможенные правила</Link>
-                            </LinkListItem>
+
                             <LinkListItem>
                                 <Link href="DeliveryCalculator">Калькулятор доставки</Link>
                             </LinkListItem>
@@ -193,6 +191,9 @@ export default () => {
                             </LinkListItem>
                             <LinkListItem>
                                 <Link href="HowToBuyGoodsAbroadPage">Как покупать товары из-за границы</Link>
+                            </LinkListItem>
+                            <LinkListItem>
+                                <Link href="CustomRegulations">Таможенные правила</Link>
                             </LinkListItem>
                             <LinkListItem>
                                 <Link href="ClothesSizes">Размеры одежды и обуви</Link>

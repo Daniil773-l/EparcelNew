@@ -7,7 +7,7 @@ import Cards from './componets/DashedBorderSixFeatures';
 import styled, { css } from 'styled-components';
 import tw from "twin.macro";
 import SliderCard from "../../components/cards/ThreeColSlider.js";
-import  DesignIllustration from "../../images/img/магазины.png"
+import  DesignIllustration from "../../images/img/shops_1.png"
 // Стили для контейнера кнопок
 const ButtonContainer = styled.div`
         ${tw`flex flex-wrap items-center justify-center gap-4`}

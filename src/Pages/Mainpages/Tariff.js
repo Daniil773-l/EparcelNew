@@ -4,7 +4,7 @@ import Header from '../../components/headers/MainHeader';
 import Footer from "../../components/footers/MainFooterWithLinks";
 import tw from "twin.macro";
 import styled from "styled-components";
-import DesignIllustration from "../../images/img/тарифы.png";
+import DesignIllustration from "../../images/img/box_phone1.png";
 import Bacround_tarif from "../../images/img/Bacround-cardtarif.svg";
 import Bacround_tarif2 from "../../images/img/Bacround-tarrif-2.svg";
 import DutyCalculator from "./componets/customsDutyCalculator";
@@ -54,21 +54,16 @@ export default () => {
         ${tw`flex flex-col`} /* Столбцы превращаются в строки */
     }
     `;
+
     const Block2 = styled.div`
         ${tw`w-full p-4`}
-        max-width:380px;
-        margin-bottom: 30px;
+        max-width: 380px;
         background: url(${Bacround_tarif2}) center no-repeat;
-        border-radius: 15px; /* Скруглённые углы */
-      
-        display: flex; /* Используем flex для центрирования */
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        background-size: cover;
+        border-radius: 15px;
+        overflow: hidden;
+        padding: 20px;
         text-align: center;
-        margin-bottom: 10px; /* Отступ снизу */
-        overflow: hidden; /* Обрезаем содержимое, выходящее за границы */
-        padding: 20px; /* Отступы внутри */
     `;
 
 
@@ -93,32 +88,28 @@ export default () => {
 
         margin-right: 5px;
     `;
-
-
     const PriceTable = styled.table`
-        ${tw`w-full text-left`}
+        ${tw`w-full text-center`}
         border-collapse: collapse;
-        border: none;
+        min-width: 300px;
     `;
 
-    const PriceRow = styled.tr`
-        &:first-child td {
-            border-top: none;
-        }
-        &:last-child td {
-            border-bottom: none;
-        }
-    `;
+
+    const PriceRow = styled.tr``;
 
     const PriceCell = styled.td`
-        ${tw`py-2 border-2 border-gray-300`}
-        &:first-child {
-            border-left: none;
-        }
-        &:last-child {
-            border-right: none;
-        }
+        ${tw`px-4 border-2 border-gray-300`}
+        padding: ${({ isHeader }) => (isHeader ? "1rem 0.5rem" : "0.75rem 0.5rem")};
+        font-weight: ${({ isHeader }) => (isHeader ? "bold" : "normal")};
     `;
+
+    const PriceTitle = styled.td`
+        ${tw`px-4 border-2 border-gray-300 font-bold`}
+        padding: 1rem 0.5rem;
+        font-weight: bold;
+    `;
+
+
     const TarifZone = ({ zoneNumber, cities }) => {
         const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -240,12 +231,14 @@ export default () => {
 
                     <Block2>
                         <PriceTable>
-                            <tbody>
+                            <thead>
                             <PriceRow>
-                                <PriceCell>Вес <br></br>посылки</PriceCell>
-                                <PriceCell>ПВЗ</PriceCell>
-                                <PriceCell>Курьер</PriceCell>
+                                <PriceTitle>Вес <br></br>посылки</PriceTitle>
+                                <PriceTitle>ПВЗ</PriceTitle>
+                                <PriceTitle>Курьер</PriceTitle>
                             </PriceRow>
+                            </thead>
+                            <tbody>
                             <PriceRow>
                                 <PriceCell>0.5 кг</PriceCell>
                                 <PriceCell>10 $</PriceCell>
@@ -292,12 +285,14 @@ export default () => {
                 </Block>
                     <Block2>
                         <PriceTable>
-                            <tbody>
+                            <thead>
                             <PriceRow>
-                                <PriceCell>Вес <br></br>посылки</PriceCell>
-                                <PriceCell>ПВЗ</PriceCell>
-                                <PriceCell>Курьер</PriceCell>
+                                <PriceTitle>Вес <br></br>посылки</PriceTitle>
+                                <PriceTitle>ПВЗ</PriceTitle>
+                                <PriceTitle>Курьер</PriceTitle>
                             </PriceRow>
+                            </thead>
+                            <tbody>
                             <PriceRow>
                                 <PriceCell>0.5 кг</PriceCell>
                                 <PriceCell>11 $</PriceCell>
@@ -342,12 +337,14 @@ export default () => {
                 </Block>
                     <Block2>
                         <PriceTable>
-                            <tbody>
+                            <thead>
                             <PriceRow>
-                                <PriceCell>Вес <br></br>посылки</PriceCell>
-                                <PriceCell>ПВЗ</PriceCell>
-                                <PriceCell>Курьер</PriceCell>
+                                <PriceTitle>Вес <br></br>посылки</PriceTitle>
+                                <PriceTitle>ПВЗ</PriceTitle>
+                                <PriceTitle>Курьер</PriceTitle>
                             </PriceRow>
+                            </thead>
+                            <tbody>
                             <PriceRow>
                                 <PriceCell>0.5 кг</PriceCell>
                                 <PriceCell>12 $</PriceCell>

@@ -6,7 +6,7 @@ import AnimationRevealPage from "../../components/helpers/AnimationRevealPage";
 import Header from '../../components/headers/MainHeader';
 import Footer from "../../components/footers/MainFooterWithLinks";
 
-import DesignIllustration from "../../images/img/Таможенные правила. КЗ.png";
+import DesignIllustration from "../../images/img/coustoms_1.png";
 import Banner2 from "../../images/img/SecondBannerCustoms.svg";
 import CustomImage from "../../images/img/BannerCustoms.svg"; // Import the uploaded image
 
